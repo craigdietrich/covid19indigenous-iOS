@@ -14,10 +14,12 @@
 		46D655A924F8A95500ED419E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D655A724F8A95500ED419E /* Main.storyboard */; };
 		46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46D655AA24F8A96400ED419E /* Assets.xcassets */; };
 		46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D655AC24F8A96400ED419E /* LaunchScreen.storyboard */; };
+		46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */; };
+		46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		46D6559C24F8A95500ED419E /* covid19indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46D6559C24F8A95500ED419E /* covid19indig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D6559F24F8A95500ED419E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46D655A124F8A95500ED419E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		46D655A324F8A95500ED419E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		46D655AA24F8A96400ED419E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46D655AD24F8A96400ED419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46D655AF24F8A96400ED419E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kitatipithitamak Logo Image w1000.png"; sourceTree = "<group>"; };
+		46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kitatipithitamak Logo w1000.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +54,7 @@
 		46D6559D24F8A95500ED419E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				46D6559C24F8A95500ED419E /* covid19indigenous.app */,
+				46D6559C24F8A95500ED419E /* covid19indig.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +62,7 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				46D655B524F99AD200ED419E /* Media */,
 				46D6559F24F8A95500ED419E /* AppDelegate.swift */,
 				46D655A124F8A95500ED419E /* SceneDelegate.swift */,
 				46D655A324F8A95500ED419E /* FirstViewController.swift */,
@@ -68,6 +73,15 @@
 				46D655AF24F8A96400ED419E /* Info.plist */,
 			);
 			path = covid19indigenous;
+			sourceTree = "<group>";
+		};
+		46D655B524F99AD200ED419E /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */,
+				46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */,
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,7 +101,7 @@
 			);
 			name = covid19indigenous;
 			productName = covid19indigenous;
-			productReference = 46D6559C24F8A95500ED419E /* covid19indigenous.app */;
+			productReference = 46D6559C24F8A95500ED419E /* covid19indig.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,6 +144,8 @@
 			files = (
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
+				46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */,
+				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -291,12 +307,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WWYNXYA8Y4;
 				INFOPLIST_FILE = covid19indigenous/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.craigdietrich.covid19indigenous;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = covid19indig;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -309,12 +326,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WWYNXYA8Y4;
 				INFOPLIST_FILE = covid19indigenous/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.craigdietrich.covid19indigenous;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = covid19indig;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
