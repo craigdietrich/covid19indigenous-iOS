@@ -12,6 +12,8 @@ class FirstViewController: UIViewController {
 
     @IBOutlet weak var iPhoneVerticalContainer: UIView!
     @IBOutlet weak var iPhoneHoriztonalContainer: UIView!
+    @IBOutlet weak var iPadVerticalContainer: UIView!
+    @IBOutlet weak var iPadHoritzontalContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +35,13 @@ class FirstViewController: UIViewController {
         
         var _isIPhone: Bool = true
         var _isVertical: Bool = true
-        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
-            _isVertical = false
+        switch UIDevice.current.orientation {
+            case .landscapeLeft, .landscapeRight:
+                _isVertical = false
+            case .portrait, .portraitUpsideDown:
+                _isVertical = true
+            default:
+                _isVertical = true
         }
         if UIDevice.current.userInterfaceIdiom == .pad {
             _isIPhone = false
@@ -44,15 +51,25 @@ class FirstViewController: UIViewController {
             if (_isVertical) {
                 iPhoneVerticalContainer.isHidden = false
                 iPhoneHoriztonalContainer.isHidden = true
+                iPadVerticalContainer.isHidden = true
+                iPadHoritzontalContainer.isHidden = true
             } else {
                 iPhoneVerticalContainer.isHidden = true
                 iPhoneHoriztonalContainer.isHidden = false
+                iPadVerticalContainer.isHidden = true
+                iPadHoritzontalContainer.isHidden = true
             }
         } else {
             if (_isVertical) {
-                
+                iPhoneVerticalContainer.isHidden = true
+                iPhoneHoriztonalContainer.isHidden = true
+                iPadVerticalContainer.isHidden = false
+                iPadHoritzontalContainer.isHidden = true
             } else {
-                
+                iPhoneVerticalContainer.isHidden = true
+                iPhoneHoriztonalContainer.isHidden = true
+                iPadVerticalContainer.isHidden = true
+                iPadHoritzontalContainer.isHidden = false
             }
         }
         
