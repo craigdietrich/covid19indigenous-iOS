@@ -10,9 +10,11 @@ import UIKit
 
 class ConversationsCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var publishedLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

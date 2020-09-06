@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4667BD632501723500B711EC /* videoDefaultThumb.png */; };
 		46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D6559F24F8A95500ED419E /* AppDelegate.swift */; };
 		46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A124F8A95500ED419E /* SceneDelegate.swift */; };
 		46D655A424F8A95500ED419E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A324F8A95500ED419E /* FirstViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4667BD632501723500B711EC /* videoDefaultThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoDefaultThumb.png; sourceTree = "<group>"; };
 		46D6559C24F8A95500ED419E /* covid19indig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D6559F24F8A95500ED419E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46D655A124F8A95500ED419E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				4667BD632501723500B711EC /* videoDefaultThumb.png */,
 				46D655C524FDC15600ED419E /* Cells */,
 				46D655BA24FAD66400ED419E /* Controllers */,
 				46D655B524F99AD200ED419E /* Media */,
@@ -190,6 +193,7 @@
 			files = (
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
+				4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */,
 				46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
