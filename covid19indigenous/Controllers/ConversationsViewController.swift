@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ConversationsViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -256,7 +257,27 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
             
         } else {
             
+            let filename = article["mp4_filename"]!
+            if (filename.count <= 0) {
+                print("Empty filename")
+                return
+            }
             
+            let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
+            let filePath = videosUrl.appendingPathComponent(filename)
+            if !FileManager.default.fileExists(atPath: filePath.path) {
+                print("File doesn't exist")
+                return
+            }
+            print("filePath: " + filePath.path)
+            
+            let player = AVPlayer(url: filePath)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            present(playerViewController, animated: true) {
+              player.play()
+            }
             
         }
         

@@ -119,7 +119,7 @@ class ConvoDownloadViewController: UIViewController {
         if (!canContinue) {
             return
         }
-        downloadProgressLabel.text = "Downloading " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressLabel.text = "Downloading thumbnail " + String(row + 1) + "/" + String(articles.count)
         downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
         
         // Get filename from JSON
@@ -132,6 +132,62 @@ class ConvoDownloadViewController: UIViewController {
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
         let filePath = videosUrl.appendingPathComponent(thumbnailFilename).path
+        if FileManager.default.fileExists(atPath: filePath) {
+            print("File already exists")
+            _downloadVideo(articles: articles, row: row)
+            return
+        }
+        
+        // Go out and get the file
+        let url = URL(string: urlString)!
+        let downloadTask = URLSession.shared.downloadTask(with: url) {
+            urlOrNil, responseOrNil, errorOrNil in
+            guard let fileURL = urlOrNil else { return }
+            do {
+                let documentsURL = try FileManager.default.url(for: .documentDirectory,
+                                            in: .userDomainMask,
+                                            appropriateFor: nil,
+                                            create: false)
+                let videosFolderURL = documentsURL.appendingPathComponent("videos")
+                if !FileManager.default.fileExists(atPath: videosFolderURL.path) {
+                    try FileManager.default.createDirectory(at: videosFolderURL, withIntermediateDirectories: true, attributes: nil)
+                }
+                let destinationUrl = videosFolderURL.appendingPathComponent(thumbnailFilename)
+                try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
+                DispatchQueue.main.async {
+                    self._downloadVideo(articles: articles, row: row)
+                }
+            } catch {
+                print ("file error: \(error)")
+                self._downloadVideo(articles: articles, row: row)
+            }
+        }
+        downloadTask.resume()
+        
+    }
+    
+    func _downloadVideo(articles:Array<Dictionary<String,String>>, row:Int) {
+        
+        if (row >= articles.count) {
+            _finishDownloadVideos()
+            return
+        }
+        if (!canContinue) {
+            return
+        }
+        downloadProgressLabel.text = "Downloading video " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
+        
+        // Get filename from JSON
+        let article = articles[row]
+        let videoFilename: String = article["mp4_filename"]!
+        let urlString:String = "https://craigdietrich.com/tmp/feeds/videos/" + videoFilename
+        print("Attempting to download: " + urlString)
+        
+        // Check to see if it esists in the filesystem already
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
+        let filePath = videosUrl.appendingPathComponent(videoFilename).path
         if FileManager.default.fileExists(atPath: filePath) {
             print("File already exists")
             _downloadThumbnail(articles: articles, row: row + 1)
@@ -152,8 +208,8 @@ class ConvoDownloadViewController: UIViewController {
                 if !FileManager.default.fileExists(atPath: videosFolderURL.path) {
                     try FileManager.default.createDirectory(at: videosFolderURL, withIntermediateDirectories: true, attributes: nil)
                 }
-                let manifestURL = videosFolderURL.appendingPathComponent(thumbnailFilename)
-                try FileManager.default.moveItem(at: fileURL, to: manifestURL)
+                let destinationUrl = videosFolderURL.appendingPathComponent(videoFilename)
+                try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
                 DispatchQueue.main.async {
                     self._downloadThumbnail(articles: articles, row: row + 1)
                 }
