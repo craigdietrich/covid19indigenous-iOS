@@ -221,6 +221,12 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
              }
          }
         
+        if let category = row["category"] {
+            if category == "webinars" {
+                totalHeight = totalHeight + 40.0
+            }
+        }
+        
         let imageHeight = (cellWidth * 9) / 16
         totalHeight = totalHeight + CGFloat(imageHeight)
         
@@ -366,6 +372,14 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
                  cell.publishedLabel.text = "Published: " + todaysDate
              }
          }
+        
+        if let category = row["category"] {
+            if category == "webinars" {
+                cell.requiresInternetLabel.isHidden = false
+            } else {
+                cell.requiresInternetLabel.isHidden = true
+            }
+        }
         
          return cell;
     }
