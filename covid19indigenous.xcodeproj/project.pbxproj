@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4632CE89250C1470005CFE95 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE88250C1470005CFE95 /* about.html */; };
+		4632CE8C250C17B2005CFE95 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4632CE8B250C17B2005CFE95 /* WebKit.framework */; };
+		4632CE8E250C1DF6005CFE95 /* thought-bubble-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE8D250C1DF6005CFE95 /* thought-bubble-icon.png */; };
+		4632CE90250C1EE2005CFE95 /* hand-wave-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE8F250C1EE2005CFE95 /* hand-wave-icon.png */; };
 		4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4667BD632501723500B711EC /* videoDefaultThumb.png */; };
 		46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D6559F24F8A95500ED419E /* AppDelegate.swift */; };
 		46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A124F8A95500ED419E /* SceneDelegate.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4632CE88250C1470005CFE95 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		4632CE8B250C17B2005CFE95 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4632CE8D250C1DF6005CFE95 /* thought-bubble-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thought-bubble-icon.png"; path = "../../../../Desktop/thought-bubble-icon.png"; sourceTree = "<group>"; };
+		4632CE8F250C1EE2005CFE95 /* hand-wave-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hand-wave-icon.png"; path = "../../../../Desktop/hand-wave-icon.png"; sourceTree = "<group>"; };
 		4667BD632501723500B711EC /* videoDefaultThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoDefaultThumb.png; sourceTree = "<group>"; };
 		46D6559C24F8A95500ED419E /* covid19indig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D6559F24F8A95500ED419E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,17 +67,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4632CE8C250C17B2005CFE95 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4632CE8A250C17B2005CFE95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4632CE8B250C17B2005CFE95 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		46D6559324F8A95400ED419E = {
 			isa = PBXGroup;
 			children = (
 				46D6559E24F8A95500ED419E /* covid19indigenous */,
 				46D6559D24F8A95500ED419E /* Products */,
+				4632CE8A250C17B2005CFE95 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +102,7 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				4632CE88250C1470005CFE95 /* about.html */,
 				4667BD632501723500B711EC /* videoDefaultThumb.png */,
 				46D655C524FDC15600ED419E /* Cells */,
 				46D655BA24FAD66400ED419E /* Controllers */,
@@ -105,6 +124,8 @@
 		46D655B524F99AD200ED419E /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				4632CE8F250C1EE2005CFE95 /* hand-wave-icon.png */,
+				4632CE8D250C1DF6005CFE95 /* thought-bubble-icon.png */,
 				46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */,
 				46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */,
 			);
@@ -191,12 +212,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4632CE89250C1470005CFE95 /* about.html in Resources */,
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
 				4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */,
+				4632CE90250C1EE2005CFE95 /* hand-wave-icon.png in Resources */,
 				46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
+				4632CE8E250C1DF6005CFE95 /* thought-bubble-icon.png in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -350,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -367,7 +391,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WWYNXYA8Y4;
 				INFOPLIST_FILE = covid19indigenous/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -386,7 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WWYNXYA8Y4;
 				INFOPLIST_FILE = covid19indigenous/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
