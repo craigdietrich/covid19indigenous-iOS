@@ -119,7 +119,7 @@ class ConvoDownloadViewController: UIViewController {
         if (!canContinue) {
             return
         }
-        downloadProgressLabel.text = "Downloading thumbnail " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressLabel.text = "Downloading image " + String(row + 1) + "/" + String(articles.count)
         downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
         
         // Get filename from JSON

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		4632CE89250C1470005CFE95 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE88250C1470005CFE95 /* about.html */; };
 		4632CE8C250C17B2005CFE95 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4632CE8B250C17B2005CFE95 /* WebKit.framework */; };
-		4632CE8E250C1DF6005CFE95 /* thought-bubble-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE8D250C1DF6005CFE95 /* thought-bubble-icon.png */; };
-		4632CE90250C1EE2005CFE95 /* hand-wave-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE8F250C1EE2005CFE95 /* hand-wave-icon.png */; };
+		4632CE92250C3399005CFE95 /* hand-wave-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE91250C3399005CFE95 /* hand-wave-icon.png */; };
+		4632CE94250C368F005CFE95 /* thought-bubble-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE93250C368F005CFE95 /* thought-bubble-icon.png */; };
 		4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4667BD632501723500B711EC /* videoDefaultThumb.png */; };
 		46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D6559F24F8A95500ED419E /* AppDelegate.swift */; };
 		46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A124F8A95500ED419E /* SceneDelegate.swift */; };
@@ -36,8 +36,8 @@
 /* Begin PBXFileReference section */
 		4632CE88250C1470005CFE95 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4632CE8B250C17B2005CFE95 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		4632CE8D250C1DF6005CFE95 /* thought-bubble-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thought-bubble-icon.png"; path = "../../../../Desktop/thought-bubble-icon.png"; sourceTree = "<group>"; };
-		4632CE8F250C1EE2005CFE95 /* hand-wave-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hand-wave-icon.png"; path = "../../../../Desktop/hand-wave-icon.png"; sourceTree = "<group>"; };
+		4632CE91250C3399005CFE95 /* hand-wave-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hand-wave-icon.png"; sourceTree = "<group>"; };
+		4632CE93250C368F005CFE95 /* thought-bubble-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thought-bubble-icon.png"; sourceTree = "<group>"; };
 		4667BD632501723500B711EC /* videoDefaultThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoDefaultThumb.png; sourceTree = "<group>"; };
 		46D6559C24F8A95500ED419E /* covid19indig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D6559F24F8A95500ED419E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 		46D655B524F99AD200ED419E /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				4632CE8F250C1EE2005CFE95 /* hand-wave-icon.png */,
-				4632CE8D250C1DF6005CFE95 /* thought-bubble-icon.png */,
+				4632CE93250C368F005CFE95 /* thought-bubble-icon.png */,
+				4632CE91250C3399005CFE95 /* hand-wave-icon.png */,
 				46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */,
 				46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */,
 			);
@@ -212,15 +212,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4632CE92250C3399005CFE95 /* hand-wave-icon.png in Resources */,
 				4632CE89250C1470005CFE95 /* about.html in Resources */,
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
 				4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */,
-				4632CE90250C1EE2005CFE95 /* hand-wave-icon.png in Resources */,
 				46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */,
+				4632CE94250C368F005CFE95 /* thought-bubble-icon.png in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
-				4632CE8E250C1DF6005CFE95 /* thought-bubble-icon.png in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

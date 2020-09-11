@@ -83,8 +83,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lZA-3e-Oge">
+                                <rect key="frame" x="0.0" y="44" width="414" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="i58-5W-4SC"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="About Project"/>
+                                    <segment title="Project News"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVID-19 Indigenous Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="de0-TC-dCl">
+                                <rect key="frame" x="0.0" y="74" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.2579730308" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b5F-jk-u4o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4zv-1l-Ngi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="689"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -94,10 +114,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="lZA-3e-Oge" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="1lo-aM-4j5"/>
+                            <constraint firstItem="de0-TC-dCl" firstAttribute="top" secondItem="lZA-3e-Oge" secondAttribute="bottom" id="6z8-UM-Dsc"/>
+                            <constraint firstItem="de0-TC-dCl" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="CXZ-BN-j2w"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="4zv-1l-Ngi" secondAttribute="bottom" id="Dge-Qt-ifN"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="lZA-3e-Oge" secondAttribute="trailing" id="YmA-d8-IuJ"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="4zv-1l-Ngi" secondAttribute="trailing" id="e3f-hp-NSs"/>
                             <constraint firstItem="4zv-1l-Ngi" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="eQC-eB-98I"/>
-                            <constraint firstItem="4zv-1l-Ngi" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="gZW-um-xJk"/>
+                            <constraint firstItem="lZA-3e-Oge" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="fYz-jl-z9f"/>
+                            <constraint firstItem="4zv-1l-Ngi" firstAttribute="top" secondItem="de0-TC-dCl" secondAttribute="bottom" id="gZW-um-xJk"/>
+                            <constraint firstItem="de0-TC-dCl" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="gbW-bR-I9X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
@@ -324,7 +350,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukj-P7-aAD">
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="54.5"/>
                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="  About the COVID-19 survey" image="questionmark.circle.fill" catalog="system">
+                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
@@ -358,7 +384,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGz-aP-90P">
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="55"/>
                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="  Take the COVID-19 survey" image="hand.draw.fill" catalog="system">
+                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
@@ -392,7 +418,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-DW-pKJ">
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="55"/>
                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="  COVID-19 conversations" image="bubble.right.fill" catalog="system">
+                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
@@ -551,7 +577,7 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzd-Ih-Myp">
                                                                         <rect key="frame" x="16.5" y="0.0" width="134" height="109"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <state key="normal" title="  About the COVID-19 survey" image="questionmark.circle.fill" catalog="system">
+                                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
@@ -573,58 +599,24 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="187-Ax-HtC">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JER-1j-l6y">
                                                                 <rect key="frame" x="0.0" y="364.5" width="167" height="109.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzy-Zk-HU1">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGC-oa-B8i">
                                                                         <rect key="frame" x="0.0" y="0.0" width="16.5" height="109.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkM-R5-pOd">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTR-V1-qU2">
                                                                         <rect key="frame" x="16.5" y="0.0" width="134" height="109.5"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <state key="normal" title="  COVID-19 conversations" image="bubble.right.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
-                                                                    </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuU-rj-M4J">
-                                                                        <rect key="frame" x="150.5" y="0.0" width="16.5" height="109.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="Bzy-Zk-HU1" firstAttribute="width" secondItem="187-Ax-HtC" secondAttribute="width" multiplier="0.1" id="PZW-W3-fVW"/>
-                                                                    <constraint firstItem="OuU-rj-M4J" firstAttribute="width" secondItem="187-Ax-HtC" secondAttribute="width" multiplier="0.1" id="ujO-Wp-svn"/>
-                                                                </constraints>
-                                                            </stackView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-yi-vyP">
-                                                                <rect key="frame" x="0.0" y="474" width="167" height="73"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JER-1j-l6y">
-                                                                <rect key="frame" x="0.0" y="547" width="167" height="109"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGC-oa-B8i">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="16.5" height="109"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTR-V1-qU2">
-                                                                        <rect key="frame" x="16.5" y="0.0" width="134" height="109"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <state key="normal" title="  Take the COVID-19 survey" image="hand.draw.fill" catalog="system">
+                                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZc-ny-yaw">
-                                                                        <rect key="frame" x="150.5" y="0.0" width="16.5" height="109"/>
+                                                                        <rect key="frame" x="150.5" y="0.0" width="16.5" height="109.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -633,6 +625,40 @@
                                                                 <constraints>
                                                                     <constraint firstItem="iZc-ny-yaw" firstAttribute="width" secondItem="JER-1j-l6y" secondAttribute="width" multiplier="0.1" id="J14-vf-0dJ"/>
                                                                     <constraint firstItem="dGC-oa-B8i" firstAttribute="width" secondItem="JER-1j-l6y" secondAttribute="width" multiplier="0.1" id="yLf-E4-U0F"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-yi-vyP">
+                                                                <rect key="frame" x="0.0" y="474" width="167" height="73"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="187-Ax-HtC">
+                                                                <rect key="frame" x="0.0" y="547" width="167" height="109"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzy-Zk-HU1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="16.5" height="109"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkM-R5-pOd">
+                                                                        <rect key="frame" x="16.5" y="0.0" width="134" height="109"/>
+                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuU-rj-M4J">
+                                                                        <rect key="frame" x="150.5" y="0.0" width="16.5" height="109"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="Bzy-Zk-HU1" firstAttribute="width" secondItem="187-Ax-HtC" secondAttribute="width" multiplier="0.1" id="PZW-W3-fVW"/>
+                                                                    <constraint firstItem="OuU-rj-M4J" firstAttribute="width" secondItem="187-Ax-HtC" secondAttribute="width" multiplier="0.1" id="ujO-Wp-svn"/>
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyS-Ko-NYr">
@@ -773,7 +799,7 @@
                                                                         <rect key="frame" x="24.5" y="0.0" width="199" height="58"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  About the COVID-19 survey" image="questionmark.circle.fill" catalog="system">
+                                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
@@ -808,7 +834,7 @@
                                                                         <rect key="frame" x="24.5" y="0.0" width="199" height="58"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  Take the COVID-19 survey" image="hand.draw.fill" catalog="system">
+                                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
@@ -843,7 +869,7 @@
                                                                         <rect key="frame" x="24.5" y="0.0" width="199" height="57.5"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  COVID-19 conversations" image="bubble.right.fill" catalog="system">
+                                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
@@ -951,37 +977,37 @@
                                                 <rect key="frame" x="31" y="0.0" width="165.5" height="769"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RPH-XB-9by">
-                                                        <rect key="frame" x="20" y="20" width="125.5" height="729"/>
+                                                        <rect key="frame" x="20" y="20" width="1271" height="729"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="de6-4i-xoP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="125.5" height="36.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="1271" height="36.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Kitatipithitamak Logo Image w1000.png" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-V8-ZgE">
-                                                                <rect key="frame" x="0.0" y="36.5" width="125.5" height="364.5"/>
+                                                                <rect key="frame" x="0.0" y="36.5" width="1271" height="364.5"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiz-Gz-yEU">
-                                                                <rect key="frame" x="0.0" y="401" width="125.5" height="36.5"/>
+                                                                <rect key="frame" x="0.0" y="401" width="1271" height="36.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KITATIPITHITAMAK MITHWAYAWIN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvk-GG-4DX">
-                                                                <rect key="frame" x="0.0" y="437.5" width="125.5" height="73"/>
+                                                                <rect key="frame" x="0.0" y="437.5" width="1271" height="73"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                                 <color key="textColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indigenous-Led Countermeasures to Coronavirus (COVID-19) and other Pandemics Then Now, and Into the Future" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8GS-Hi-o72">
-                                                                <rect key="frame" x="0.0" y="510.5" width="125.5" height="218.5"/>
+                                                                <rect key="frame" x="0.0" y="510.5" width="1271" height="218.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                                 <color key="textColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmy-pR-Ros">
-                                                                <rect key="frame" x="0.0" y="729" width="125.5" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="729" width="1271" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1039,7 +1065,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="396.5" height="73"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  About the COVID-19 survey" image="questionmark.circle.fill" catalog="system">
+                                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
@@ -1058,7 +1084,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="396.5" height="72.5"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  Take the COVID-19 survey" image="hand.draw.fill" catalog="system">
+                                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
@@ -1077,7 +1103,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="396.5" height="73"/>
                                                                         <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  COVID-19 conversations" image="bubble.right.fill" catalog="system">
+                                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                     </button>
