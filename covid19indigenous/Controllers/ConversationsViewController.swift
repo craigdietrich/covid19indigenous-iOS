@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import SafariServices
 
 class ConversationsViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -249,8 +250,16 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
             
             if Reachability.isConnectedToNetwork() {
                 let url = article["youtube_url"]
+                /*
                 if let url = URL(string: url!) {
                     UIApplication.shared.open(url)
+                }
+                */
+                if let url = URL(string: url!) {
+                    let config = SFSafariViewController.Configuration()
+                    config.entersReaderIfAvailable = true
+                    let vc = SFSafariViewController(url: url, configuration: config)
+                    present(vc, animated: true)
                 }
             } else {
                 let alertController = UIAlertController(title: "No Connection", message: "Viewing webinars requires an Internet connection. Please establish a connection and try again.", preferredStyle: .alert)
