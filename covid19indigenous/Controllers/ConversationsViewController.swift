@@ -14,7 +14,6 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var downloadContainerView: UIView!
     
     var allArticles: Array<Dictionary<String,String>> = [];
     var articles: Array<Dictionary<String,String>> = [];
@@ -33,7 +32,12 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewDidAppear(_ animated: Bool) {
         
-        //_wipeVideosFolder()
+        loadData()
+        
+    }
+    
+    private func callMeFromPresentedVC() {
+        
         loadData()
         
     }
@@ -53,6 +57,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         if UIDevice.current.userInterfaceIdiom == .pad {
             _isIPhone = false
         }
+        
         if (_isIPhone && !_isVertical) {
             collectionView.superview?.backgroundColor = UIColor.darkGray
         } else {
@@ -63,23 +68,10 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         
     }
     
-    public func closeDownloadScreenAndReloadData() {
-        
-        downloadContainerView.isHidden = true
-        loadData()
-        
-    }
-    
-    public func closeDownloadScreen() {
-        
-        downloadContainerView.isHidden = true
-        
-    }
-    
     func loadData() {
         
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let videosFolderURL = documentsUrl.appendingPathComponent("videos")
+        let videosFolderURL = documentsUrl.appendingPathComponent("content")
         let manifestURL = videosFolderURL.appendingPathComponent("manifest.json")
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: manifestURL.path), options: .mappedIfSafe)
@@ -87,20 +79,24 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
             if let jsonResult = jsonResult as? Array<Dictionary<String,String>> {
                 DispatchQueue.main.async {
                     self.allArticles = jsonResult
-                    let category:String = self.returnCategoryFromSegmentedControl()
-                    self.propagateArticles(category: category)
+                    self.propagateArticles()
                 }
             }
         } catch {
-            downloadContainerView.isHidden = false
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConvoDownloadVC") as! ConvoDownloadViewController
+            vc.callbackClosure = { [weak self] in
+                self?.callMeFromPresentedVC()
+            }
+            self.present(vc, animated: true, completion: nil)
         }
 
     }
     
-    func propagateArticles(category:String) {
+    func propagateArticles() {
         
         articles = []
         collectionView.reloadData()
+        let category: String = returnCategoryFromSegmentedControl()
         
         for article in allArticles {
             if (article["category"] != category) {
@@ -111,12 +107,6 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         
         collectionView.reloadData()
         
-        if (articles.count > 0) {
-            downloadContainerView.isHidden = true
-        } else {
-            downloadContainerView.isHidden = false
-        }
-        
     }
     
     func returnCategoryFromSegmentedControl() -> String {
@@ -124,9 +114,9 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         var str:String = ""
         switch segmentedControl.selectedSegmentIndex {
           case 0:
-              str = "kahkakiw"
+              str = "community"
           case 1:
-              str = "webinars"
+              str = "justice"
           default:
               break
         }
@@ -136,7 +126,11 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
 
     @IBAction func refreshButtonAction(_ sender: Any) {
         
-        downloadContainerView.isHidden = false
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConvoDownloadVC") as! ConvoDownloadViewController
+        vc.callbackClosure = { [weak self] in
+            self?.callMeFromPresentedVC()
+        }
+        self.present(vc, animated: true, completion: nil)
         
     }
     
@@ -222,11 +216,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
              }
          }
         
-        if let category = row["category"] {
-            if category == "webinars" {
-                totalHeight = totalHeight + 40.0
-            }
-        }
+        totalHeight = totalHeight + 40.0  // Requires-internet label
         
         let imageHeight = (cellWidth * 9) / 16
         totalHeight = totalHeight + CGFloat(imageHeight)
@@ -352,7 +342,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         
         if let thumbnail = row["thumbnail_filename"] {
             let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-            let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
+            let videosUrl = URL(fileURLWithPath: documentPath + "/content")
             let filePath = videosUrl.appendingPathComponent(thumbnail)
             if FileManager.default.fileExists(atPath: filePath.path) {
                 do {
@@ -382,45 +372,10 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
              }
          }
         
-        if let category = row["category"] {
-            if category == "webinars" {
-                cell.requiresInternetLabel.isHidden = false
-            } else {
-                cell.requiresInternetLabel.isHidden = true
-            }
-        }
+         cell.requiresInternetLabel.isHidden = false
         
          return cell;
-    }
-    
-    func _wipeVideosFolder() {
-        
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let videosFolderURL = documentsUrl.appendingPathComponent("videos")
-        do {
-            let videosContents = try FileManager.default.contentsOfDirectory(at: videosFolderURL, includingPropertiesForKeys: nil)
-            for file in videosContents {
-                try FileManager.default.removeItem(atPath: file.path)
-            }
-        } catch {
-            print(error)
-        }
         
     }
     
-}
-
-extension UILabel {
-    func calculateMaxLines(actualWidth: CGFloat?) -> Int {
-        var width = frame.size.width
-        if let actualWidth = actualWidth {
-            width = actualWidth - 40  // Add padding here if needed
-        }
-        let maxSize = CGSize(width: width, height: CGFloat(Float.infinity))
-        let charSize = font.lineHeight
-        let text = (self.text ?? "") as NSString
-        let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font!], context: nil)
-        let linesRoundedUp = Int(ceil(textSize.height/charSize))
-        return linesRoundedUp
-    }
 }

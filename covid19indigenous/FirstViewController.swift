@@ -18,6 +18,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _wipeContentFolder()
+        
         doLayout()
         
         let notificationCenter = NotificationCenter.default
@@ -71,6 +73,22 @@ class FirstViewController: UIViewController {
                 iPadVerticalContainer.isHidden = true
                 iPadHoritzontalContainer.isHidden = false
             }
+        }
+        
+    }
+    
+    func _wipeContentFolder() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let videosFolderURL = documentsUrl.appendingPathComponent("content")
+        do {
+            let videosContents = try FileManager.default.contentsOfDirectory(at: videosFolderURL, includingPropertiesForKeys: nil)
+            for file in videosContents {
+                try FileManager.default.removeItem(atPath: file.path)
+            }
+            print("Emptied content folder")
+        } catch {
+            print(error)
         }
         
     }

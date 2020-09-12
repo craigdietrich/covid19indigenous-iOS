@@ -12,9 +12,7 @@
 		4632CE92250C3399005CFE95 /* hand-wave-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE91250C3399005CFE95 /* hand-wave-icon.png */; };
 		4632CE94250C368F005CFE95 /* thought-bubble-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE93250C368F005CFE95 /* thought-bubble-icon.png */; };
 		4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4667BD632501723500B711EC /* videoDefaultThumb.png */; };
-		46AAEFF4250C63D00065275B /* StoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAEFF2250C63D00065275B /* StoriesCollectionViewCell.swift */; };
-		46AAEFF5250C63D00065275B /* StoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AAEFF3250C63D00065275B /* StoriesCollectionViewCell.xib */; };
-		46AAEFF7250C66D00065275B /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 46AAEFF6250C66D00065275B /* stories.json */; };
+		46AAEFF9250D82DB0065275B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAEFF8250D82DA0065275B /* Extensions.swift */; };
 		46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D6559F24F8A95500ED419E /* AppDelegate.swift */; };
 		46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A124F8A95500ED419E /* SceneDelegate.swift */; };
 		46D655A424F8A95500ED419E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A324F8A95500ED419E /* FirstViewController.swift */; };
@@ -42,9 +40,7 @@
 		4632CE91250C3399005CFE95 /* hand-wave-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hand-wave-icon.png"; sourceTree = "<group>"; };
 		4632CE93250C368F005CFE95 /* thought-bubble-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thought-bubble-icon.png"; sourceTree = "<group>"; };
 		4667BD632501723500B711EC /* videoDefaultThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoDefaultThumb.png; sourceTree = "<group>"; };
-		46AAEFF2250C63D00065275B /* StoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesCollectionViewCell.swift; sourceTree = "<group>"; };
-		46AAEFF3250C63D00065275B /* StoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesCollectionViewCell.xib; sourceTree = "<group>"; };
-		46AAEFF6250C66D00065275B /* stories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stories.json; sourceTree = "<group>"; };
+		46AAEFF8250D82DA0065275B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		46D6559C24F8A95500ED419E /* covid19indig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D6559F24F8A95500ED419E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46D655A124F8A95500ED419E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +104,6 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
-				46AAEFF6250C66D00065275B /* stories.json */,
 				4632CE88250C1470005CFE95 /* about.html */,
 				4667BD632501723500B711EC /* videoDefaultThumb.png */,
 				46D655C524FDC15600ED419E /* Cells */,
@@ -124,6 +119,7 @@
 				46D655AF24F8A96400ED419E /* Info.plist */,
 				46D655CC24FDC57700ED419E /* Constants.swift */,
 				46D655D024FEEF1D00ED419E /* Reachability.swift */,
+				46AAEFF8250D82DA0065275B /* Extensions.swift */,
 			);
 			path = covid19indigenous;
 			sourceTree = "<group>";
@@ -157,8 +153,6 @@
 			children = (
 				46D655C824FDC1B700ED419E /* ConversationsCollectionViewCell.swift */,
 				46D655C924FDC1B700ED419E /* ConversationsCollectionViewCell.xib */,
-				46AAEFF2250C63D00065275B /* StoriesCollectionViewCell.swift */,
-				46AAEFF3250C63D00065275B /* StoriesCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -229,8 +223,6 @@
 				46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */,
 				4632CE94250C368F005CFE95 /* thought-bubble-icon.png in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
-				46AAEFF5250C63D00065275B /* StoriesCollectionViewCell.xib in Resources */,
-				46AAEFF7250C66D00065275B /* stories.json in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
 			);
@@ -253,7 +245,7 @@
 				46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */,
 				46D655CF24FEC4CE00ED419E /* ConvoDownloadViewController.swift in Sources */,
 				46D655C424FDBEAE00ED419E /* ConversationsViewController.swift in Sources */,
-				46AAEFF4250C63D00065275B /* StoriesCollectionViewCell.swift in Sources */,
+				46AAEFF9250D82DB0065275B /* Extensions.swift in Sources */,
 				46D655C224FD76FD00ED419E /* BeginIPadHorizontalViewController.swift in Sources */,
 				46D655BE24FAF51E00ED419E /* BeginIPhoneHoriztonalViewController.swift in Sources */,
 				46D655D124FEEF1D00ED419E /* Reachability.swift in Sources */,

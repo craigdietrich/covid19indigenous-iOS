@@ -15,6 +15,7 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var allArticles: Array<Dictionary<String,String>> = [];
     var articles: Array<Dictionary<String,String>> = [];
     
     override func viewDidLoad() {
@@ -22,7 +23,7 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "StoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "storiesCell")
+        collectionView.register(UINib(nibName: "ConversationsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "conversationsCell")
         
         collectionView.isHidden = true
         
@@ -34,23 +35,51 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         
     }
     
+    private func callMeFromPresentedVC() {
+        
+        loadData()
+        
+    }
+    
     func loadData() {
         
-        if let path = Bundle.main.path(forResource: "stories", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? Array<Dictionary<String,String>> {
-                    DispatchQueue.main.async {
-                        self.articles = jsonResult
-                        self.collectionView.reloadData()
-                    }
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let videosFolderURL = documentsUrl.appendingPathComponent("content")
+        let manifestURL = videosFolderURL.appendingPathComponent("manifest.json")
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: manifestURL.path), options: .mappedIfSafe)
+            let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+            if let jsonResult = jsonResult as? Array<Dictionary<String,String>> {
+                DispatchQueue.main.async {
+                    self.allArticles = jsonResult
+                    self.propagateArticles()
                 }
-            } catch {
-                // No error
             }
+        } catch {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConvoDownloadVC") as! ConvoDownloadViewController
+            vc.callbackClosure = { [weak self] in
+                self?.callMeFromPresentedVC()
+            }
+            self.present(vc, animated: true, completion: nil)
         }
 
+    }
+    
+    func propagateArticles() {
+        
+        articles = []
+        collectionView.reloadData()
+        let category: String = returnCategoryFromSegmentedControl()
+        
+        for article in allArticles {
+            if (article["category"] != category) {
+                continue
+            }
+            articles.append(article)
+        }
+        
+        collectionView.reloadData()
+        
     }
     
     func returnCategoryFromSegmentedControl() -> String {
@@ -60,7 +89,7 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
           case 0:
               str = "about"
           case 1:
-              str = "stories"
+              str = "covid"
           default:
               break
         }
@@ -124,7 +153,7 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         }
         
         let row = articles[indexPath.row];
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "storiesCell", for: indexPath) as! StoriesCollectionViewCell;
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conversationsCell", for: indexPath) as! ConversationsCollectionViewCell;
         var totalHeight:CGFloat = 0.0;
         
         if let title = row["title"] {
@@ -135,8 +164,34 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
             titleAttrString.addAttribute(.paragraphStyle, value:titleStyle, range:NSMakeRange(0, titleAttrString.length))
             cell.titleLabel.attributedText = titleAttrString;
             let titleNumLines = cell.titleLabel.calculateMaxLines(actualWidth: cellWidth)
-            totalHeight = totalHeight + (CGFloat(titleNumLines) * 33.0)
+            totalHeight = totalHeight + (CGFloat(titleNumLines) * 32.0)
         }
+        
+        if let description = row["description"] {
+            let descStyle = NSMutableParagraphStyle()
+            descStyle.lineSpacing = 2
+            descStyle.alignment = .left
+            let descAttrString = NSMutableAttributedString(string: description)
+            descAttrString.addAttribute(.paragraphStyle, value:descStyle, range:NSMakeRange(0, descAttrString.length))
+            cell.descriptionLabel.attributedText = descAttrString;
+            let descNumLines = cell.descriptionLabel.calculateMaxLines(actualWidth: cellWidth)
+            totalHeight = totalHeight + (CGFloat(descNumLines) * 25.0) + 10
+        }
+        
+        if let publishedDate = row["date"] {
+             let dbDateFormatter = DateFormatter()
+             dbDateFormatter.dateFormat = "yyyy-MM-dd"
+             if let date = dbDateFormatter.date(from: publishedDate){
+                 let dateFormatter = DateFormatter()
+                 dateFormatter.dateFormat = "MMM dd, yyyy"
+                 let todaysDate = dateFormatter.string(from: date)
+                 cell.publishedLabel.text = "Published: " + todaysDate
+                 let dateNumLines = cell.publishedLabel.calculateMaxLines(actualWidth: cellWidth)
+                 totalHeight = totalHeight + (CGFloat(dateNumLines) * 25.0) + 10
+             }
+         }
+        
+        totalHeight = totalHeight + 40.0  // Requires-internet label
         
         let imageHeight = (cellWidth * 9) / 16
         totalHeight = totalHeight + CGFloat(imageHeight)
@@ -177,7 +232,7 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         }
         
         let row = articles[indexPath.row];
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "storiesCell", for: indexPath) as! StoriesCollectionViewCell;
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conversationsCell", for: indexPath) as! ConversationsCollectionViewCell;
 
         if let title = row["title"] {
             let titleStyle = NSMutableParagraphStyle()
@@ -187,24 +242,51 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
             titleAttrString.addAttribute(.paragraphStyle, value:titleStyle, range:NSMakeRange(0, titleAttrString.length))
             cell.titleLabel.attributedText = titleAttrString;
         }
-                
-        if let imageStr = row["image"] {
-            let imageUrl = URL(string: imageStr)
-            let data = try? Data(contentsOf: imageUrl!)
-            if let imageData = data {
-                let image = UIImage(data: imageData)
-                cell.imageView.image = image
-                for constraint in cell.imageView.constraints {
-                    guard constraint.firstAnchor == cell.imageView.heightAnchor else { continue }
-                    constraint.isActive = false
-                    break
-                }
-                let imageHeight = (cellWidth * 9) / 16
-                cell.imageView.heightAnchor.constraint(equalToConstant: CGFloat(imageHeight)).isActive = true
-            }
+        
+        if let description = row["description"] {
+            let descStyle = NSMutableParagraphStyle()
+            descStyle.lineSpacing = 2
+            descStyle.alignment = .left
+            let descAttrString = NSMutableAttributedString(string: description)
+            descAttrString.addAttribute(.paragraphStyle, value:descStyle, range:NSMakeRange(0, descAttrString.length))
+            cell.descriptionLabel.attributedText = descAttrString;
         }
         
-        return cell;
+        if let thumbnail = row["thumbnail_filename"] {
+            let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let videosUrl = URL(fileURLWithPath: documentPath + "/content")
+            let filePath = videosUrl.appendingPathComponent(thumbnail)
+            if FileManager.default.fileExists(atPath: filePath.path) {
+                do {
+                    let imageData = try Data(contentsOf: filePath)
+                    cell.imageView.image = UIImage(data: imageData)!
+                    for constraint in cell.imageView.constraints {
+                        guard constraint.firstAnchor == cell.imageView.heightAnchor else { continue }
+                        constraint.isActive = false
+                        break
+                    }
+                    let imageHeight = (cellWidth * 9) / 16
+                    cell.imageView.heightAnchor.constraint(equalToConstant: CGFloat(imageHeight)).isActive = true
+                } catch {
+                    print("Error loading image : \(error)")
+                }
+            }
+        }
+         
+        if let publishedDate = row["date"] {
+             let dbDateFormatter = DateFormatter()
+             dbDateFormatter.dateFormat = "yyyy-MM-dd"
+             if let date = dbDateFormatter.date(from: publishedDate){
+                 let dateFormatter = DateFormatter()
+                 dateFormatter.dateFormat = "MMM dd, yyyy"
+                 let todaysDate = dateFormatter.string(from: date)
+                 cell.publishedLabel.text = "Published: " + todaysDate
+             }
+         }
+        
+         cell.requiresInternetLabel.isHidden = false
+        
+         return cell;
         
     }
     

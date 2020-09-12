@@ -11,12 +11,13 @@ import UIKit
 class ConvoDownloadViewController: UIViewController {
 
     @IBOutlet weak var contentFromServerLabel: UILabel!
-    @IBOutlet weak var downloadVideosButton: UIButton!
+    @IBOutlet weak var downloadVideoButton: UIButton!
     @IBOutlet weak var downloadProgressLabel: UILabel!
     @IBOutlet weak var downloadProgressView: UIProgressView!
     @IBOutlet weak var pauseDownloadButton: UIButton!
     
     var canContinue: Bool = true
+    var callbackClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,31 +29,29 @@ class ConvoDownloadViewController: UIViewController {
         
         if (_isIPhone) {
             contentFromServerLabel.font = .systemFont(ofSize: 24)
-            downloadVideosButton.titleLabel?.font = .systemFont(ofSize: 17)
-            downloadVideosButton.layer.cornerRadius = 5;
-            downloadVideosButton.layer.masksToBounds = true;
+            downloadVideoButton.titleLabel?.font = .systemFont(ofSize: 17)
+            downloadVideoButton.layer.cornerRadius = 5;
+            downloadVideoButton.layer.masksToBounds = true;
         } else {
             contentFromServerLabel.font = .systemFont(ofSize: 36)
-            downloadVideosButton.titleLabel?.font = .systemFont(ofSize: 27)
-            downloadVideosButton.layer.cornerRadius = 15;
-            downloadVideosButton.layer.masksToBounds = true;
+            downloadVideoButton.titleLabel?.font = .systemFont(ofSize: 27)
+            downloadVideoButton.layer.cornerRadius = 15;
+            downloadVideoButton.layer.masksToBounds = true;
         }
         
     }
     
-    @IBAction func pauseDownloadButtonAction(_ sender: Any) {
+    @IBAction func cancelButtonTouchDown(_ sender: Any) {
         
         canContinue = false
-        if let parent = self.parent as? ConversationsViewController {
-            parent.closeDownloadScreen()
-        }
+        _finishDownloadContent()
         
     }
     
-    @IBAction func downloadVideosButtonTouchDown(_ sender: Any) {
+    @IBAction func downloadButtonTouchDown(_ sender: Any) {
         
         canContinue = true
-        if Reachability.isConnectedToNetwork() { 
+        if Reachability.isConnectedToNetwork() {
             _downloadManifest()
         } else {
             let alertController = UIAlertController(title: "No Connection", message: "Your device does not appear to have an Internet connection. Please establish a connection and try again.", preferredStyle: .alert)
@@ -64,16 +63,16 @@ class ConvoDownloadViewController: UIViewController {
         }
         
     }
-    
+
     func _downloadManifest() {
         
         downloadProgressLabel.text = "Downloading manifest"
         downloadProgressView.setProgress(0.0, animated: false)
-        downloadVideosButton.isEnabled = false
-        _cleanupVideosFolder()
+        downloadVideoButton.isEnabled = false
+        _deleteManifest()
         
         print("Downloading manifest...")
-        let url = URL(string: "https://craigdietrich.com/tmp/feeds/videos/manifest.json")!
+        let url = URL(string: "https://craigdietrich.com/tmp/feeds/content/manifest.json")!
         let downloadTask = URLSession.shared.downloadTask(with: url) {
             urlOrNil, responseOrNil, errorOrNil in
             guard let fileURL = urlOrNil else { return }
@@ -82,11 +81,11 @@ class ConvoDownloadViewController: UIViewController {
                                             in: .userDomainMask,
                                             appropriateFor: nil,
                                             create: false)
-                let videosFolderURL = documentsURL.appendingPathComponent("videos")
-                if !FileManager.default.fileExists(atPath: videosFolderURL.path) {
-                    try FileManager.default.createDirectory(at: videosFolderURL, withIntermediateDirectories: true, attributes: nil)
+                let contentFolderUrl = documentsURL.appendingPathComponent("content")
+                if !FileManager.default.fileExists(atPath: contentFolderUrl.path) {
+                    try FileManager.default.createDirectory(at: contentFolderUrl, withIntermediateDirectories: true, attributes: nil)
                 }
-                let manifestURL = videosFolderURL.appendingPathComponent("manifest.json")
+                let manifestURL = contentFolderUrl.appendingPathComponent("manifest.json")
                 try FileManager.default.moveItem(at: fileURL, to: manifestURL)
                 DispatchQueue.main.async {
                     do {
@@ -94,16 +93,21 @@ class ConvoDownloadViewController: UIViewController {
                         let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                         if let jsonResult = jsonResult as? Array<Dictionary<String,String>> {
                             DispatchQueue.main.async {
-                                print("Downloaded manifest.")
+                                print("Manifest downloaded")
                                 self._downloadThumbnail(articles: jsonResult, row: 0)
                             }
                         }
                     } catch {
-                        print(error)
+                        DispatchQueue.main.async {
+                            self._downloadManifest()
+                        }
                     }
                 }
             } catch {
                 print ("file error: \(error)")
+                DispatchQueue.main.async {
+                    self._downloadManifest()
+                }
             }
         }
         downloadTask.resume()
@@ -113,24 +117,24 @@ class ConvoDownloadViewController: UIViewController {
     func _downloadThumbnail(articles:Array<Dictionary<String,String>>, row:Int) {
         
         if (row >= articles.count) {
-            _finishDownloadVideos()
+            _finishDownloadContent()
             return
         }
         if (!canContinue) {
             return
         }
-        downloadProgressLabel.text = "Downloading image " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressLabel.text = "Downloading thumb " + String(row + 1) + "/" + String(articles.count)
         downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
         
         // Get filename from JSON
         let article = articles[row]
         let thumbnailFilename: String = article["thumbnail_filename"]!
-        let urlString:String = "https://craigdietrich.com/tmp/feeds/videos/" + thumbnailFilename
-        print("Attempting to download: " + urlString)
+        let urlString:String = "https://craigdietrich.com/tmp/feeds/content/" + thumbnailFilename
+        print("Attempting to download thumbnail: " + urlString)
         
         // Check to see if it esists in the filesystem already
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
+        let videosUrl = URL(fileURLWithPath: documentPath + "/content")
         let filePath = videosUrl.appendingPathComponent(thumbnailFilename).path
         if FileManager.default.fileExists(atPath: filePath) {
             print("File already exists")
@@ -148,18 +152,18 @@ class ConvoDownloadViewController: UIViewController {
                                             in: .userDomainMask,
                                             appropriateFor: nil,
                                             create: false)
-                let videosFolderURL = documentsURL.appendingPathComponent("videos")
-                if !FileManager.default.fileExists(atPath: videosFolderURL.path) {
-                    try FileManager.default.createDirectory(at: videosFolderURL, withIntermediateDirectories: true, attributes: nil)
-                }
-                let destinationUrl = videosFolderURL.appendingPathComponent(thumbnailFilename)
+                let contentFolderUrl = documentsURL.appendingPathComponent("content")
+                let destinationUrl = contentFolderUrl.appendingPathComponent(thumbnailFilename)
                 try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
                 DispatchQueue.main.async {
+                    print("Thumbnail downloaded")
                     self._downloadVideo(articles: articles, row: row)
                 }
             } catch {
                 print ("file error: \(error)")
-                self._downloadVideo(articles: articles, row: row)
+                DispatchQueue.main.async {
+                    self._downloadVideo(articles: articles, row: row)
+                }
             }
         }
         downloadTask.resume()
@@ -169,7 +173,7 @@ class ConvoDownloadViewController: UIViewController {
     func _downloadVideo(articles:Array<Dictionary<String,String>>, row:Int) {
         
         if (row >= articles.count) {
-            _finishDownloadVideos()
+            _finishDownloadContent()
             return
         }
         if (!canContinue) {
@@ -181,13 +185,77 @@ class ConvoDownloadViewController: UIViewController {
         // Get filename from JSON
         let article = articles[row]
         let videoFilename: String = article["mp4_filename"]!
+        if (videoFilename.count == 0) {
+            _downloadImage(articles: articles, row: row)
+            return
+        }
         let urlString:String = "https://craigdietrich.com/tmp/feeds/videos/" + videoFilename
-        print("Attempting to download: " + urlString)
+        print("Attempting to download video: " + urlString)
         
         // Check to see if it esists in the filesystem already
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
         let filePath = videosUrl.appendingPathComponent(videoFilename).path
+        if FileManager.default.fileExists(atPath: filePath) {
+            print("File already exists")
+            _downloadImage(articles: articles, row: row)
+            return
+        }
+        
+        // Go out and get the file
+        let url = URL(string: urlString)!
+        let downloadTask = URLSession.shared.downloadTask(with: url) {
+            urlOrNil, responseOrNil, errorOrNil in
+            guard let fileURL = urlOrNil else { return }
+            do {
+                let documentsURL = try FileManager.default.url(for: .documentDirectory,
+                                            in: .userDomainMask,
+                                            appropriateFor: nil,
+                                            create: false)
+                let contentFolderUrl = documentsURL.appendingPathComponent("content")
+                let destinationUrl = contentFolderUrl.appendingPathComponent(videoFilename)
+                try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
+                DispatchQueue.main.async {
+                    print("Video downloaded")
+                    self._downloadImage(articles: articles, row: row)
+                }
+            } catch {
+                print ("file error: \(error)")
+                DispatchQueue.main.async {
+                    self._downloadImage(articles: articles, row: row)
+                }
+            }
+        }
+        downloadTask.resume()
+        
+    }
+    
+    func _downloadImage(articles:Array<Dictionary<String,String>>, row:Int) {
+        
+        if (row >= articles.count) {
+            _finishDownloadContent()
+            return
+        }
+        if (!canContinue) {
+            return
+        }
+        downloadProgressLabel.text = "Downloading image " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
+        
+        // Get filename from JSON
+        let article = articles[row]
+        let imageFilename: String = article["image_filename"]!
+        if (imageFilename.count == 0) {
+            _downloadThumbnail(articles: articles, row: row + 1)
+            return
+        }
+        let urlString:String = "https://craigdietrich.com/tmp/feeds/videos/" + imageFilename
+        print("Attempting to download image: " + urlString)
+        
+        // Check to see if it esists in the filesystem already
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
+        let filePath = videosUrl.appendingPathComponent(imageFilename).path
         if FileManager.default.fileExists(atPath: filePath) {
             print("File already exists")
             _downloadThumbnail(articles: articles, row: row + 1)
@@ -204,60 +272,62 @@ class ConvoDownloadViewController: UIViewController {
                                             in: .userDomainMask,
                                             appropriateFor: nil,
                                             create: false)
-                let videosFolderURL = documentsURL.appendingPathComponent("videos")
-                if !FileManager.default.fileExists(atPath: videosFolderURL.path) {
-                    try FileManager.default.createDirectory(at: videosFolderURL, withIntermediateDirectories: true, attributes: nil)
-                }
-                let destinationUrl = videosFolderURL.appendingPathComponent(videoFilename)
+                let contentFolderUrl = documentsURL.appendingPathComponent("content")
+                let destinationUrl = contentFolderUrl.appendingPathComponent(imageFilename)
                 try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
                 DispatchQueue.main.async {
+                    print("Image downloaded")
                     self._downloadThumbnail(articles: articles, row: row + 1)
                 }
             } catch {
                 print ("file error: \(error)")
-                self._downloadThumbnail(articles: articles, row: row + 1)
+                DispatchQueue.main.async {
+                    self._downloadThumbnail(articles: articles, row: row + 1)
+                }
             }
         }
         downloadTask.resume()
         
     }
     
-    func _finishDownloadVideos() {
+    func _finishDownloadContent() {
         
         downloadProgressLabel.text = ""
         downloadProgressView.setProgress(0.0, animated: false)
-        _printVideosDirectory()
-        downloadVideosButton.isEnabled = true
-        if let parent = self.parent as? ConversationsViewController {
-            parent.closeDownloadScreenAndReloadData()
-        }
+        _printContentDirectory()
+        downloadVideoButton.isEnabled = true
+        
+        callbackClosure?()
+ 
+        dismiss(animated: true, completion: nil)
         
     }
     
-    func _cleanupVideosFolder() {
+    func _deleteManifest() {
         
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let videosFolderURL = documentsUrl.appendingPathComponent("videos")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("content")
         do {
-            let videosContents = try FileManager.default.contentsOfDirectory(at: videosFolderURL, includingPropertiesForKeys: nil)
-            let jsonFiles = videosContents.filter{ $0.pathExtension == "json" }
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            let jsonFiles = contents.filter{ $0.pathExtension == "json" }
             for file in jsonFiles {
                 try FileManager.default.removeItem(atPath: file.path)
             }
+            print("Removed existing manifest file")
         } catch {
             print(error)
         }
         
     }
     
-    func _printVideosDirectory() {
+    func _printContentDirectory() {
         
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let videosFolderURL = documentsUrl.appendingPathComponent("videos")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("content")
         do {
             print("All files in videosFolderURL:")
-            let videosContents = try FileManager.default.contentsOfDirectory(at: videosFolderURL, includingPropertiesForKeys: nil)
-            print(videosContents)
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            print(contents)
         } catch {
             print(error)
         }
