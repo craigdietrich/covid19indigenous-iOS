@@ -134,8 +134,8 @@ class ConvoDownloadViewController: UIViewController {
         
         // Check to see if it esists in the filesystem already
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let videosUrl = URL(fileURLWithPath: documentPath + "/content")
-        let filePath = videosUrl.appendingPathComponent(thumbnailFilename).path
+        let contentUrl = URL(fileURLWithPath: documentPath + "/content")
+        let filePath = contentUrl.appendingPathComponent(thumbnailFilename).path
         if FileManager.default.fileExists(atPath: filePath) {
             print("File already exists")
             _downloadVideo(articles: articles, row: row)
@@ -189,13 +189,13 @@ class ConvoDownloadViewController: UIViewController {
             _downloadImage(articles: articles, row: row)
             return
         }
-        let urlString:String = "https://craigdietrich.com/tmp/feeds/videos/" + videoFilename
+        let urlString:String = "https://craigdietrich.com/tmp/feeds/content/" + videoFilename
         print("Attempting to download video: " + urlString)
         
         // Check to see if it esists in the filesystem already
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
-        let filePath = videosUrl.appendingPathComponent(videoFilename).path
+        let contentUrl = URL(fileURLWithPath: documentPath + "/content")
+        let filePath = contentUrl.appendingPathComponent(videoFilename).path
         if FileManager.default.fileExists(atPath: filePath) {
             print("File already exists")
             _downloadImage(articles: articles, row: row)
@@ -204,6 +204,7 @@ class ConvoDownloadViewController: UIViewController {
         
         // Go out and get the file
         let url = URL(string: urlString)!
+        print(urlString)
         let downloadTask = URLSession.shared.downloadTask(with: url) {
             urlOrNil, responseOrNil, errorOrNil in
             guard let fileURL = urlOrNil else { return }
@@ -249,13 +250,13 @@ class ConvoDownloadViewController: UIViewController {
             _downloadThumbnail(articles: articles, row: row + 1)
             return
         }
-        let urlString:String = "https://craigdietrich.com/tmp/feeds/videos/" + imageFilename
+        let urlString:String = "https://craigdietrich.com/tmp/feeds/content/" + imageFilename
         print("Attempting to download image: " + urlString)
         
         // Check to see if it esists in the filesystem already
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let videosUrl = URL(fileURLWithPath: documentPath + "/videos")
-        let filePath = videosUrl.appendingPathComponent(imageFilename).path
+        let contentUrl = URL(fileURLWithPath: documentPath + "/content")
+        let filePath = contentUrl.appendingPathComponent(imageFilename).path
         if FileManager.default.fileExists(atPath: filePath) {
             print("File already exists")
             _downloadThumbnail(articles: articles, row: row + 1)
@@ -325,7 +326,7 @@ class ConvoDownloadViewController: UIViewController {
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let contentFolderUrl = documentsUrl.appendingPathComponent("content")
         do {
-            print("All files in videosFolderURL:")
+            print("All files in content folder      :")
             let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
             print(contents)
         } catch {

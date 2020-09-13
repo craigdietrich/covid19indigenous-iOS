@@ -16,6 +16,9 @@ class ConversationsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var publishedLabel: UILabel!
     @IBOutlet weak var requiresInternetLabel: UILabel!
+    @IBOutlet weak var requiresInternetHeight: NSLayoutConstraint!
+    @IBOutlet weak var requiresInternetBufferLabel: UILabel!
+    @IBOutlet weak var requiresInternetBufferHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

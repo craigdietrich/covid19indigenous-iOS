@@ -80,10 +80,11 @@ class FirstViewController: UIViewController {
     func _wipeContentFolder() {
         
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let videosFolderURL = documentsUrl.appendingPathComponent("content")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("content")
         do {
-            let videosContents = try FileManager.default.contentsOfDirectory(at: videosFolderURL, includingPropertiesForKeys: nil)
-            for file in videosContents {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                print("Removing " + file.path)
                 try FileManager.default.removeItem(atPath: file.path)
             }
             print("Emptied content folder")

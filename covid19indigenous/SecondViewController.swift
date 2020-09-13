@@ -8,6 +8,8 @@
 
 import UIKit
 import WebKit
+import AVKit
+import SafariServices
 
 class SecondViewController: UIViewController, WKNavigationDelegate, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -200,6 +202,66 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         
     }
     
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let article = articles[indexPath.item]
+        let youtube = article["youtube_url"] ?? ""
+        let mp4 = article["mp4_filename"] ?? ""
+        let image = article["image_filename"] ?? ""
+        
+        if (youtube.count > 0) {
+            
+            if Reachability.isConnectedToNetwork() {
+                if let url = URL(string: youtube) {
+                    let config = SFSafariViewController.Configuration()
+                    config.entersReaderIfAvailable = true
+                    let vc = SFSafariViewController(url: url, configuration: config)
+                    present(vc, animated: true)
+                }
+            } else {
+                let alertController = UIAlertController(title: "No Connection", message: "Viewing this content requires an Internet connection. Please establish a connection and try again.", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                    print("Ok button tapped");
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
+            }
+            
+        } else if (mp4.count > 0) {
+            
+            let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let contentUrl = URL(fileURLWithPath: documentPath + "/content")
+            let filePath = contentUrl.appendingPathComponent(mp4)
+            if !FileManager.default.fileExists(atPath: filePath.path) {
+                let alertController = UIAlertController(title: "File not found", message: "This content has not been downloaded. Please refresh content and try again.", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                    print("Ok button tapped");
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
+            } else {
+                print(filePath)
+                let player = AVPlayer(url: filePath)
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                present(playerViewController, animated: true) {
+                  player.play()
+                }
+            }
+            
+        } else if (image.count > 0) {
+            
+            let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let contentUrl = URL(fileURLWithPath: documentPath + "/content")
+            let filePath = contentUrl.appendingPathComponent(image)
+            let theImage = UIImage(named: filePath.path)
+            let imageView = UIImageView(image: theImage!)
+            imageTapped(imageView: imageView)
+            
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
   
         var _isIPhone: Bool = true
@@ -233,7 +295,8 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         
         let row = articles[indexPath.row];
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conversationsCell", for: indexPath) as! ConversationsCollectionViewCell;
-
+        var requiresInternet: Bool = false
+        
         if let title = row["title"] {
             let titleStyle = NSMutableParagraphStyle()
             titleStyle.lineSpacing = 4
@@ -284,10 +347,46 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
              }
          }
         
-         cell.requiresInternetLabel.isHidden = false
+          if let youtube = row["youtube_url"] {
+             if (youtube.count > 0) {
+                 requiresInternet = true
+             }
+          }
+         
+          if (requiresInternet == true) {
+             cell.requiresInternetLabel.isHidden = false
+             cell.requiresInternetHeight.constant = 21
+             cell.requiresInternetBufferLabel.isHidden = false
+             cell.requiresInternetBufferHeight.constant = 12
+          } else {
+             cell.requiresInternetLabel.isHidden = true
+             cell.requiresInternetHeight.constant = 0
+             cell.requiresInternetBufferLabel.isHidden = true
+             cell.requiresInternetBufferHeight.constant = 0
+          }
         
          return cell;
         
+    }
+    
+    // https://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
+    func imageTapped(imageView: UIImageView) {
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
     }
     
 }

@@ -21,7 +21,6 @@
 		46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46D655AA24F8A96400ED419E /* Assets.xcassets */; };
 		46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D655AC24F8A96400ED419E /* LaunchScreen.storyboard */; };
 		46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */; };
-		46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */; };
 		46D655BC24FAD6A900ED419E /* BeginIPhoneVerticalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655BB24FAD6A900ED419E /* BeginIPhoneVerticalViewController.swift */; };
 		46D655BE24FAF51E00ED419E /* BeginIPhoneHoriztonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655BD24FAF51E00ED419E /* BeginIPhoneHoriztonalViewController.swift */; };
 		46D655C024FAF7B500ED419E /* BeginIPadVerticalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655BF24FAF7B500ED419E /* BeginIPadVerticalViewController.swift */; };
@@ -51,7 +50,6 @@
 		46D655AD24F8A96400ED419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46D655AF24F8A96400ED419E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kitatipithitamak Logo Image w1000.png"; sourceTree = "<group>"; };
-		46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kitatipithitamak Logo w1000.png"; sourceTree = "<group>"; };
 		46D655BB24FAD6A900ED419E /* BeginIPhoneVerticalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginIPhoneVerticalViewController.swift; sourceTree = "<group>"; };
 		46D655BD24FAF51E00ED419E /* BeginIPhoneHoriztonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginIPhoneHoriztonalViewController.swift; sourceTree = "<group>"; };
 		46D655BF24FAF7B500ED419E /* BeginIPadVerticalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginIPadVerticalViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			children = (
 				4632CE93250C368F005CFE95 /* thought-bubble-icon.png */,
 				4632CE91250C3399005CFE95 /* hand-wave-icon.png */,
-				46D655B824F9F5E900ED419E /* Kitatipithitamak Logo w1000.png */,
 				46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */,
 			);
 			path = Media;
@@ -220,7 +217,6 @@
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
 				4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */,
-				46D655B924F9F5E900ED419E /* Kitatipithitamak Logo w1000.png in Resources */,
 				4632CE94250C368F005CFE95 /* thought-bubble-icon.png in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
