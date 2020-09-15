@@ -143,6 +143,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEQ-jK-TRe">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                                 <state key="normal" title="Refresh content"/>
+                                                <connections>
+                                                    <action selector="refreshButtonAction:" destination="8rJ-Kc-sve" eventType="touchDown" id="NOL-fa-Ktz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

@@ -111,6 +111,16 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         
     }
     
+    @IBAction func refreshButtonAction(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConvoDownloadVC") as! ConvoDownloadViewController
+        vc.callbackClosure = { [weak self] in
+            self?.callMeFromPresentedVC()
+        }
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
@@ -254,9 +264,21 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
             let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
             let contentUrl = URL(fileURLWithPath: documentPath + "/content")
             let filePath = contentUrl.appendingPathComponent(image)
-            let theImage = UIImage(named: filePath.path)
-            let imageView = UIImageView(image: theImage!)
-            imageTapped(imageView: imageView)
+            if !FileManager.default.fileExists(atPath: filePath.path) {
+                let alertController = UIAlertController(title: "File not found", message: "This content has not been downloaded. Please refresh content and try again.", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                    print("Ok button tapped");
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
+            } else {
+                let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+                let contentUrl = URL(fileURLWithPath: documentPath + "/content")
+                let filePath = contentUrl.appendingPathComponent(image)
+                let theImage = UIImage(named: filePath.path)
+                let imageView = UIImageView(image: theImage!)
+                imageTapped(imageView: imageView)
+            }
             
         }
         
