@@ -345,18 +345,18 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
                 do {
                     let imageData = try Data(contentsOf: filePath)
                     cell.imageView.image = UIImage(data: imageData)!
-                    for constraint in cell.imageView.constraints {
-                        guard constraint.firstAnchor == cell.imageView.heightAnchor else { continue }
-                        constraint.isActive = false
-                        break
-                    }
-                    let imageHeight = (cellWidth * 9) / 16
-                    cell.imageView.heightAnchor.constraint(equalToConstant: CGFloat(imageHeight)).isActive = true
                 } catch {
                     print("Error loading image : \(error)")
                 }
             }
         }
+        for constraint in cell.imageView.constraints {
+            guard constraint.firstAnchor == cell.imageView.heightAnchor else { continue }
+            constraint.isActive = false
+            break
+        }
+        let imageHeight = (cellWidth * 9) / 16
+        cell.imageView.heightAnchor.constraint(equalToConstant: CGFloat(imageHeight)).isActive = true
          
         if let publishedDate = row["date"] {
              let dbDateFormatter = DateFormatter()
