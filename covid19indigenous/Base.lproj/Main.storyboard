@@ -303,15 +303,34 @@
         <!--Survey-->
         <scene sceneID="Qce-RZ-0MT">
             <objects>
-                <viewController id="qSG-3S-T2a" sceneMemberID="viewController">
+                <viewController id="qSG-3S-T2a" customClass="SurveyViewController" customModule="covid19indig" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSh-rA-PIt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6K-gT-Uv1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="K6K-gT-Uv1" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="51C-jk-eDm"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="K6K-gT-Uv1" secondAttribute="trailing" id="6Nj-86-bK2"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="bottom" secondItem="K6K-gT-Uv1" secondAttribute="bottom" id="ezO-cs-3VC"/>
+                            <constraint firstItem="K6K-gT-Uv1" firstAttribute="top" secondItem="x19-4W-FXU" secondAttribute="top" id="goJ-dX-VWl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="x19-4W-FXU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Survey" image="hand.draw.fill" catalog="system" id="ufL-yQ-09Y"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="webView" destination="K6K-gT-Uv1" id="7Be-dS-6zo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTw-6v-BtW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

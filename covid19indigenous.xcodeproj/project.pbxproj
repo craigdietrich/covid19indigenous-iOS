@@ -13,6 +13,10 @@
 		4632CE94250C368F005CFE95 /* thought-bubble-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE93250C368F005CFE95 /* thought-bubble-icon.png */; };
 		4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4667BD632501723500B711EC /* videoDefaultThumb.png */; };
 		46AAEFF9250D82DB0065275B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAEFF8250D82DA0065275B /* Extensions.swift */; };
+		46AAEFFD25152AE90065275B /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAEFFC25152AE90065275B /* SurveyViewController.swift */; };
+		46AAF00125152D1B0065275B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 46AAEFFE25152D1A0065275B /* index.html */; };
+		46AAF00225152D1B0065275B /* completed.html in Resources */ = {isa = PBXBuildFile; fileRef = 46AAEFFF25152D1A0065275B /* completed.html */; };
+		46AAF00325152D1B0065275B /* common in Resources */ = {isa = PBXBuildFile; fileRef = 46AAF00025152D1B0065275B /* common */; };
 		46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D6559F24F8A95500ED419E /* AppDelegate.swift */; };
 		46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A124F8A95500ED419E /* SceneDelegate.swift */; };
 		46D655A424F8A95500ED419E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A324F8A95500ED419E /* FirstViewController.swift */; };
@@ -40,6 +44,10 @@
 		4632CE93250C368F005CFE95 /* thought-bubble-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thought-bubble-icon.png"; sourceTree = "<group>"; };
 		4667BD632501723500B711EC /* videoDefaultThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoDefaultThumb.png; sourceTree = "<group>"; };
 		46AAEFF8250D82DA0065275B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		46AAEFFC25152AE90065275B /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
+		46AAEFFE25152D1A0065275B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		46AAEFFF25152D1A0065275B /* completed.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = completed.html; sourceTree = "<group>"; };
+		46AAF00025152D1B0065275B /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		46D6559C24F8A95500ED419E /* covid19indig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D6559F24F8A95500ED419E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46D655A124F8A95500ED419E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +110,9 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				46AAF00025152D1B0065275B /* common */,
+				46AAEFFF25152D1A0065275B /* completed.html */,
+				46AAEFFE25152D1A0065275B /* index.html */,
 				4632CE88250C1470005CFE95 /* about.html */,
 				4667BD632501723500B711EC /* videoDefaultThumb.png */,
 				46D655C524FDC15600ED419E /* Cells */,
@@ -141,6 +152,7 @@
 				46D655C124FD76FD00ED419E /* BeginIPadHorizontalViewController.swift */,
 				46D655C324FDBEAE00ED419E /* ConversationsViewController.swift */,
 				46D655CE24FEC4CE00ED419E /* ConvoDownloadViewController.swift */,
+				46AAEFFC25152AE90065275B /* SurveyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -217,7 +229,10 @@
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
 				4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */,
+				46AAF00125152D1B0065275B /* index.html in Resources */,
 				4632CE94250C368F005CFE95 /* thought-bubble-icon.png in Resources */,
+				46AAF00325152D1B0065275B /* common in Resources */,
+				46AAF00225152D1B0065275B /* completed.html in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
@@ -235,6 +250,7 @@
 				46D655CD24FDC57700ED419E /* Constants.swift in Sources */,
 				46D655CA24FDC1B700ED419E /* ConversationsCollectionViewCell.swift in Sources */,
 				46D655C024FAF7B500ED419E /* BeginIPadVerticalViewController.swift in Sources */,
+				46AAEFFD25152AE90065275B /* SurveyViewController.swift in Sources */,
 				46D655BC24FAD6A900ED419E /* BeginIPhoneVerticalViewController.swift in Sources */,
 				46D655A424F8A95500ED419E /* FirstViewController.swift in Sources */,
 				46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */,
