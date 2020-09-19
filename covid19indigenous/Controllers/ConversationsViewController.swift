@@ -87,6 +87,8 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
             vc.callbackClosure = { [weak self] in
                 self?.callMeFromPresentedVC()
             }
+            self.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true, completion: nil)
         }
 
@@ -130,6 +132,8 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         vc.callbackClosure = { [weak self] in
             self?.callMeFromPresentedVC()
         }
+        self.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
         
     }

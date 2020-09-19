@@ -62,6 +62,8 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
             vc.callbackClosure = { [weak self] in
                 self?.callMeFromPresentedVC()
             }
+            self.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true, completion: nil)
         }
 
@@ -117,6 +119,8 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         vc.callbackClosure = { [weak self] in
             self?.callMeFromPresentedVC()
         }
+        self.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
         
     }
