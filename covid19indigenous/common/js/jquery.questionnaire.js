@@ -1,6 +1,7 @@
 (function( $ ) {
 
 	var defaults = {
+        data: null,
 		dataSource: '',
 		id: 0,
 		key: null
@@ -20,28 +21,7 @@
 	    	var self = this;
 	    	var $this = $(this);
 	    	var opts = $.extend( {}, defaults, options );
-	
-	    	if (!opts.dataSource || !opts.dataSource.length) {
-	    		alert('dataSource is a required field');
-	    		return;
-	    	}
-	    	
-	    	$.ajax({
-	    	    url: opts.dataSource + opts.id,
-	    	    jsonp: "callback",
-	    	    dataType: "jsonp",
-	    	    data: {},
-	    	    success: function( response ) {
-	    	        handleData(response)
-	    	        if (callback) callback();
-	    	    },
-	    	    error: function( error ) {
-	    	    	alert('There was a problem trying to get the dataSource');
-	    	    	console.log(error);
-	    	    	if (callback) callback();
-	    	    }
-	    	});
-	    	
+                
 	    	var handleData = function(response) {
 	    		
 	    		// First node is info about the Questionnaire
@@ -74,6 +54,35 @@
 	    		});
 		    	
 	    	};
+                                             
+            if (opts.dataSource && opts.dataSource.length) {
+            
+                $.ajax({
+                    url: opts.dataSource + opts.id,
+                    jsonp: "callback",
+                    dataType: "jsonp",
+                    data: {},
+                    success: function( response ) {
+                        handleData(response)
+                        if (callback) callback();
+                    },
+                    error: function( error ) {
+                        alert('There was a problem trying to get the dataSource');
+                        console.log(error);
+                        if (callback) callback();
+                    }
+                });
+            
+            } else if (opts.data && opts.data.length) {
+                
+                handleData(opts.data);
+                
+            } else {
+                
+                alert('Missing data or dataSource');
+                return;
+                
+            }
 	    	
     	});	
 	    	

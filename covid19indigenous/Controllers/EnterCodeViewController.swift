@@ -53,7 +53,7 @@ class EnterCodeViewController: UIViewController {
         codeSubmitButton.isEnabled = false
         
         URLCache.shared.removeAllCachedResponses()
-        let api = "https://craigdietrich.com/tmp/test.json?code=" + code
+        let api = "https://covid19indigenous.ca/dashboard/pages/app?key=" + code
         if let url = URL(string: api) {
            let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else {
@@ -117,9 +117,12 @@ class EnterCodeViewController: UIViewController {
             }
             _deleteQuestionnaires()
             try json.write(to: filePath, atomically: true, encoding: .utf8)
+            //let contents = try String(contentsOfFile: filePath.path)
+            //print(contents)
         } catch {
             print(error.localizedDescription)
         }
+        
         _printQuestionnaireDirectory()
         
         finishParseJson()
@@ -149,7 +152,7 @@ class EnterCodeViewController: UIViewController {
     
     func doShowExpressedError(error: String) {
         
-        let alertController = UIAlertController(title: "Error", message: "There was a problem attemting to send the code to the server: " + error, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: error + ". Please try again.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
             print("Ok button tapped");
         }

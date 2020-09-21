@@ -87,6 +87,8 @@ aside .title small {font-size:1.5rem; color:#555555;}
 #finishModal .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
 #saveForLaterModal .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
 #questionnairesModal tr td {cursor:pointer;}
+#welcome_baseline .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
+#welcome_interval .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
 
 /* login modal */
 

@@ -557,6 +557,9 @@
                                                         <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="aboutTouchDown:" destination="0DJ-hh-q1E" eventType="touchDown" id="V5A-Sg-lip"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxT-pb-x4x">
                                                         <rect key="frame" x="336.5" y="0.0" width="37.5" height="54.5"/>
@@ -591,6 +594,9 @@
                                                         <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="takeSurveyTouchDown:" destination="0DJ-hh-q1E" eventType="touchDown" id="nbE-Pz-9Js"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBH-z2-vBW">
                                                         <rect key="frame" x="336.5" y="0.0" width="37.5" height="55"/>
@@ -625,6 +631,9 @@
                                                         <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="conversationsTouchDown:" destination="0DJ-hh-q1E" eventType="touchDown" id="xuQ-Ct-bMF"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd5-6F-tDU">
                                                         <rect key="frame" x="336.5" y="0.0" width="37.5" height="55"/>
@@ -784,6 +793,9 @@
                                                                         <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="aboutTouchDown:" destination="gyL-Yx-5uy" eventType="touchDown" id="H3b-nm-CNh"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Oe-NP-v53">
                                                                         <rect key="frame" x="150.5" y="0.0" width="16.5" height="109"/>
@@ -818,6 +830,9 @@
                                                                         <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="takeSurveyTouchDown:" destination="gyL-Yx-5uy" eventType="touchDown" id="pfo-Cl-RJG"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZc-ny-yaw">
                                                                         <rect key="frame" x="150.5" y="0.0" width="16.5" height="109.5"/>
@@ -852,6 +867,9 @@
                                                                         <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="conversationsTouchDown:" destination="gyL-Yx-5uy" eventType="touchDown" id="8bv-gj-Beg"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuU-rj-M4J">
                                                                         <rect key="frame" x="150.5" y="0.0" width="16.5" height="109"/>
@@ -1006,6 +1024,9 @@
                                                                         <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="aboutTouchDown:" destination="C9e-yf-YJa" eventType="touchDown" id="IzI-HN-14d"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-kg-LP3">
                                                                         <rect key="frame" x="223.5" y="0.0" width="24.5" height="58"/>
@@ -1041,6 +1062,9 @@
                                                                         <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="takeSurveyTouchDown:" destination="C9e-yf-YJa" eventType="touchDown" id="Zqd-Zy-IR0"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba0-64-3Qh">
                                                                         <rect key="frame" x="223.5" y="0.0" width="24.5" height="58"/>
@@ -1076,6 +1100,9 @@
                                                                         <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="conversationsTouchDown:" destination="C9e-yf-YJa" eventType="touchDown" id="au8-xX-ndF"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-3Y-c2a">
                                                                         <rect key="frame" x="223.5" y="0.0" width="24.5" height="57.5"/>
@@ -1272,6 +1299,9 @@
                                                                         <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="aboutTouchDown:" destination="VP8-tS-AdF" eventType="touchDown" id="hI6-Jh-XT2"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -1291,6 +1321,9 @@
                                                                         <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="takeSurveyTouchDown:" destination="VP8-tS-AdF" eventType="touchDown" id="BjH-7s-nxS"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -1310,6 +1343,9 @@
                                                                         <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="conversationsTouchDown:" destination="VP8-tS-AdF" eventType="touchDown" id="hFh-6o-feE"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>

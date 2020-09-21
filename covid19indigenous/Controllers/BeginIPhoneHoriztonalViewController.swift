@@ -26,15 +26,25 @@ class BeginIPhoneHoriztonalViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func aboutTouchDown(_ sender: Any) {
+        
+        let parentVC = self.parent as! FirstViewController
+        parentVC.switchTabBar(to: 1)
+        
     }
-    */
-
+    
+    @IBAction func takeSurveyTouchDown(_ sender: Any) {
+        
+        let parentVC = self.parent as! FirstViewController
+        parentVC.switchTabBar(to: 2)
+        
+    }
+    
+    @IBAction func conversationsTouchDown(_ sender: Any) {
+        
+        let parentVC = self.parent as! FirstViewController
+        parentVC.switchTabBar(to: 3)
+        
+    }
+    
 }

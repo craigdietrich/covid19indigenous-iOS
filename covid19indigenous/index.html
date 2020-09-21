@@ -44,14 +44,21 @@
 $(document).ready(function() {
 	$('article:first').empty().append('<div class="spinner-wrapper"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
 });
-function getJsonFromSystem(json) {
-    $('article:first').text(json);
+function getJsonFromSystem(jsonString) {
+    var json = JSON.parse(jsonString);
+    if (parseInt(json.has_taken_baseline)) {
+        var questionnaire = json.interval;
+        $('#welcome_baseline').modal();
+    } else {
+        var questionnaire = json.baseline;
+        $('#welcome_interval').modal();
+    }
+    showQuestionnaire(questionnaire, json.key);
 }
-function showQuestionnaire(dataSource, id, key) {
+function showQuestionnaire(data, key) {
 	var $wrapper = $('article:first');
 	$wrapper.questionnaire({
-		dataSource: dataSource,
-		id: id,
+		data: data,
 		key: key
 	}, function() {
 		var info = $wrapper.data('info');
@@ -74,15 +81,6 @@ function showQuestionnaire(dataSource, id, key) {
 			$wrapper.action('load_from_saved', {info:info, key:key});
 		});
 	});
-}
-function strToValues(str) {
-	var obj = {};
-	var arr = str.split('&');
-	for (var j = 0; j < arr.length; j++) {
-		var item = arr[j].split('=');
-		obj[item[0]] = item[1];
-	}
-	return obj;
 }
 </script>
 </head>
@@ -299,6 +297,66 @@ function strToValues(str) {
           	  <button type="button" class="btn btn-light">Cancel</button> &nbsp; 
           	  <button type="button" class="btn btn-primary float-right">Save for later</button>
           	</div>
+          </div>
+        </div>
+       </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="welcome_baseline" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="finishLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+       <form>
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center header-text">
+              <b>Ready to take the questionnaire!</b>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-12 text-center main-text">Because this is the first time you are taking the questionnaire, it will be longer and ask more in-depth questions. Later, when you take the questionnaire again, it will be shorter.</div>
+          </div>
+          <div class="row">
+              <div class="col-12 text-center main-text">We hope you'll come back and take the questionnaire every one to two weeks!</div>
+          </div>
+          <div class="row" id="finishModalSpinnerWrapper"></div>
+          <div class="row">
+              <div class="col-12" style="text-align:center;">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+              </div>
+          </div>
+        </div>
+       </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="welcome_interval" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="finishLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+       <form>
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center header-text">
+              <b>Ready to take the questionnaire!</b>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-12 text-center main-text">You have taken the questionnaire before, so it is shorter than the first time you took it.</div>
+          </div>
+          <div class="row">
+              <div class="col-12 text-center main-text">We hope you'll come back and take the questionnaire every one to two weeks!</div>
+          </div>
+          <div class="row" id="finishModalSpinnerWrapper"></div>
+          <div class="row">
+              <div class="col-12" style="text-align:center;">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+              </div>
           </div>
         </div>
        </form>

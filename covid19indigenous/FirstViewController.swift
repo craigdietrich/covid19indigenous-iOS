@@ -15,6 +15,8 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var iPadVerticalContainer: UIView!
     @IBOutlet weak var iPadHoritzontalContainer: UIView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,12 @@ class FirstViewController: UIViewController {
     @objc func rotated() {
         
         doLayout()
+        
+    }
+    
+    public func switchTabBar(to: Int) {
+        
+        self.tabBarController!.selectedIndex = to
         
     }
     

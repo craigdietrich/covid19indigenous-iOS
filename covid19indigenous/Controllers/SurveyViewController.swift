@@ -89,7 +89,8 @@ class SurveyViewController: UIViewController, WKNavigationDelegate {
         let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
         let filePath = contentUrl.appendingPathComponent("questionnaires.json")
         do {
-            let jsonString = try String(contentsOfFile: filePath.path)
+            var jsonString = try String(contentsOfFile: filePath.path)
+            jsonString = jsonString.replacingOccurrences(of: "'", with: "\\'")
             webView.evaluateJavaScript("getJsonFromSystem('\(jsonString)')", completionHandler: nil)
         } catch {
             print(error)
