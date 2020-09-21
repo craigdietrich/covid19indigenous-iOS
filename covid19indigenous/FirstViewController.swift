@@ -19,6 +19,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         
         _wipeContentFolder()
+        _wipeQuestionnaireFolder()
         
         doLayout()
         
@@ -88,6 +89,23 @@ class FirstViewController: UIViewController {
                 try FileManager.default.removeItem(atPath: file.path)
             }
             print("Emptied content folder")
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func _wipeQuestionnaireFolder() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                print("Removing " + file.path)
+                try FileManager.default.removeItem(atPath: file.path)
+            }
+            print("Emptied questionnaire folder")
         } catch {
             print(error)
         }

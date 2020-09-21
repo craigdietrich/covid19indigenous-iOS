@@ -42,27 +42,13 @@
 <script type="text/javascript" src="common/js/jquery.ranked-selector.js?v=17"></script>
 <script>
 $(document).ready(function() {
-	$(window).on('hashchange', function(e) {
-		validate();
-	});
-	validate();
+	$('article:first').empty().append('<div class="spinner-wrapper"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
 });
-function validate() {
-	//var baseUrl = document.location.href.substr(0, document.location.href.indexOf('questionnaire/'));
-    var baseUrl = 'https://covid19indigenous.ca/';
-	dataSource = baseUrl + 'dashboard/pages/feed/';
-	var urlSettings = strToValues(document.location.hash.substr(1));
-	$('#questionnairesModal').validate({
-		dataSource: dataSource,
-		id: urlSettings.id,
-		key: urlSettings.key
-	}, function() {
-		showQuestionnaire(dataSource, urlSettings.id, urlSettings.key);
-	});
+function getJsonFromSystem(json) {
+    $('article:first').text(json);
 }
 function showQuestionnaire(dataSource, id, key) {
 	var $wrapper = $('article:first');
-	$wrapper.empty().append('<div class="spinner-wrapper"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
 	$wrapper.questionnaire({
 		dataSource: dataSource,
 		id: id,

@@ -52,6 +52,7 @@ class EnterCodeViewController: UIViewController {
         
         codeSubmitButton.isEnabled = false
         
+        URLCache.shared.removeAllCachedResponses()
         let api = "https://craigdietrich.com/tmp/test.json?code=" + code
         if let url = URL(string: api) {
            let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -98,7 +99,38 @@ class EnterCodeViewController: UIViewController {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: [])
         let jsonString = String(data: jsonData!, encoding: .utf8)
-        print(jsonString)
+        saveJsonString(json: jsonString!)
+        
+    }
+    
+    func saveJsonString(json: String) {
+        
+        let jsonFilename = "questionnaires.json"
+        
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let filePath = contentUrl.appendingPathComponent(jsonFilename)
+        
+        do {
+            if !FileManager.default.fileExists(atPath: filePath.path) {
+                try FileManager.default.createDirectory(at: filePath, withIntermediateDirectories: true, attributes: nil)
+            }
+            _deleteQuestionnaires()
+            try json.write(to: filePath, atomically: true, encoding: .utf8)
+        } catch {
+            print(error.localizedDescription)
+        }
+        _printQuestionnaireDirectory()
+        
+        finishParseJson()
+        
+    }
+    
+    func finishParseJson() {
+        
+        dismiss(animated: true, completion: nil)
+        
+        callbackClosure?()
         
     }
     
@@ -125,6 +157,37 @@ class EnterCodeViewController: UIViewController {
         self.present(alertController, animated: true, completion:nil)
         
         codeSubmitButton.isEnabled = true
+        
+    }
+    
+    func _deleteQuestionnaires() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            let jsonFiles = contents.filter{ $0.pathExtension == "json" }
+            for file in jsonFiles {
+                try FileManager.default.removeItem(atPath: file.path)
+            }
+            print("Removed existing questionnaires file")
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func _printQuestionnaireDirectory() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            print("All files in questionnaire folder:")
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            print(contents)
+        } catch {
+            print(error)
+        }
         
     }
     
