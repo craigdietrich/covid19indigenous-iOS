@@ -16,6 +16,7 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var refreshContentButton: UIView!
     
     var allArticles: Array<Dictionary<String,String>> = [];
     var articles: Array<Dictionary<String,String>> = [];
@@ -28,9 +29,9 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         collectionView.register(UINib(nibName: "ConversationsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "conversationsCell")
         
         collectionView.isHidden = true
+        refreshContentButton.isHidden = true
         
         webView.isOpaque = false
-        webView.backgroundColor = UIColor.darkGray
         let htmlFile = Bundle.main.path(forResource: "about", ofType: "html")
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
         webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
@@ -106,8 +107,10 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         let category = returnCategoryFromSegmentedControl()
         if (category == "about") {
             collectionView.isHidden = true
+            refreshContentButton.isHidden = true
         } else {
             collectionView.isHidden = false
+            refreshContentButton.isHidden = false
             loadData()
         }
         

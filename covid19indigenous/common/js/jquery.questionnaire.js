@@ -76,6 +76,7 @@
             } else if (opts.data && opts.data.length) {
                 
                 handleData(opts.data);
+                if (callback) callback();
                 
             } else {
                 

@@ -14,6 +14,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var refreshView: UIView!
     
     var allArticles: Array<Dictionary<String,String>> = [];
     var articles: Array<Dictionary<String,String>> = [];
@@ -99,6 +100,14 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         articles = []
         collectionView.reloadData()
         let category: String = returnCategoryFromSegmentedControl()
+        
+        if (category == "justice") {
+            collectionView.backgroundColor = #colorLiteral(red: 0.3568627451, green: 0.1058823529, blue: 0.1058823529, alpha: 1)
+            refreshView.backgroundColor = #colorLiteral(red: 0.3568627451, green: 0.1058823529, blue: 0.1058823529, alpha: 1)
+        } else {
+            collectionView.backgroundColor = #colorLiteral(red: 0.4353501201, green: 0.2622799873, blue: 0.1394316256, alpha: 1)
+            refreshView.backgroundColor = #colorLiteral(red: 0.4353501201, green: 0.2622799873, blue: 0.1394316256, alpha: 1)
+        }
         
         for article in allArticles {
             if (article["category"] != category) {
