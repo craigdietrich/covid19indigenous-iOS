@@ -444,6 +444,7 @@ class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     
     // https://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
     func imageTapped(imageView: UIImageView) {
+        
         let newImageView = UIImageView(image: imageView.image)
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
@@ -454,6 +455,7 @@ class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         self.view.addSubview(newImageView)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
+        
     }
 
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {

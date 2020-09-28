@@ -76,6 +76,7 @@ class ConvoDownloadViewController: UIViewController {
         _deleteManifest()
         
         print("Downloading manifest...")
+        URLCache.shared.removeAllCachedResponses()
         let url = URL(string: "https://craigdietrich.com/tmp/feeds/content/manifest.json")!
         let downloadTask = URLSession.shared.downloadTask(with: url) {
             urlOrNil, responseOrNil, errorOrNil in
