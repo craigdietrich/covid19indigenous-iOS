@@ -11,10 +11,11 @@ import WebKit
 import AVKit
 import SafariServices
 
-class SecondViewController: UIViewController, WKNavigationDelegate, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet var webViewWrapper: UIView!
+    var webView: WKWebView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var refreshContentButton: UIView!
     
@@ -31,6 +32,19 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
         collectionView.isHidden = true
         refreshContentButton.isHidden = true
         
+        let contentController = WKUserContentController();
+        contentController.add(self, name: "buttonAction")
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        webView = WKWebView(frame: webViewWrapper.bounds, configuration: config)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webViewWrapper.addSubview(webView)
+         
+        webView.leadingAnchor.constraint(equalTo: webViewWrapper.leadingAnchor, constant: 0).isActive = true
+        webView.trailingAnchor.constraint(equalTo: webViewWrapper.trailingAnchor, constant: 0).isActive = true
+        webView.topAnchor.constraint(equalTo: webViewWrapper.topAnchor, constant: 0).isActive = true
+        webView.bottomAnchor.constraint(equalTo: webViewWrapper.bottomAnchor, constant: 0).isActive = true
+        
         webView.isOpaque = false
         let htmlFile = Bundle.main.path(forResource: "about", ofType: "html")
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
@@ -41,6 +55,34 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
     private func callMeFromPresentedVC() {
         
         loadData()
+        
+    }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
+        guard let response = message.body as? String else { return }
+        switch (response) {
+            case "takeSurvey":
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+                tabBarController?.selectedIndex = 2
+                break;
+            case "goToWebsite":
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+                if let url = URL(string: "http://covid19indigenous.ca") {
+                    let config = SFSafariViewController.Configuration()
+                    config.entersReaderIfAvailable = true
+                    let vc = SFSafariViewController(url: url, configuration: config)
+                    present(vc, animated: true)
+                }
+            case "conversations":
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+                tabBarController?.selectedIndex = 3
+            default:
+                print("No action")
+        }
         
     }
     
@@ -221,6 +263,8 @@ class SecondViewController: UIViewController, WKNavigationDelegate, UICollection
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let article = articles[indexPath.item]
         let youtube = article["youtube_url"] ?? ""
         let mp4 = article["mp4_filename"] ?? ""

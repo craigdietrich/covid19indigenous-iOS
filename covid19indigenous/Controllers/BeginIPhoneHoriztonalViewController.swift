@@ -28,6 +28,8 @@ class BeginIPhoneHoriztonalViewController: UIViewController {
     
     @IBAction func aboutTouchDown(_ sender: Any) {
         
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let parentVC = self.parent as! FirstViewController
         parentVC.switchTabBar(to: 1)
         
@@ -35,6 +37,8 @@ class BeginIPhoneHoriztonalViewController: UIViewController {
     
     @IBAction func takeSurveyTouchDown(_ sender: Any) {
         
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let parentVC = self.parent as! FirstViewController
         parentVC.switchTabBar(to: 2)
         
@@ -42,6 +46,8 @@ class BeginIPhoneHoriztonalViewController: UIViewController {
     
     @IBAction func conversationsTouchDown(_ sender: Any) {
         
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let parentVC = self.parent as! FirstViewController
         parentVC.switchTabBar(to: 3)
         

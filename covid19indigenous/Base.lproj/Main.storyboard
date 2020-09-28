@@ -96,14 +96,10 @@
                                     <action selector="segmentedControllerChanged:" destination="8rJ-Kc-sve" eventType="primaryActionTriggered" id="hUU-tL-L7f"/>
                                 </connections>
                             </segmentedControl>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4zv-1l-Ngi">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1e3-KB-m6V">
                                 <rect key="frame" x="0.0" y="74" width="414" height="739"/>
-                                <color key="backgroundColor" red="0.090196078431372548" green="0.29019607843137252" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.28235294119999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Bf-Ps-aNN">
                                 <rect key="frame" x="0.0" y="74" width="414" height="699"/>
                                 <color key="backgroundColor" red="0.25882352941176467" green="0.11764705882352941" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,17 +150,17 @@
                         <constraints>
                             <constraint firstItem="lZA-3e-Oge" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="1lo-aM-4j5"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="HPx-88-F7c" secondAttribute="bottom" id="3K9-nK-PFQ"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="4zv-1l-Ngi" secondAttribute="bottom" id="Dge-Qt-ifN"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="HPx-88-F7c" secondAttribute="trailing" id="Gvf-lA-Af1"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="1Bf-Ps-aNN" secondAttribute="trailing" id="Jhj-QZ-LXH"/>
                             <constraint firstItem="1Bf-Ps-aNN" firstAttribute="top" secondItem="lZA-3e-Oge" secondAttribute="bottom" id="M37-4b-dtK"/>
                             <constraint firstItem="HPx-88-F7c" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="Px6-hm-fhV"/>
+                            <constraint firstItem="1e3-KB-m6V" firstAttribute="top" secondItem="lZA-3e-Oge" secondAttribute="bottom" id="Ubn-8B-VBg"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="lZA-3e-Oge" secondAttribute="trailing" id="YmA-d8-IuJ"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="4zv-1l-Ngi" secondAttribute="trailing" id="e3f-hp-NSs"/>
-                            <constraint firstItem="4zv-1l-Ngi" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="eQC-eB-98I"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="1e3-KB-m6V" secondAttribute="trailing" id="bFI-BT-6pW"/>
                             <constraint firstItem="lZA-3e-Oge" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="fYz-jl-z9f"/>
-                            <constraint firstItem="4zv-1l-Ngi" firstAttribute="top" secondItem="lZA-3e-Oge" secondAttribute="bottom" id="ofA-Ng-H4j"/>
                             <constraint firstItem="1Bf-Ps-aNN" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="pa3-PZ-l3W"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="1e3-KB-m6V" secondAttribute="bottom" id="skO-gf-1Df"/>
+                            <constraint firstItem="1e3-KB-m6V" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="yVW-Ts-7HC"/>
                             <constraint firstItem="HPx-88-F7c" firstAttribute="top" secondItem="1Bf-Ps-aNN" secondAttribute="bottom" id="zGF-d5-tud"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
@@ -174,7 +170,7 @@
                         <outlet property="collectionView" destination="1Bf-Ps-aNN" id="7VX-TZ-1Qc"/>
                         <outlet property="refreshContentButton" destination="HPx-88-F7c" id="1PN-nN-qWn"/>
                         <outlet property="segmentedControl" destination="lZA-3e-Oge" id="Iit-xg-MFi"/>
-                        <outlet property="webView" destination="4zv-1l-Ngi" id="wSj-bc-4tv"/>
+                        <outlet property="webViewWrapper" destination="1e3-KB-m6V" id="Ybm-Xl-j1J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -205,7 +201,7 @@
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gNG-TI-NdW">
                                 <rect key="frame" x="0.0" y="74" width="414" height="699"/>
-                                <color key="backgroundColor" red="0.35686274509803922" green="0.20000000000000001" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.1176470588" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p8b-OY-rGZ">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -231,6 +227,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uas-Pj-tEo">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                                <color key="backgroundColor" red="0.25882352939999997" green="0.1176470588" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Refresh content"/>
                                                 <connections>
                                                     <action selector="refreshButtonAction:" destination="zIn-Vw-pGC" eventType="touchDown" id="4xz-7q-2on"/>

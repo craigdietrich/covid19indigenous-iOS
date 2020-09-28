@@ -29,6 +29,9 @@ class EnterCodeViewController: UIViewController {
     
     @IBAction func submitButtonTouchDown(_ sender: Any) {
         
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         let code = codeBox.text!
         if code.count == 0 {
             return
@@ -53,7 +56,7 @@ class EnterCodeViewController: UIViewController {
         codeSubmitButton.isEnabled = false
         
         URLCache.shared.removeAllCachedResponses()
-        let api = "https://covid19indigenous.ca/dashboard/pages/app?key=" + code
+        let api = "http://covid19indigenous.ca/dashboard/pages/app?key=" + code  // TODO: should be https
         if let url = URL(string: api) {
            let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else {

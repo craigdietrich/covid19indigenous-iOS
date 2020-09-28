@@ -101,14 +101,6 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         collectionView.reloadData()
         let category: String = returnCategoryFromSegmentedControl()
         
-        if (category == "justice") {
-            collectionView.backgroundColor = #colorLiteral(red: 0.3568627451, green: 0.1058823529, blue: 0.1058823529, alpha: 1)
-            refreshView.backgroundColor = #colorLiteral(red: 0.3568627451, green: 0.1058823529, blue: 0.1058823529, alpha: 1)
-        } else {
-            collectionView.backgroundColor = #colorLiteral(red: 0.4353501201, green: 0.2622799873, blue: 0.1394316256, alpha: 1)
-            refreshView.backgroundColor = #colorLiteral(red: 0.4353501201, green: 0.2622799873, blue: 0.1394316256, alpha: 1)
-        }
-        
         for article in allArticles {
             if (article["category"] != category) {
                 continue
@@ -246,6 +238,8 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let article = articles[indexPath.item]
         let youtube = article["youtube_url"] ?? ""
         let mp4 = article["mp4_filename"] ?? ""

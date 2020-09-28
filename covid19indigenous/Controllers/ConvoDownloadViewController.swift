@@ -43,6 +43,8 @@ class ConvoDownloadViewController: UIViewController {
     
     @IBAction func cancelButtonTouchDown(_ sender: Any) {
         
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         canContinue = false
         _finishDownloadContent()
         
@@ -50,6 +52,8 @@ class ConvoDownloadViewController: UIViewController {
     
     @IBAction func downloadButtonTouchDown(_ sender: Any) {
         
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         canContinue = true
         if Reachability.isConnectedToNetwork() {
             _downloadManifest()

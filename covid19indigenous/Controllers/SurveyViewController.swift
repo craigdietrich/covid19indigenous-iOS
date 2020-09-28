@@ -13,6 +13,8 @@ class SurveyViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
     
+    var questionnaireHasLaunched: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +36,7 @@ class SurveyViewController: UIViewController, WKNavigationDelegate {
             vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true, completion: nil)
             
-        } else {
+        } else if (!questionnaireHasLaunched) {
             
             launchQuestionnaire()
             
@@ -76,6 +78,8 @@ class SurveyViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func launchQuestionnaire() {
+        
+        questionnaireHasLaunched = true
         
         let htmlFile = Bundle.main.path(forResource: "index", ofType: "html")
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
