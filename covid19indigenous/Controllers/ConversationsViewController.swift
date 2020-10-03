@@ -19,6 +19,8 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     var allArticles: Array<Dictionary<String,String>> = [];
     var articles: Array<Dictionary<String,String>> = [];
     
+    var newImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,6 +73,10 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         }
         
         collectionView.reloadData()
+        
+        if newImageView.superview != nil {  // The image that pops up when an image is clicked
+            newImageView.frame = UIScreen.main.bounds
+        }
         
     }
     
@@ -428,7 +434,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     
     // https://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
     func imageTapped(imageView: UIImageView) {
-        let newImageView = UIImageView(image: imageView.image)
+        newImageView = UIImageView(image: imageView.image)
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
         newImageView.contentMode = .scaleAspectFit
