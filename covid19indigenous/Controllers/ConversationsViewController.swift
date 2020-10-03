@@ -22,6 +22,11 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let textAttribNormal = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+        let textAttribSelected = [NSAttributedString.Key.foregroundColor: UIColor(red: 45.0/255, green: 162.0/255, blue: 208.0/255, alpha: 1.0)]
+        segmentedControl.setTitleTextAttributes(textAttribNormal, for: .normal)
+        segmentedControl.setTitleTextAttributes(textAttribSelected, for: .selected)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ConversationsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "conversationsCell")
@@ -117,9 +122,9 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         var str:String = ""
         switch segmentedControl.selectedSegmentIndex {
           case 0:
-              str = "community"
+              str = "culture"
           case 1:
-              str = "justice"
+              str = "resilience"
           default:
               break
         }
@@ -205,7 +210,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
             descAttrString.addAttribute(.paragraphStyle, value:descStyle, range:NSMakeRange(0, descAttrString.length))
             cell.descriptionLabel.attributedText = descAttrString;
             let descNumLines = cell.descriptionLabel.calculateMaxLines(actualWidth: cellWidth)
-            totalHeight = totalHeight + (CGFloat(descNumLines) * 25.0) + 10
+            totalHeight = totalHeight + (CGFloat(descNumLines) * 25.0)
         }
         
         if let publishedDate = row["date"] {
@@ -217,11 +222,15 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
                  let todaysDate = dateFormatter.string(from: date)
                  cell.publishedLabel.text = "Published: " + todaysDate
                  let dateNumLines = cell.publishedLabel.calculateMaxLines(actualWidth: cellWidth)
-                 totalHeight = totalHeight + (CGFloat(dateNumLines) * 25.0) + 10
+                 totalHeight = totalHeight + (CGFloat(dateNumLines) * 40.0)
              }
          }
         
-        totalHeight = totalHeight + 40.0  // Requires-internet label
+        if let youtube = row["url"] {
+            if youtube.count > 0 {
+                 totalHeight = totalHeight + 40.0  // Requires-internet label
+            }
+        }
         
         let imageHeight = (cellWidth * 9) / 16
         totalHeight = totalHeight + CGFloat(imageHeight)
@@ -241,7 +250,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         let article = articles[indexPath.item]
-        let youtube = article["youtube_url"] ?? ""
+        let youtube = article["url"] ?? ""
         let mp4 = article["mp4_filename"] ?? ""
         let image = article["image_filename"] ?? ""
         
@@ -395,7 +404,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
              }
          }
         
-         if let youtube = row["youtube_url"] {
+         if let youtube = row["url"] {
             if (youtube.count > 0) {
                 requiresInternet = true
             }

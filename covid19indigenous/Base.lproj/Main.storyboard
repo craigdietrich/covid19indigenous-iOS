@@ -123,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--Com/Res-->
+        <!--Cul/Res-->
         <scene sceneID="9Yr-fq-4vH">
             <objects>
                 <viewController id="zIn-Vw-pGC" customClass="ConversationsViewController" customModule="covid19indig" customModuleProvider="target" sceneMemberID="viewController">
@@ -138,14 +138,14 @@
                                     <constraint firstAttribute="height" constant="30" id="6rf-eL-u8T"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Community Voices"/>
-                                    <segment title="Make a Difference"/>
+                                    <segment title="Culture"/>
+                                    <segment title="Resilience"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentedControlAction:" destination="zIn-Vw-pGC" eventType="primaryActionTriggered" id="zUB-Qk-hFN"/>
                                 </connections>
                             </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gNG-TI-NdW">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gNG-TI-NdW">
                                 <rect key="frame" x="0.0" y="74" width="414" height="699"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.28235294119999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p8b-OY-rGZ">
@@ -209,7 +209,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FRv-Lt-r9u"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Com/Res" image="bubble.right.fill" catalog="system" id="spl-or-L1a"/>
+                    <tabBarItem key="tabBarItem" title="Cul/Res" image="bubble.right.fill" catalog="system" id="spl-or-L1a"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="gNG-TI-NdW" id="NV6-hk-nOC"/>
@@ -552,7 +552,7 @@
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="55"/>
                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                        <state key="normal" title="  Culture/Resilience" image="bubble.right.fill" catalog="system">
                                                             <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
@@ -791,7 +791,7 @@
                                                                         <rect key="frame" x="16.5" y="0.0" width="134" height="109"/>
                                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                                        <state key="normal" title="  Culture/Resilience" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
@@ -1027,7 +1027,7 @@
                                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                         <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                                        <state key="normal" title="  Culture/Resilience" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
@@ -1273,7 +1273,7 @@
                                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                         <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                                        <state key="normal" title="  Culture/Resilience" image="bubble.right.fill" catalog="system">
                                                                             <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
@@ -1388,9 +1388,11 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYA-7w-5kH">
                                                         <rect key="frame" x="0.0" y="243" width="248" height="73"/>
-                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <state key="normal" title="Download videos"/>
+                                                        <state key="normal" title="Download content">
+                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="downloadButtonTouchDown:" destination="1Gu-RR-0G4" eventType="touchDown" id="QXZ-hN-dtq"/>
                                                         </connections>
@@ -1437,7 +1439,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuD-nv-xY1">
                                                         <rect key="frame" x="0.0" y="578" width="248" height="81"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Cancel"/>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="cancelButtonTouchDown:" destination="1Gu-RR-0G4" eventType="touchDown" id="3nn-Qh-yLc"/>
                                                         </connections>
