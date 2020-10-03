@@ -28,6 +28,8 @@ class FirstViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
+        UITabBar.appearance().tintColor = #colorLiteral(red: 0.1764705882, green: 0.6352941176, blue: 0.8156862745, alpha: 1)
+        
     }
 
     @objc func rotated() {

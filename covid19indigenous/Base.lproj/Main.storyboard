@@ -42,7 +42,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1z5-d8-0EV" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="Azv-gH-4Tt"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="2sa-7A-tgs" secondAttribute="bottom" id="CnB-TY-oRp"/>
@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--About-->
+        <!--Project-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="covid19indig" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,7 @@
                                 </constraints>
                                 <segments>
                                     <segment title="About Project"/>
-                                    <segment title="COVID-19 Info"/>
+                                    <segment title="About Us"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentedControllerChanged:" destination="8rJ-Kc-sve" eventType="primaryActionTriggered" id="hUU-tL-L7f"/>
@@ -100,75 +100,21 @@
                                 <rect key="frame" x="0.0" y="74" width="414" height="739"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.28235294119999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Bf-Ps-aNN">
-                                <rect key="frame" x="0.0" y="74" width="414" height="699"/>
-                                <color key="backgroundColor" red="0.25882352941176467" green="0.11764705882352941" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="v4B-4R-ivF">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="exz-S7-8Bg">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KSd-Qs-eDe">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPx-88-F7c">
-                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-ua-gKI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEQ-jK-TRe">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                                                <state key="normal" title="Refresh content"/>
-                                                <connections>
-                                                    <action selector="refreshButtonAction:" destination="8rJ-Kc-sve" eventType="touchDown" id="NOL-fa-Ktz"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25882352941176467" green="0.11764705882352941" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="wWe-ua-gKI" secondAttribute="trailing" id="8LL-1Z-vyJ"/>
-                                    <constraint firstAttribute="height" constant="40" id="HCF-AG-eKq"/>
-                                    <constraint firstItem="wWe-ua-gKI" firstAttribute="top" secondItem="HPx-88-F7c" secondAttribute="top" id="dxh-Lv-5hY"/>
-                                    <constraint firstAttribute="bottom" secondItem="wWe-ua-gKI" secondAttribute="bottom" id="eHE-fy-Wxv"/>
-                                    <constraint firstItem="wWe-ua-gKI" firstAttribute="leading" secondItem="HPx-88-F7c" secondAttribute="leading" id="pTg-eW-LnO"/>
-                                </constraints>
-                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="lZA-3e-Oge" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="1lo-aM-4j5"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="HPx-88-F7c" secondAttribute="bottom" id="3K9-nK-PFQ"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="HPx-88-F7c" secondAttribute="trailing" id="Gvf-lA-Af1"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="1Bf-Ps-aNN" secondAttribute="trailing" id="Jhj-QZ-LXH"/>
-                            <constraint firstItem="1Bf-Ps-aNN" firstAttribute="top" secondItem="lZA-3e-Oge" secondAttribute="bottom" id="M37-4b-dtK"/>
-                            <constraint firstItem="HPx-88-F7c" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="Px6-hm-fhV"/>
                             <constraint firstItem="1e3-KB-m6V" firstAttribute="top" secondItem="lZA-3e-Oge" secondAttribute="bottom" id="Ubn-8B-VBg"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="lZA-3e-Oge" secondAttribute="trailing" id="YmA-d8-IuJ"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="1e3-KB-m6V" secondAttribute="trailing" id="bFI-BT-6pW"/>
                             <constraint firstItem="lZA-3e-Oge" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="fYz-jl-z9f"/>
-                            <constraint firstItem="1Bf-Ps-aNN" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="pa3-PZ-l3W"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="1e3-KB-m6V" secondAttribute="bottom" id="skO-gf-1Df"/>
                             <constraint firstItem="1e3-KB-m6V" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="yVW-Ts-7HC"/>
-                            <constraint firstItem="HPx-88-F7c" firstAttribute="top" secondItem="1Bf-Ps-aNN" secondAttribute="bottom" id="zGF-d5-tud"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" image="questionmark.circle.fill" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Project" image="questionmark.circle.fill" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="collectionView" destination="1Bf-Ps-aNN" id="7VX-TZ-1Qc"/>
-                        <outlet property="refreshContentButton" destination="HPx-88-F7c" id="1PN-nN-qWn"/>
                         <outlet property="segmentedControl" destination="lZA-3e-Oge" id="Iit-xg-MFi"/>
                         <outlet property="webViewWrapper" destination="1e3-KB-m6V" id="Ybm-Xl-j1J"/>
                     </connections>
@@ -177,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--Convos-->
+        <!--Com/Res-->
         <scene sceneID="9Yr-fq-4vH">
             <objects>
                 <viewController id="zIn-Vw-pGC" customClass="ConversationsViewController" customModule="covid19indig" customModuleProvider="target" sceneMemberID="viewController">
@@ -201,7 +147,7 @@
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gNG-TI-NdW">
                                 <rect key="frame" x="0.0" y="74" width="414" height="699"/>
-                                <color key="backgroundColor" red="0.25882352939999997" green="0.1176470588" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.28235294119999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p8b-OY-rGZ">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -227,8 +173,10 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uas-Pj-tEo">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                                                <color key="backgroundColor" red="0.25882352939999997" green="0.1176470588" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Refresh content"/>
+                                                <color key="backgroundColor" red="0.25098039220000001" green="0.28235294119999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Fetch new content from the sercer">
+                                                    <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="refreshButtonAction:" destination="zIn-Vw-pGC" eventType="touchDown" id="4xz-7q-2on"/>
                                                 </connections>
@@ -236,7 +184,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.35686274509999999" green="0.20000000000000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.28235294119999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="DyP-AD-ms0" firstAttribute="top" secondItem="dHx-e3-FNj" secondAttribute="top" id="0ml-aQ-iJz"/>
                                     <constraint firstAttribute="trailing" secondItem="DyP-AD-ms0" secondAttribute="trailing" id="Alo-X8-R4d"/>
@@ -246,7 +194,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gNG-TI-NdW" firstAttribute="top" secondItem="pIx-6m-IU0" secondAttribute="bottom" id="3bZ-yg-q1p"/>
                             <constraint firstItem="FRv-Lt-r9u" firstAttribute="trailing" secondItem="gNG-TI-NdW" secondAttribute="trailing" id="DEE-A4-pnH"/>
@@ -261,7 +209,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FRv-Lt-r9u"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Convos" image="bubble.right.fill" catalog="system" id="spl-or-L1a"/>
+                    <tabBarItem key="tabBarItem" title="Com/Res" image="bubble.right.fill" catalog="system" id="spl-or-L1a"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="gNG-TI-NdW" id="NV6-hk-nOC"/>
@@ -290,7 +238,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="K6K-gT-Uv1" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="51C-jk-eDm"/>
                             <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="K6K-gT-Uv1" secondAttribute="trailing" id="6Nj-86-bK2"/>
@@ -526,9 +474,10 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukj-P7-aAD">
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="54.5"/>
-                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1764705882352941" green="0.63529411764705879" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="  About our project" image="questionmark.circle.fill" catalog="system">
+                                                            <color key="titleColor" red="0.1764705882352941" green="0.63529411764705879" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="aboutTouchDown:" destination="0DJ-hh-q1E" eventType="touchDown" id="V5A-Sg-lip"/>
@@ -563,9 +512,10 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGz-aP-90P">
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="55"/>
-                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="  Take the survey" image="hand.draw.fill" catalog="system">
+                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="takeSurveyTouchDown:" destination="0DJ-hh-q1E" eventType="touchDown" id="nbE-Pz-9Js"/>
@@ -600,9 +550,10 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-DW-pKJ">
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="55"/>
-                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="conversationsTouchDown:" destination="0DJ-hh-q1E" eventType="touchDown" id="xuQ-Ct-bMF"/>
@@ -762,9 +713,10 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzd-Ih-Myp">
                                                                         <rect key="frame" x="16.5" y="0.0" width="134" height="109"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  About our project" image="questionmark.circle.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="aboutTouchDown:" destination="gyL-Yx-5uy" eventType="touchDown" id="H3b-nm-CNh"/>
@@ -799,9 +751,10 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTR-V1-qU2">
                                                                         <rect key="frame" x="16.5" y="0.0" width="134" height="109.5"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  Take the survey" image="hand.draw.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="takeSurveyTouchDown:" destination="gyL-Yx-5uy" eventType="touchDown" id="pfo-Cl-RJG"/>
@@ -836,9 +789,10 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkM-R5-pOd">
                                                                         <rect key="frame" x="16.5" y="0.0" width="134" height="109"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="conversationsTouchDown:" destination="gyL-Yx-5uy" eventType="touchDown" id="8bv-gj-Beg"/>
@@ -992,10 +946,11 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mla-d9-gLq">
                                                                         <rect key="frame" x="24.5" y="0.0" width="199" height="58"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  About our project" image="questionmark.circle.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="aboutTouchDown:" destination="C9e-yf-YJa" eventType="touchDown" id="IzI-HN-14d"/>
@@ -1030,10 +985,11 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6o-ZB-AWi">
                                                                         <rect key="frame" x="24.5" y="0.0" width="199" height="58"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  Take the survey" image="hand.draw.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="takeSurveyTouchDown:" destination="C9e-yf-YJa" eventType="touchDown" id="Zqd-Zy-IR0"/>
@@ -1068,10 +1024,11 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQY-lq-6Xw">
                                                                         <rect key="frame" x="24.5" y="0.0" width="199" height="57.5"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="conversationsTouchDown:" destination="C9e-yf-YJa" eventType="touchDown" id="au8-xX-ndF"/>
@@ -1267,10 +1224,11 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixw-Rm-wPF">
                                                                         <rect key="frame" x="0.0" y="0.0" width="396.5" height="73"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  About the COVID-19 Survey" image="questionmark.circle.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  About our project" image="questionmark.circle.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="aboutTouchDown:" destination="VP8-tS-AdF" eventType="touchDown" id="hI6-Jh-XT2"/>
@@ -1289,10 +1247,11 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxQ-9v-vPB">
                                                                         <rect key="frame" x="0.0" y="0.0" width="396.5" height="72.5"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  Take the COVID-19 Survey" image="hand.draw.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  Take the survey" image="hand.draw.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="takeSurveyTouchDown:" destination="VP8-tS-AdF" eventType="touchDown" id="BjH-7s-nxS"/>
@@ -1311,10 +1270,11 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-5y-a29">
                                                                         <rect key="frame" x="0.0" y="0.0" width="396.5" height="73"/>
-                                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                                        <state key="normal" title="  COVID-19 Conversations" image="bubble.right.fill" catalog="system">
-                                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="tintColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <state key="normal" title="  Community/Resilience" image="bubble.right.fill" catalog="system">
+                                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="conversationsTouchDown:" destination="VP8-tS-AdF" eventType="touchDown" id="hFh-6o-feE"/>
@@ -1535,7 +1495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BX-gT-Z9L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="360"/>
+            <point key="canvasLocation" x="1484" y="1754"/>
         </scene>
     </scenes>
     <resources>
