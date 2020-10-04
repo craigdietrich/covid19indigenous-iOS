@@ -22,4 +22,3 @@ extension UILabel {
         return linesRoundedUp
     }
 }
-

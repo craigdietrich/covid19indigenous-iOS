@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import SafariServices
 
-class ConversationsViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ConversationsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -52,6 +52,10 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     
     @objc func rotated() {
         
+        if newImageView != nil && newImageView.superview != nil {  // The image that pops up when an image is clicked
+            newImageView.frame = UIScreen.main.bounds
+        }
+        
         var _isIPhone: Bool = true
         var _isVertical: Bool = true
         switch UIDevice.current.orientation {
@@ -74,9 +78,11 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         
         collectionView.reloadData()
         
-        if newImageView.superview != nil {  // The image that pops up when an image is clicked
-            newImageView.frame = UIScreen.main.bounds
-        }
+        /*
+        collectionView.performBatchUpdates(nil, completion: { (result) in
+            self.collectionViewHasLoaded()
+        })
+        */
         
     }
     
@@ -121,6 +127,12 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         
         collectionView.reloadData()
         
+        /*
+        collectionView.performBatchUpdates(nil, completion: { (result) in
+            self.collectionViewHasLoaded()
+        })
+        */
+        
     }
     
     func returnCategoryFromSegmentedControl() -> String {
@@ -153,6 +165,20 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     @IBAction func segmentedControlAction(_ sender: Any) {
         
         loadData()
+        
+    }
+    
+    func collectionViewHasLoaded() {
+        
+        for row in 0..<collectionView.numberOfItems(inSection: 0){
+
+            let indexPath = NSIndexPath(row:row, section:0)
+
+            let cell:UICollectionViewCell = collectionView.cellForItem(at: indexPath as IndexPath)!
+
+            // TODO: get height of cell
+            
+        }
         
     }
     
@@ -194,7 +220,8 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
         }
         
         let row = articles[indexPath.row];
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conversationsCell", for: indexPath) as! ConversationsCollectionViewCell;
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conversationsCell", for: [indexPath]) as! ConversationsCollectionViewCell;
+        let cell = Bundle.main.loadNibNamed("ConversationsCollectionViewCell", owner: self, options: nil)?.first as! ConversationsCollectionViewCell
         var totalHeight:CGFloat = 0.0;
         
         if let title = row["title"] {
@@ -246,7 +273,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate,UI
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+
         return self.articles.count;
         
     }

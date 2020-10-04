@@ -48,10 +48,10 @@ function getJsonFromSystem(jsonString) {
     var json = JSON.parse(jsonString);
     if (parseInt(json.has_taken_baseline)) {
         var questionnaire = json.interval;
-        $('#welcome_baseline').modal();
+        $('#welcome_interval').modal();
     } else {
         var questionnaire = json.baseline;
-        $('#welcome_interval').modal();
+        $('#welcome_baseline').modal();
     }
     showQuestionnaire(questionnaire, json.key);
 }

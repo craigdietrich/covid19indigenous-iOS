@@ -41,6 +41,15 @@ class EnterCodeViewController: UIViewController {
         
     }
     
+    @IBAction func cancelButtonTouchDown(_ sender: Any) {
+        
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     func doCode(code: String) {
         
         if !Reachability.isConnectedToNetwork() {
@@ -56,7 +65,7 @@ class EnterCodeViewController: UIViewController {
         codeSubmitButton.isEnabled = false
         
         URLCache.shared.removeAllCachedResponses()
-        let api = "http://covid19indigenous.ca/dashboard/pages/app?key=" + code  // TODO: should be https
+        let api = "https://covid19indigenous.ca/dashboard/pages/app?key=" + code
         if let url = URL(string: api) {
            let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else {

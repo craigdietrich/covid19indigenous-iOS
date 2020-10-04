@@ -63,7 +63,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Begin" image="person.fill" catalog="system" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Begin" image="person.png" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="iPadHoritzontalContainer" destination="EKq-hc-0dN" id="Bcf-yn-EZZ"/>
                         <outlet property="iPadVerticalContainer" destination="2sa-7A-tgs" id="Sg2-uO-Jhl"/>
@@ -92,6 +92,7 @@
                                     <segment title="About Project"/>
                                     <segment title="About Us"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="segmentedControllerChanged:" destination="8rJ-Kc-sve" eventType="primaryActionTriggered" id="hUU-tL-L7f"/>
                                 </connections>
@@ -113,7 +114,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Project" image="questionmark.circle.fill" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Project" image="question.png" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="segmentedControl" destination="lZA-3e-Oge" id="Iit-xg-MFi"/>
                         <outlet property="webViewWrapper" destination="1e3-KB-m6V" id="Ybm-Xl-j1J"/>
@@ -141,6 +142,7 @@
                                     <segment title="Culture"/>
                                     <segment title="Resilience"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="segmentedControlAction:" destination="zIn-Vw-pGC" eventType="primaryActionTriggered" id="zUB-Qk-hFN"/>
                                 </connections>
@@ -155,7 +157,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="DJ8-Ru-pZD">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="unusedCollectionViewCell" id="DJ8-Ru-pZD">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xTr-8A-cA5">
@@ -209,7 +211,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FRv-Lt-r9u"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cul/Res" image="bubble.right.fill" catalog="system" id="spl-or-L1a"/>
+                    <tabBarItem key="tabBarItem" title="Cul/Res" image="bubble.png" id="spl-or-L1a"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="gNG-TI-NdW" id="NV6-hk-nOC"/>
@@ -229,28 +231,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6K-gT-Uv1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Oq-YD-0mA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="V8B-f8-K67"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="About Survey"/>
+                                    <segment title="Take Survey"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentedControlDidChange:" destination="qSG-3S-T2a" eventType="primaryActionTriggered" id="U71-dO-fIr"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfG-lD-uhh">
+                                <rect key="frame" x="0.0" y="74" width="414" height="739"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40K-Hh-Xlv">
+                                <rect key="frame" x="0.0" y="74" width="414" height="739"/>
+                                <connections>
+                                    <segue destination="vfu-JU-XEQ" kind="embed" id="alY-vU-Hrw"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="K6K-gT-Uv1" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="51C-jk-eDm"/>
-                            <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="K6K-gT-Uv1" secondAttribute="trailing" id="6Nj-86-bK2"/>
-                            <constraint firstItem="x19-4W-FXU" firstAttribute="bottom" secondItem="K6K-gT-Uv1" secondAttribute="bottom" id="ezO-cs-3VC"/>
-                            <constraint firstItem="K6K-gT-Uv1" firstAttribute="top" secondItem="x19-4W-FXU" secondAttribute="top" id="goJ-dX-VWl"/>
+                            <constraint firstItem="6Oq-YD-0mA" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="0eb-tm-7AY"/>
+                            <constraint firstItem="SfG-lD-uhh" firstAttribute="top" secondItem="6Oq-YD-0mA" secondAttribute="bottom" id="6O8-Hw-Tub"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="6Oq-YD-0mA" secondAttribute="trailing" id="6eu-pk-QHy"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="SfG-lD-uhh" secondAttribute="trailing" id="A2O-Pl-tf4"/>
+                            <constraint firstItem="SfG-lD-uhh" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="ASq-Bj-nlF"/>
+                            <constraint firstItem="40K-Hh-Xlv" firstAttribute="top" secondItem="6Oq-YD-0mA" secondAttribute="bottom" id="C8x-ew-4dj"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="bottom" secondItem="40K-Hh-Xlv" secondAttribute="bottom" id="FEd-OU-MAj"/>
+                            <constraint firstItem="40K-Hh-Xlv" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="I7U-so-NgY"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="40K-Hh-Xlv" secondAttribute="trailing" id="QIU-kj-Q4p"/>
+                            <constraint firstItem="6Oq-YD-0mA" firstAttribute="top" secondItem="x19-4W-FXU" secondAttribute="top" id="Xka-uV-163"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="bottom" secondItem="SfG-lD-uhh" secondAttribute="bottom" id="kCl-vv-Hqy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x19-4W-FXU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Survey" image="hand.draw.fill" catalog="system" id="ufL-yQ-09Y"/>
+                    <tabBarItem key="tabBarItem" title="Survey" image="hand.png" id="ufL-yQ-09Y"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="webView" destination="K6K-gT-Uv1" id="7Be-dS-6zo"/>
+                        <outlet property="containerView" destination="40K-Hh-Xlv" id="I7j-Nf-5Kj"/>
+                        <outlet property="segmentedControl" destination="6Oq-YD-0mA" id="X5Q-hb-Zya"/>
+                        <outlet property="webViewWrapper" destination="SfG-lD-uhh" id="gcf-LF-06r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTw-6v-BtW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -348,6 +375,16 @@
                                                 <color key="textColor" red="0.87843137250000003" green="0.94117647059999998" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBT-bc-hZw">
+                                                <rect key="frame" x="0.0" y="701" width="248" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonTouchDown:" destination="HAb-P7-mOg" eventType="touchDown" id="Qri-ic-ba7"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mop-fV-ICs">
                                                 <rect key="frame" x="0.0" y="701" width="248" height="117"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -394,7 +431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXN-58-fI4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="1064"/>
+            <point key="canvasLocation" x="2188" y="1063"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -476,7 +513,7 @@
                                                         <rect key="frame" x="37.5" y="0.0" width="299" height="54.5"/>
                                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="tintColor" red="0.1764705882352941" green="0.63529411764705879" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="  About our project" image="questionmark.circle.fill" catalog="system">
+                                                        <state key="normal" title="  About our project" image="person.fill" catalog="system">
                                                             <color key="titleColor" red="0.1764705882352941" green="0.63529411764705879" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
@@ -1501,12 +1538,45 @@
             </objects>
             <point key="canvasLocation" x="1484" y="1754"/>
         </scene>
+        <!--About Survey View Controller-->
+        <scene sceneID="baF-Xc-k3s">
+            <objects>
+                <viewController id="vfu-JU-XEQ" customClass="AboutSurveyViewController" customModule="covid19indig" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TvG-jX-Doz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="739"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IX4-5C-8Yu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="739"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.28235294119999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IX4-5C-8Yu" firstAttribute="top" secondItem="TvG-jX-Doz" secondAttribute="top" id="9mP-ne-CT7"/>
+                            <constraint firstAttribute="trailing" secondItem="IX4-5C-8Yu" secondAttribute="trailing" id="Gpc-CN-eD7"/>
+                            <constraint firstItem="IX4-5C-8Yu" firstAttribute="leading" secondItem="TvG-jX-Doz" secondAttribute="leading" id="UEe-in-z8J"/>
+                            <constraint firstAttribute="bottom" secondItem="IX4-5C-8Yu" secondAttribute="bottom" id="qgl-4M-qt6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webViewWrapper" destination="IX4-5C-8Yu" id="Pyd-UN-BHO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FTI-zN-T5J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="1063"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Kitatipithitamak Logo Image w1000.png" width="240" height="235"/>
+        <image name="bubble.png" width="25" height="25"/>
         <image name="bubble.right.fill" catalog="system" width="128" height="110"/>
         <image name="hand.draw.fill" catalog="system" width="128" height="107"/>
+        <image name="hand.png" width="25" height="25"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="person.png" width="25" height="25"/>
+        <image name="question.png" width="25" height="25"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

@@ -36,6 +36,20 @@
 		46D655D124FEEF1D00ED419E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655D024FEEF1D00ED419E /* Reachability.swift */; };
 		46F77C0E252918E30002F96B /* about.css in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C0D252918E20002F96B /* about.css */; };
 		46F77C102529192D0002F96B /* aboutUs.html in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C0F2529192D0002F96B /* aboutUs.html */; };
+		46F77C12252A69990002F96B /* AboutSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F77C11252A69990002F96B /* AboutSurveyViewController.swift */; };
+		46F77C14252A6C310002F96B /* aboutSurvey.html in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C13252A6C310002F96B /* aboutSurvey.html */; };
+		46F77C1C252A75AB0002F96B /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C19252A75AB0002F96B /* person.png */; };
+		46F77C1D252A75AB0002F96B /* person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C1A252A75AB0002F96B /* person@2x.png */; };
+		46F77C1E252A75AB0002F96B /* person@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C1B252A75AB0002F96B /* person@3x.png */; };
+		46F77C22252A76E40002F96B /* question@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C1F252A76E40002F96B /* question@3x.png */; };
+		46F77C23252A76E40002F96B /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C20252A76E40002F96B /* question.png */; };
+		46F77C24252A76E40002F96B /* question@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C21252A76E40002F96B /* question@2x.png */; };
+		46F77C28252A78020002F96B /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C25252A78010002F96B /* hand.png */; };
+		46F77C29252A78020002F96B /* hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C26252A78020002F96B /* hand@2x.png */; };
+		46F77C2A252A78020002F96B /* hand@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C27252A78020002F96B /* hand@3x.png */; };
+		46F77C2E252A78E20002F96B /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2B252A78E10002F96B /* bubble@2x.png */; };
+		46F77C2F252A78E20002F96B /* bubble@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2C252A78E10002F96B /* bubble@3x.png */; };
+		46F77C30252A78E20002F96B /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2D252A78E20002F96B /* bubble.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +84,20 @@
 		46D655D024FEEF1D00ED419E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		46F77C0D252918E20002F96B /* about.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = about.css; sourceTree = "<group>"; };
 		46F77C0F2529192D0002F96B /* aboutUs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutUs.html; sourceTree = "<group>"; };
+		46F77C11252A69990002F96B /* AboutSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSurveyViewController.swift; sourceTree = "<group>"; };
+		46F77C13252A6C310002F96B /* aboutSurvey.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutSurvey.html; sourceTree = "<group>"; };
+		46F77C19252A75AB0002F96B /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		46F77C1A252A75AB0002F96B /* person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person@2x.png"; sourceTree = "<group>"; };
+		46F77C1B252A75AB0002F96B /* person@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person@3x.png"; sourceTree = "<group>"; };
+		46F77C1F252A76E40002F96B /* question@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question@3x.png"; sourceTree = "<group>"; };
+		46F77C20252A76E40002F96B /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
+		46F77C21252A76E40002F96B /* question@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question@2x.png"; sourceTree = "<group>"; };
+		46F77C25252A78010002F96B /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
+		46F77C26252A78020002F96B /* hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hand@2x.png"; sourceTree = "<group>"; };
+		46F77C27252A78020002F96B /* hand@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hand@3x.png"; sourceTree = "<group>"; };
+		46F77C2B252A78E10002F96B /* bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble@2x.png"; sourceTree = "<group>"; };
+		46F77C2C252A78E10002F96B /* bubble@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble@3x.png"; sourceTree = "<group>"; };
+		46F77C2D252A78E20002F96B /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +140,7 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				46F77C13252A6C310002F96B /* aboutSurvey.html */,
 				46F77C0F2529192D0002F96B /* aboutUs.html */,
 				46F77C0D252918E20002F96B /* about.css */,
 				46AAF00025152D1B0065275B /* common */,
@@ -140,6 +169,18 @@
 		46D655B524F99AD200ED419E /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				46F77C2D252A78E20002F96B /* bubble.png */,
+				46F77C2B252A78E10002F96B /* bubble@2x.png */,
+				46F77C2C252A78E10002F96B /* bubble@3x.png */,
+				46F77C25252A78010002F96B /* hand.png */,
+				46F77C26252A78020002F96B /* hand@2x.png */,
+				46F77C27252A78020002F96B /* hand@3x.png */,
+				46F77C20252A76E40002F96B /* question.png */,
+				46F77C21252A76E40002F96B /* question@2x.png */,
+				46F77C1F252A76E40002F96B /* question@3x.png */,
+				46F77C19252A75AB0002F96B /* person.png */,
+				46F77C1A252A75AB0002F96B /* person@2x.png */,
+				46F77C1B252A75AB0002F96B /* person@3x.png */,
 				46D655B624F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png */,
 			);
 			path = Media;
@@ -156,6 +197,7 @@
 				46D655CE24FEC4CE00ED419E /* ConvoDownloadViewController.swift */,
 				46AAEFFC25152AE90065275B /* SurveyViewController.swift */,
 				46AAF00425157A110065275B /* EnterCodeViewController.swift */,
+				46F77C11252A69990002F96B /* AboutSurveyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,18 +269,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F77C29252A78020002F96B /* hand@2x.png in Resources */,
 				4632CE89250C1470005CFE95 /* aboutProject.html in Resources */,
+				46F77C23252A76E40002F96B /* question.png in Resources */,
+				46F77C14252A6C310002F96B /* aboutSurvey.html in Resources */,
+				46F77C1E252A75AB0002F96B /* person@3x.png in Resources */,
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
+				46F77C2A252A78020002F96B /* hand@3x.png in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
+				46F77C28252A78020002F96B /* hand.png in Resources */,
 				4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */,
 				46F77C0E252918E30002F96B /* about.css in Resources */,
+				46F77C1C252A75AB0002F96B /* person.png in Resources */,
+				46F77C30252A78E20002F96B /* bubble.png in Resources */,
 				46F77C102529192D0002F96B /* aboutUs.html in Resources */,
 				46AAF00125152D1B0065275B /* index.html in Resources */,
 				46AAF00325152D1B0065275B /* common in Resources */,
+				46F77C2F252A78E20002F96B /* bubble@3x.png in Resources */,
+				46F77C1D252A75AB0002F96B /* person@2x.png in Resources */,
 				46AAF00225152D1B0065275B /* completed.html in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
+				46F77C2E252A78E20002F96B /* bubble@2x.png in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
+				46F77C24252A76E40002F96B /* question@2x.png in Resources */,
+				46F77C22252A76E40002F96B /* question@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +312,7 @@
 				46AAEFFD25152AE90065275B /* SurveyViewController.swift in Sources */,
 				46D655BC24FAD6A900ED419E /* BeginIPhoneVerticalViewController.swift in Sources */,
 				46D655A424F8A95500ED419E /* FirstViewController.swift in Sources */,
+				46F77C12252A69990002F96B /* AboutSurveyViewController.swift in Sources */,
 				46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */,
 				46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */,
 				46D655CF24FEC4CE00ED419E /* ConvoDownloadViewController.swift in Sources */,
