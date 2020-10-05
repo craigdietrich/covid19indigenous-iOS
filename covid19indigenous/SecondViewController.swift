@@ -43,6 +43,9 @@ class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
         webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
         
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -70,6 +73,30 @@ class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigati
                     let vc = SFSafariViewController(url: url, configuration: config)
                     present(vc, animated: true)
                 }
+        }
+        
+    }
+    
+    @objc func rotated() {
+        
+        var _isIPhone: Bool = true
+        var _isVertical: Bool = true
+        switch UIDevice.current.orientation {
+            case .landscapeLeft, .landscapeRight:
+                _isVertical = false
+            case .portrait, .portraitUpsideDown:
+                _isVertical = true
+            default:
+                _isVertical = true
+        }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            _isIPhone = false
+        }
+        
+        if (_isIPhone && !_isVertical) {
+            webViewWrapper.superview?.backgroundColor = #colorLiteral(red: 0.3182867765, green: 0.3557572365, blue: 0.4283527732, alpha: 1)
+        } else {
+            webViewWrapper.superview?.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         }
         
     }

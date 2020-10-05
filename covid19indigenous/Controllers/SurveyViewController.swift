@@ -39,10 +39,12 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         webView.topAnchor.constraint(equalTo: webViewWrapper.topAnchor, constant: 0).isActive = true
         webView.bottomAnchor.constraint(equalTo: webViewWrapper.bottomAnchor, constant: 0).isActive = true
         webView.isOpaque = false
-        webView.backgroundColor = UIColor.darkGray
         webView.navigationDelegate = self
         
         containerView.isHidden = false
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
  
     }
     
@@ -54,6 +56,30 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         switch (response) {
             default:
                 print("Do something")
+        }
+        
+    }
+    
+    @objc func rotated() {
+        
+        var _isIPhone: Bool = true
+        var _isVertical: Bool = true
+        switch UIDevice.current.orientation {
+            case .landscapeLeft, .landscapeRight:
+                _isVertical = false
+            case .portrait, .portraitUpsideDown:
+                _isVertical = true
+            default:
+                _isVertical = true
+        }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            _isIPhone = false
+        }
+        
+        if (_isIPhone && !_isVertical) {
+            webViewWrapper.superview?.backgroundColor = #colorLiteral(red: 0.3182867765, green: 0.3557572365, blue: 0.4283527732, alpha: 1)
+        } else {
+            webViewWrapper.superview?.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         }
         
     }

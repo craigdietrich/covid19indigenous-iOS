@@ -71,9 +71,9 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
         }
         
         if (_isIPhone && !_isVertical) {
-            collectionView.superview?.backgroundColor = UIColor.darkGray
+            collectionView.superview?.backgroundColor = #colorLiteral(red: 0.3182867765, green: 0.3557572365, blue: 0.4283527732, alpha: 1)
         } else {
-            collectionView.superview?.backgroundColor = UIColor.white.withAlphaComponent(1.0)
+            collectionView.superview?.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         }
         
         collectionView.reloadData()
@@ -170,13 +170,24 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
     
     func collectionViewHasLoaded() {
         
+        let collectionWidth = collectionView.frame.width
+        
         for row in 0..<collectionView.numberOfItems(inSection: 0){
 
             let indexPath = NSIndexPath(row:row, section:0)
 
             let cell:UICollectionViewCell = collectionView.cellForItem(at: indexPath as IndexPath)!
 
-            // TODO: get height of cell
+            let width = cell.frame.width
+            let height = cell.frame.height
+            
+            if (width * 2 <= collectionWidth * 1.1) {
+                print("Is wide")
+            } else {
+                print("Is narrow")
+            }
+            
+            // TODO: set height but only if in double orientation
             
         }
         
