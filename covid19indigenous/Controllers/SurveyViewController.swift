@@ -117,7 +117,17 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "EnterCodeVC") as! EnterCodeViewController
             vc.callbackClosure = { [weak self] in
-                self?.callMeFromPresentedVC()
+                self?.callMeFromEnterCodeVC()
+            }
+            self.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+            
+        } else if (!checkIfConsentHasPassed()) {
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConsentVC") as! ConsentViewController
+            vc.callbackClosure = { [weak self] in
+                self?.callMeFromConsentVC()
             }
             self.definesPresentationContext = true
             vc.modalPresentationStyle = .overCurrentContext
@@ -144,6 +154,13 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         
     }
     
+    func checkIfConsentHasPassed() -> Bool {
+        
+        let hasConsented = UserDefaults.standard.bool(forKey: "SurveyHasConsented")
+        return hasConsented
+        
+    }
+    
     public func switchSegmentedControl(to: Int) {
         
         segmentedControl.selectedSegmentIndex = to
@@ -158,9 +175,21 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         
     }
     
-    private func callMeFromPresentedVC() {
+    private func callMeFromEnterCodeVC() {
          
         doLoadQuestionnaire()
+        
+    }
+    
+    private func callMeFromConsentVC() {
+         
+        let hasConsented = UserDefaults.standard.bool(forKey: "SurveyHasConsented")
+        
+        if (hasConsented) {
+            doLoadQuestionnaire()
+        } else {
+            switchSegmentedControl(to: 0)
+        }
         
     }
     

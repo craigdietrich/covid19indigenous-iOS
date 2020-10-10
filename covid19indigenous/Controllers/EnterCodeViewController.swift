@@ -65,7 +65,7 @@ class EnterCodeViewController: UIViewController {
         codeSubmitButton.isEnabled = false
         
         URLCache.shared.removeAllCachedResponses()
-        let api = "https://covid19indigenous.ca/dashboard/pages/app?key=" + code
+        let api = "https://covid19indigenous.ca/dashboard/pages/app?key=" + code + "&t=" + String(NSDate().timeIntervalSince1970)
         if let url = URL(string: api) {
            let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else {

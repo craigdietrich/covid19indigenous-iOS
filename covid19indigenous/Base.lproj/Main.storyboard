@@ -435,6 +435,135 @@
             </objects>
             <point key="canvasLocation" x="2188" y="1063"/>
         </scene>
+        <!--Consent View Controller-->
+        <scene sceneID="SZC-Pd-Sc0">
+            <objects>
+                <viewController storyboardIdentifier="ConsentVC" id="dT7-wx-pDI" customClass="ConsentViewController" customModule="covid19indig" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ym1-0l-e05">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-PN-3ff">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TV-wH-0rL">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5A-3Y-Qv2">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6D-rT-prr">
+                                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="163.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before continuing please read and consent to the following" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dit-iW-pny">
+                                                        <rect key="frame" x="41.5" y="0.0" width="331" height="163.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                        <color key="textColor" red="0.86666666670000003" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dW-Wg-FY2">
+                                                        <rect key="frame" x="372.5" y="0.0" width="41.5" height="163.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="7dW-Wg-FY2" firstAttribute="width" secondItem="x5A-3Y-Qv2" secondAttribute="width" multiplier="0.1" id="lUL-CM-7d5"/>
+                                                    <constraint firstItem="o6D-rT-prr" firstAttribute="width" secondItem="x5A-3Y-Qv2" secondAttribute="width" multiplier="0.1" id="th0-MA-XB0"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="x5A-3Y-Qv2" firstAttribute="top" secondItem="6TV-wH-0rL" secondAttribute="top" id="Aos-Qz-WZa"/>
+                                            <constraint firstItem="x5A-3Y-Qv2" firstAttribute="leading" secondItem="6TV-wH-0rL" secondAttribute="leading" id="cKH-3x-wox"/>
+                                            <constraint firstAttribute="bottom" secondItem="x5A-3Y-Qv2" secondAttribute="bottom" id="foY-9y-gDs"/>
+                                            <constraint firstAttribute="trailing" secondItem="x5A-3Y-Qv2" secondAttribute="trailing" id="j0u-8V-xX1"/>
+                                        </constraints>
+                                    </view>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggl-Bp-A9g">
+                                        <rect key="frame" x="0.0" y="163.5" width="414" height="491"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0k-mD-flF">
+                                        <rect key="frame" x="0.0" y="654.5" width="414" height="163.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7U8-TJ-gCT">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iS5-fU-Bid">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="24.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxQ-sD-Ye6">
+                                                        <rect key="frame" x="0.0" y="24.5" width="414" height="81.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                        <state key="normal" title="Consent and continue">
+                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="consentButtonTouchDown:" destination="dT7-wx-pDI" eventType="touchDown" id="QcB-CS-Azc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQr-QL-nym">
+                                                        <rect key="frame" x="0.0" y="106" width="414" height="57.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" red="0.1764705882" green="0.63529411759999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="cancelButtonTouchDown:" destination="dT7-wx-pDI" eventType="touchDown" id="6nA-Bu-w2R"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="iS5-fU-Bid" firstAttribute="height" secondItem="7U8-TJ-gCT" secondAttribute="height" multiplier="0.15" id="Dft-HW-zzY"/>
+                                                    <constraint firstItem="QxQ-sD-Ye6" firstAttribute="height" secondItem="7U8-TJ-gCT" secondAttribute="height" multiplier="0.5" id="nBQ-fO-cP0"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="7U8-TJ-gCT" firstAttribute="leading" secondItem="R0k-mD-flF" secondAttribute="leading" id="2AR-Ub-GH8"/>
+                                            <constraint firstAttribute="trailing" secondItem="7U8-TJ-gCT" secondAttribute="trailing" id="AT6-BV-uGn"/>
+                                            <constraint firstItem="7U8-TJ-gCT" firstAttribute="top" secondItem="R0k-mD-flF" secondAttribute="top" id="TyN-J8-4hn"/>
+                                            <constraint firstAttribute="bottom" secondItem="7U8-TJ-gCT" secondAttribute="bottom" id="h3N-Nj-mvn"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6TV-wH-0rL" firstAttribute="height" secondItem="1iF-PN-3ff" secondAttribute="height" multiplier="0.2" id="55X-P1-vuw"/>
+                                    <constraint firstItem="R0k-mD-flF" firstAttribute="height" secondItem="1iF-PN-3ff" secondAttribute="height" multiplier="0.2" id="cNI-oe-5qr"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hLy-EC-XDU" firstAttribute="bottom" secondItem="1iF-PN-3ff" secondAttribute="bottom" id="6Qf-HV-5zq"/>
+                            <constraint firstItem="1iF-PN-3ff" firstAttribute="top" secondItem="hLy-EC-XDU" secondAttribute="top" id="OP9-cr-tlA"/>
+                            <constraint firstItem="hLy-EC-XDU" firstAttribute="trailing" secondItem="1iF-PN-3ff" secondAttribute="trailing" id="Rxu-js-wGX"/>
+                            <constraint firstItem="1iF-PN-3ff" firstAttribute="leading" secondItem="hLy-EC-XDU" secondAttribute="leading" id="ych-Wd-KrI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hLy-EC-XDU"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="ggl-Bp-A9g" id="Vig-gZ-BcK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SjY-fJ-ibd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2890" y="1061"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>

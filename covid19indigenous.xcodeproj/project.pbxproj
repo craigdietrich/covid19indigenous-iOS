@@ -50,6 +50,8 @@
 		46F77C2E252A78E20002F96B /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2B252A78E10002F96B /* bubble@2x.png */; };
 		46F77C2F252A78E20002F96B /* bubble@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2C252A78E10002F96B /* bubble@3x.png */; };
 		46F77C30252A78E20002F96B /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2D252A78E20002F96B /* bubble.png */; };
+		46F77C3225324CF80002F96B /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F77C3125324CF80002F96B /* ConsentViewController.swift */; };
+		46F77C3425324F610002F96B /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C3325324F610002F96B /* consent.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		46F77C2B252A78E10002F96B /* bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble@2x.png"; sourceTree = "<group>"; };
 		46F77C2C252A78E10002F96B /* bubble@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble@3x.png"; sourceTree = "<group>"; };
 		46F77C2D252A78E20002F96B /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
+		46F77C3125324CF80002F96B /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
+		46F77C3325324F610002F96B /* consent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = consent.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,7 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				46F77C3325324F610002F96B /* consent.html */,
 				46F77C13252A6C310002F96B /* aboutSurvey.html */,
 				46F77C0F2529192D0002F96B /* aboutUs.html */,
 				46F77C0D252918E20002F96B /* about.css */,
@@ -198,6 +203,7 @@
 				46AAEFFC25152AE90065275B /* SurveyViewController.swift */,
 				46AAF00425157A110065275B /* EnterCodeViewController.swift */,
 				46F77C11252A69990002F96B /* AboutSurveyViewController.swift */,
+				46F77C3125324CF80002F96B /* ConsentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 				46F77C29252A78020002F96B /* hand@2x.png in Resources */,
 				4632CE89250C1470005CFE95 /* aboutProject.html in Resources */,
 				46F77C23252A76E40002F96B /* question.png in Resources */,
+				46F77C3425324F610002F96B /* consent.html in Resources */,
 				46F77C14252A6C310002F96B /* aboutSurvey.html in Resources */,
 				46F77C1E252A75AB0002F96B /* person@3x.png in Resources */,
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
@@ -311,6 +318,7 @@
 				46D655C024FAF7B500ED419E /* BeginIPadVerticalViewController.swift in Sources */,
 				46AAEFFD25152AE90065275B /* SurveyViewController.swift in Sources */,
 				46D655BC24FAD6A900ED419E /* BeginIPhoneVerticalViewController.swift in Sources */,
+				46F77C3225324CF80002F96B /* ConsentViewController.swift in Sources */,
 				46D655A424F8A95500ED419E /* FirstViewController.swift in Sources */,
 				46F77C12252A69990002F96B /* AboutSurveyViewController.swift in Sources */,
 				46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */,

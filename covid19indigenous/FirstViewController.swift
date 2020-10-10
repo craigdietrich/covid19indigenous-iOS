@@ -22,6 +22,7 @@ class FirstViewController: UIViewController {
         
         _wipeContentFolder()
         _wipeQuestionnaireFolder()
+        _wipeUserDefaults()
         
         doLayout()
         
@@ -119,6 +120,13 @@ class FirstViewController: UIViewController {
         } catch {
             print(error)
         }
+        
+    }
+    
+    func _wipeUserDefaults() {
+        
+        UserDefaults.standard.removeObject(forKey: "SurveyHasConsented")
+        print("Wiped user defaults")
         
     }
 

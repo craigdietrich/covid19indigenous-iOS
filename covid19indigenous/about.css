@@ -8,8 +8,11 @@
       body > div {
           margin:0px auto 0px auto; padding:6px 19px 0px 19px; max-width:400px;
       }
-h5 {
-    line-height:1.25; font-size:17px; font-weight:normal;
+      h5 {
+          line-height:1.25; font-size:17px; font-weight:normal;
+      }
+h6 {
+    line-height:1.25; font-size:17px; font-weight:bold; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;
 }
       p {
           font-weight:normal; line-height:1.25;

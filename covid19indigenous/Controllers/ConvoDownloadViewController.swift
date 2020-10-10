@@ -77,7 +77,7 @@ class ConvoDownloadViewController: UIViewController {
         
         print("Downloading manifest...")
         URLCache.shared.removeAllCachedResponses()
-        let url = URL(string: "https://covid19indigenous.ca/feeds/content/manifest.json")!
+        let url = URL(string: "https://covid19indigenous.ca/feeds/content/manifest.json?t=" + String(NSDate().timeIntervalSince1970))!
         let downloadTask = URLSession.shared.downloadTask(with: url) {
             urlOrNil, responseOrNil, errorOrNil in
             guard let fileURL = urlOrNil else { return }
