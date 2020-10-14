@@ -211,6 +211,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         do {
             var jsonString = try String(contentsOfFile: filePath.path)
             jsonString = jsonString.replacingOccurrences(of: "'", with: "\\'")
+            jsonString = jsonString.replacingOccurrences(of: "\"", with: #"\""#)
             webView.evaluateJavaScript("getJsonFromSystem('\(jsonString)')", completionHandler: nil)
         } catch {
             print(error)

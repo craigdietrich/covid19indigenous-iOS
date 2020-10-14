@@ -32,18 +32,20 @@
 	    	
 	    	$this.addClass('fade');
 	    	$('article:first').empty().append('<div class="spinner-wrapper"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
-	    	$('.has_questionnaires').show();
-	    	if (opts.key) {
-	    		$this.find('[name="code"]').val(opts.key);
-	    		$this.find('.btn:last').removeClass('btn-primary').addClass('btn-light');
-	    	}
-	    	$this.find('#submitCodeForm').on('submit', function() {
+	    	if (opts.key) $this.find('[name="code"]').val(opts.key);
+	    	$this.find('#submitCodeForm').off('submit').on('submit', function() {
 	    		$this.removeClass('fade');
 	    		var code = $(this).find('[name="code"]').val();
 	    		if (!code.length) return false;
 	    		var hash = '#';
 	    		if (opts.id) hash += 'id='+opts.id+'&';
 	    		hash += 'key='+code;
+	    		window.location.hash = hash;
+	    		return false;
+	    	});
+	    	$this.find('#re-enter-code').off('click').on('click', function() {
+	    		var hash = '#';
+	    		if (opts.id) hash += 'id='+opts.id;
 	    		window.location.hash = hash;
 	    		return false;
 	    	});
@@ -58,6 +60,9 @@
 		    	    success: function( response ) {
 
 		    	    	$('.spinner-wrapper').remove();
+		    			$this.find('.no_questionnaires').hide();
+		    			$this.find('.has_questionnaires').show();
+		    			
 			    		if (!response.length) {
 			    			hash = '#key=' + opts.key;
 			    			window.location.hash = hash;
@@ -91,7 +96,9 @@
 		    	    success: function( response ) {
 		    	    	
 		    	    	$('.spinner-wrapper').remove();
-		    	    	
+		    			$this.find('.no_questionnaires').hide();
+		    			$this.find('.has_questionnaires').show();
+		    			
 			    		if (!response.length) {
 			    			hash = '#';
 			    			window.location.hash = hash;
@@ -125,8 +132,10 @@
 		    	    success: function( response ) {
 
 		    	    	$('.spinner-wrapper').remove();
+		    			$this.find('.no_questionnaires').hide();
+		    			$this.find('.has_questionnaires').show();
 		    	    	
-			    		$this.find('.header-text').html('Click a survey below to take it right now<br /><small>Click title to take survey</small>');
+			    		$this.find('.header-text').html('Click a survey below to take it right now');
 			    		var $tbody = $this.find('tbody').empty();
 			    		
 			    		if (!response.length) {
@@ -138,7 +147,6 @@
 			    			title = response[j].title;
 			    			if (response[j].subtitle.length) title += ': ' + response[j].subtitle;
 			    			$('<td class="title text-primary">'+title+'</td>').appendTo($row);
-			    			$('<td class="date text-primary">'+response[j].date_human+'</td>').appendTo($row);
 			    		}
 			    		
 			    		$tbody.find('tr').on('click', function() {
@@ -168,12 +176,12 @@
 			 
 		    	    	$('.spinner-wrapper').remove();
 		    	    	
-			    		$this.find('.header-text').html('Here are public surveys that you can take right now<br /><small>Click title to take survey</small>');
+			    		$this.find('.header-text').html('Here are public surveys that you can take right now');
 			    		var $tbody = $this.find('tbody').empty();
 
 			    		if (!response.length) {
-			    			$tbody.append('<div class="text-center">There are no public questionnaires presently available</div>');
-			    			$('.has_questionnaires').hide();
+			    			$this.find('.no_questionnaires').show();
+			    			$this.find('.has_questionnaires').hide();
 			    		}
 			    		
 			    		for (var j = 0; j < response.length; j++) {

@@ -70,6 +70,9 @@ aside .title small {font-size:1.5rem; color:#555555;}
 }
 .likert-slider-table input[type="range"]::-webkit-slider-thumb {-webkit-appearance: none; appearance: none; width: 30px; height: 30px; border-radius: 50%; background: #4CAF50; cursor: pointer;}
 .likert-slider-table input[type="range"]::-moz-range-thumb {width: 30px; height: 30px; border-radius: 50%; background:#4CAF50; cursor: pointer;}
+.likert-slider-table td b {display:inline-block; padding-top:10px;}
+.likert-slider-table td .answer {display:inline-block; padding-bottom:20px;}
+.likert-slider-table label {font-weight:bold; cursor:pointer;}
 
 .answer {}
 .answer video {margin-left:auto; margin-right:auto; background-color:#555555;}
@@ -86,7 +89,8 @@ aside .title small {font-size:1.5rem; color:#555555;}
 #startOverModal .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
 #finishModal .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
 #saveForLaterModal .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
-#questionnairesModal tr td {cursor:pointer;}
+#confirmSwitchMediaTypeModal .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
+#questionnairesModal tr td {cursor:pointer; text-align:center; border-bottom:solid 1px #dee2e6;}
 #welcome_baseline .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
 #welcome_interval .row:not(.form-group) {padding-top:12px; padding-bottom:12px;}
 

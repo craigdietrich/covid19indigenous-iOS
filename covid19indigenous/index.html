@@ -18,34 +18,40 @@
 <meta property="og:locale:alternate" content="fr_CA" />
 <meta property="og:site_name" content="COVID-19 Indigenous Questionnaire" />
 <link type="text/css" rel="stylesheet" href="common/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" href="common/css/main.css?v=17" />
+<link type="text/css" rel="stylesheet" href="common/css/main.css?v=18" />
 <script type="text/javascript" src="common/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="common/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="common/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="common/js/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src="common/js/jquery.detectmobilebrowser.js"></script>
 <script type="text/javascript" src="common/js/RecordRTC.js"></script>
-<script type="text/javascript" src="common/js/jquery.feedback.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.action.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.validate.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.questionnaire.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.question.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.intermission.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.text-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.sentence-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.range-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.radio-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.check-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.open-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.likert-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.likert-slider-selector.js?v=17"></script>
-<script type="text/javascript" src="common/js/jquery.ranked-selector.js?v=17"></script>
+<script type="text/javascript" src="common/js/jquery.feedback.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.action.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.validate.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.questionnaire.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.question.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.intermission.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.text-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.sentence-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.range-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.radio-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.check-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.open-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.likert-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.likert-slider-selector.js?v=18"></script>
+<script type="text/javascript" src="common/js/jquery.ranked-selector.js?v=18"></script>
 <script>
 $(document).ready(function() {
 	$('article:first').empty().append('<div class="spinner-wrapper"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
 });
 function getJsonFromSystem(jsonString) {
-    var json = JSON.parse(jsonString);
+    //$('article:first').empty().append('<div class="spinner-wrapper">'+jsonString+'</div>');
+    //return;
+    try {
+        var json = JSON.parse(jsonString);
+    } catch(err) {
+        $('article:first').empty().append('<div class="spinner-wrapper">'+err+'</div>');
+    }
     if (parseInt(json.has_taken_baseline)) {
         var questionnaire = json.interval;
         $('#welcome_interval').modal();
@@ -356,6 +362,33 @@ function showQuestionnaire(data, key) {
           <div class="row">
               <div class="col-12" style="text-align:center;">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+              </div>
+          </div>
+        </div>
+       </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmSwitchMediaTypeModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="confirmSwitchMediaTypeLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+       <form>
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center header-text">
+              <b>Switching media types</b>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-12 text-center main-text">Selecting a different media type will erase anything that you have already typed, recorded, or uploaded. Are you sure you wish to continue?</div>
+          </div>
+          <div class="row">
+              <div class="col-12">
+                <button type="button" class="btn btn-light">Cancel</button> &nbsp;
+                <button type="button" class="btn btn-primary float-right">Switch</button>
               </div>
           </div>
         </div>

@@ -19,24 +19,10 @@
 					var prompts = $range.data('prompts').split(';');
 					var prompt = prompts[parseInt(value) - 1];
 					$range.removeClass('range-low').removeClass('range-med').removeClass('range-neu');
-					if (opts.prompts.length <= 6) {
-						if (prompt.toLowerCase().indexOf("don't know") != -1) {
-							$range.addClass('range-neu');
-						} else if (value <= Math.ceil(prompts.length * 0.33)) {
-							$range.addClass('range-low');
-						} else if (value < Math.ceil(prompts.length * 0.66)) {
-							$range.addClass('range-med');
-						}
-					} else {
-						if (prompt.toLowerCase().indexOf("don't know") != -1) {
-							$range.addClass('range-neu');
-						} else if (prompt.toLowerCase().indexOf("not applicable") != -1) {
-							$range.addClass('range-neu');
-						} else if (value <= Math.floor(prompts.length * 0.33)) {
-							$range.addClass('range-low');
-						} else if (value < Math.floor(prompts.length * 0.66)) {
-							$range.addClass('range-med');
-						}						
+					if (value <= prompts.length / 2) {
+						$range.addClass('range-low');
+					} else if (value == Math.ceil(prompts.length / 2)) {
+						$range.addClass('range-med');
 					}
 					$range.nextAll('b').text(prompt);
 	    		});
@@ -48,24 +34,45 @@
 	    	
 	    	doRangeColorsAndLabels();
 	    	broadcastValueChange();
+	    	$this.find('input[type="range"]').on('input', function() {
+	    		var $range = $(this);
+	    		$range.closest('tr').find('input[type="radio"]').prop('checked', false);
+	    	});
+	    	$this.find('input[type="radio"]').on('click', function() {
+	    		var $radio = $(this);
+	    		$radio.closest('tr').find('input[type="range"]').val(3);  // TODO: magic number 
+	    	});
 	    	$this.find('input[type="range"]').on('input', doRangeColorsAndLabels); 
 	    	$this.find('input[type="range"]').on('input', broadcastValueChange);
+	    	$this.find('input[type="radio"]').on('click', doRangeColorsAndLabels); 
+	    	$this.find('input[type="radio"]').on('click', broadcastValueChange);
 	    	
 	    	$this.find('form')[0].getValues = function() {
 	    		var $form = $(this);
 	    		var values = [];
-	    		$form.find('input').each(function() {
-	    			values.push($(this).val());
+	    		$form.find('input[type="range"]').each(function() {
+	    			var $this = $(this);
+	    			var value = $this.val();
+	    			if ($this.closest('tr').find('input[value="dk"]').is(':checked')) value = "6";  // TODO: magic number
+	    			if ($this.closest('tr').find('input[value="na"]').is(':checked')) value = "7";  // TODO: magic number
+	    			values.push(value);
 	    		});
 	    		return values
 	    	};
 	    	
 	    	$this.find('form')[0].setValues = function(values) {
 	    		var $form = $(this);
-	    		$form.find('input').each(function(index) {
+	    		$form.find('input[type="range"]').each(function(index) {
+	    			var $this = $(this);
 	    			var value = values[index];
 	    			if (null == value) return;
-	    			$(this).val(value).trigger('input');
+	    			if (6 == parseInt(value)) {
+	    				$this.closest('tr').find('input[value="dk"]').prop('checked', true);  // TODO: magic number
+	    			} else if (7 == parseInt(value)) {
+	    				$this.closest('tr').find('input[value="na"]').prop('checked', true);  // TODO: magic number
+	    			} else {
+	    				$this.val(value).trigger('input');
+	    			}
 	    		});
 	    	}
 	    	

@@ -69,20 +69,23 @@
 	    		doStartOver();
 	    		// Extract answers for each question
     			var questions = [];
+    			var created = new Date().toISOString().slice(0, 19).replace('T', ' ');
     			$this.find('form:visible').each(function() {
     				var $form = $(this);
     				var id = $form.data('question-id');
     				var answers = $form[0].getValues(); 
-    				questions.push({id:id,answers:answers});
+    				questions.push({id:id,answers:answers,created:created});
     			});
     			// Save to handler
 	    		var json = {
 		    		action:'doSaveAnswers',
 		    		questionnaire_id:opts.info.id,
 		    		key:opts.key,
+		    		created:created,
 		    		answers:questions
 		    	};
 	    		console.log(json);
+
 	    		$.ajax({
 	    			url: opts.info.handler,
 	    			type: "POST",

@@ -25,10 +25,19 @@
 	    		$el = $(this);
 	    		// Check to see if there is alread an element selected
 	    		var $selectedItem = $el.closest('.row').find('.selected');
-	    		if ($selectedItem.length) {
-	    			if (!confirm('Selecting a different media type will erase anything that you have already typed, recorded, or uploaded. Are you sure you wish to continue?')) {
-	    				return;
-	    			}
+	    		if ($selectedItem.length && !$('body').hasClass('modal-open')) {
+	    			var $modal = $('#confirmSwitchMediaTypeModal');
+	    			$modal.data('$element', $el);
+	    			$modal.modal();
+	    			$modal.find('button:first').off('click').on('click', function() {
+	    				$modal.modal('hide');
+	    			});
+	    			$modal.find('button:last').off('click').on('click', function() {
+	    				var $el = $('#confirmSwitchMediaTypeModal').data('$element');
+	    				$el.click();
+	    				$modal.modal('hide');
+	    			});
+	    			return;
 	    		}
 	    		// Set the item that is selected
 	    		var type = $el.attr('class').replace('open-selector-element ', '').replace(' selected', '');
@@ -51,7 +60,7 @@
 	    				break;
 	    			case 'photo':
 	    				$next_cell.append('<input type="hidden" name="base64_string" value="" />');
-	    				$next_cell.append('<input type="file" style="display:none;" />');
+	    				$next_cell.append('<input type="file" style="display:none;" />');  // TODO: image-specific attribute
 	    				$next_cell.append('<div style="text-center msg"></div>');
 	    				$next_cell.append('<img src="" style="width:400px;" />');
 	    				$next_cell.find('input[type="file"]').on('change', function() {
@@ -78,7 +87,7 @@
 	    			case 'video':
 	    				if (jQuery.browser.mobile || is_safari) {
 		    				$next_cell.append('<input type="hidden" name="base64_string" value="" />');
-		    				$next_cell.append('<input type="file" style="display:none;" />');
+		    				$next_cell.append('<input type="file" style="display:none;" />');  // TODO: video-specific attribute
 		    				$next_cell.append('<div style="text-center msg"></div>');
 		    				$next_cell.append('<video class="open-video" controls="" autoplay="" style="width:400px;height:250px;"></video>');
 		    				$next_cell.find('input[type="file"]').on('change', function() {

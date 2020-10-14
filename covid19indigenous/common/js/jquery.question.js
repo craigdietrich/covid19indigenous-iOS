@@ -90,14 +90,28 @@
     		html += '<tbody>';
     		if ('string' == typeof(data.answers)) data.answers = data.answers.split(';');
     		if ('string' == typeof(data.prompts)) data.prompts = data.prompts.split(';');
+    		var prompts = []
+    		for (var j = 0; j < data.prompts.length; j++) {
+    			if (data.prompts[j].trim().toLowerCase() == "don't know") continue;
+    			if (data.prompts[j].trim().toLowerCase() == "not applicable") continue;
+    			prompts.push( data.prompts[j] );
+    		}
     	   	for (var j = 0; j < data.answers.length; j++) {
     	   		html += '<tr>';
-        		html += '<td class="text-center" colspan="'+data.prompts.length+'">'+data.answers[j]+'</td>';
-        		html += '</tr>';
-    	   		html += '<tr>';
-        		html += '<td class="text-center" colspan="'+data.prompts.length+'">';
-        		html += '  <input type="range" class="range_low" value="1" min="1" max="'+data.prompts.length+'" name="range_'+window['likert_count']+'_'+j+'" data-prompts="'+data.prompts.join(';')+'" />';
-        		html += '  <br /><b>'+data.prompts[0]+'</b>';
+        		html += '<td class="text-center">';
+        		html += '<div class="row">';
+        		html += '<div class="col-12 col-md-10">';
+        		html += '<span class="answer">'+data.answers[j]+'</span><br />';
+        		html += '<input type="range" class="range_low" value="'+Math.ceil(prompts.length/2)+'" min="1" max="'+prompts.length+'" name="range_'+window['likert_count']+'_'+j+'" data-prompts="'+prompts.join(';')+'" />';
+        		html += '<br /><b></b>';
+        		html += '</div>';
+        		html += '<div class="col-6 col-md-1">';
+        		html += "<label>Don't know<br />"+'<input type="radio" name="dk-na-'+window['likert_count']+'-'+j+'" value="dk" /></label>';
+        		html += '</div>';
+        		html += '<div class="col-6 col-md-1">';
+        		html += "<label>Not applicable<br />"+'<input type="radio" name="dk-na-'+window['likert_count']+'-'+j+'" value="na" /></label>';
+        		html += '</div>';
+        		html += '</div>';
         		html += '</td>';
         		html += '</tr>';
         	};
@@ -110,7 +124,7 @@
     	var doRanked = function(data) {
     		
     		var html = '';
-    		html += '<p class="description">Drag and drop each item to rank with the most important item at the top</p>';
+    		html += '<p class="description">Drag and drop items to rank with the most important item at the top and the least important item at the bottom</p>';
     		html += '<ul class="list-group ranked-choice">';
     		if ('string' == typeof(data.answers)) data.answers = data.answers.split(';');
     		for (var j = 0; j < data.answers.length; j++) {
@@ -280,7 +294,7 @@
 	    		$(_element).closest('form').nextAll('.sub_questions:first').children('section').each(function() {
 	    			var $section = $(this);
 	    			var values_arr = $section.data('values').toString().split(',');
-	    			if ('any' == values_arr[0]) {
+	    			if ('any' == values_arr[0] || 'all' == values_arr[0]) {
 	    				$section.show();
 	    				return;
 	    			} 
@@ -293,7 +307,7 @@
 	    				$section.hide();
 	    			}
 	    		});
-	    	})
+	    	});
 	    	
 	    	// Create the question and run any special jQuery object on it
 	    	var type = ('undefined' != typeof(opts.type)) ? opts.type : null;
@@ -336,7 +350,8 @@
 	    	var $sub_questions = $el.find('.sub_questions:first');
     		if ('undefined' != typeof(opts.questions)) {
 	    		for (var j = 0; j < opts.questions.length; j++) {
-	    			$('<section data-values="'+opts.questions[j].parent_values+'"></section>').question(opts.questions[j]).appendTo($sub_questions).hide();
+	    			var $section = $('<section data-values="'+opts.questions[j].parent_values+'"></section>').question(opts.questions[j]).appendTo($sub_questions);
+	    			if ('any' != opts.questions[j].parent_values && 'all' != opts.questions[j].parent_values) $section.hide();
 	    		};
     		};
 	    	
