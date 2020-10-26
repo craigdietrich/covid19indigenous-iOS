@@ -37,6 +37,35 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
         webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if (_answersExist() && Reachability.isConnectedToNetwork()) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SaveAnswersVC") as! SaveAnswersViewController
+            self.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func _answersExist() -> Bool {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                if file.path.contains("answers_") {
+                    return true
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return false
+        
+    }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         

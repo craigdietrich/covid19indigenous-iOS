@@ -52,10 +52,37 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        guard let response = message.body as? String else { return }
-        switch (response) {
-            default:
-                print("Do something")
+        guard let jsonStr = message.body as? String else { return }
+        
+        webView.load(URLRequest(url: URL(string:"about:blank")!))
+        questionnaireHasLaunched = false
+        
+        _saveJsonStr(jsonStr: jsonStr)
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SaveAnswersVC") as! SaveAnswersViewController
+        vc.callbackClosure = { [weak self] in
+            self?.callMeFromSaveAnswersVC()
+        }
+        self.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+        
+        
+    }
+    
+    func _saveJsonStr(jsonStr: String) {
+        
+        let filename = String(NSDate().timeIntervalSince1970)
+        let jsonFilename = "answers_" + filename + ".json"
+        
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let filePath = contentUrl.appendingPathComponent(jsonFilename)
+        
+        do {
+            try jsonStr.write(to: filePath, atomically: true, encoding: .utf8)
+        } catch {
+            print(error.localizedDescription)
         }
         
     }
@@ -190,6 +217,12 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         } else {
             switchSegmentedControl(to: 0)
         }
+        
+    }
+    
+    private func callMeFromSaveAnswersVC() {
+        
+        switchSegmentedControl(to: 0)
         
     }
     

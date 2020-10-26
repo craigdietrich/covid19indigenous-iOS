@@ -15,8 +15,6 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var iPadVerticalContainer: UIView!
     @IBOutlet weak var iPadHoritzontalContainer: UIView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +28,17 @@ class FirstViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.1764705882, green: 0.6352941176, blue: 0.8156862745, alpha: 1)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if (_answersExist() && Reachability.isConnectedToNetwork()) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SaveAnswersVC") as! SaveAnswersViewController
+            self.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+        }
         
     }
 
@@ -86,6 +95,24 @@ class FirstViewController: UIViewController {
                 iPadHoritzontalContainer.isHidden = false
             }
         }
+        
+    }
+    
+    func _answersExist() -> Bool {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                if file.path.contains("answers_") {
+                    return true
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return false
         
     }
     

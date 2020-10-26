@@ -10,21 +10,110 @@ import UIKit
 
 class SaveAnswersViewController: UIViewController {
 
+    @IBOutlet weak var listOfItemsLabel: UILabel!
+    @IBOutlet weak var uploadingLabel: UILabel!
+    
+    var callbackClosure: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        
+        _printQuestionnaireDirectory()
+        
+        uploadingLabel.text = "Checking Internet connection..."
+        
+        if (Reachability.isConnectedToNetwork()) {
+            uploadingLabel.text = "Uploading answers..."
+            _doSendAnswers()
+        } else {
+            uploadingLabel.text = "No Internet connection"
+            dismiss(animated: true, completion: nil)
+            callbackClosure?()
+        }
+        
     }
-    */
+    
+    func _doSendAnswers() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            listOfItemsLabel.text = ""
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                if (file.path.contains("answers_")) {
+                    let filename = file.lastPathComponent.replacingOccurrences(of: "answers_", with: "").replacingOccurrences(of: ".json", with: "  ")
+                    listOfItemsLabel.text = listOfItemsLabel.text! + "Past answers\n" + filename + "\n\n"
+                }
+            }
+        } catch {
+            print(error)
+        }
+        
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                if (file.path.contains("answers_")) {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: file.path), options: .mappedIfSafe)
+                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                    _doSendAnswer(jsonResult: jsonResult, filePath: file.path)
+                }
+            }
+        } catch {
+            print("Error:")
+            print(error)
+        }
+        
+        dismiss(animated: true, completion: nil)
+        callbackClosure?()
+        
+    }
+    
+    func _doSendAnswer(jsonResult: Any, filePath: String) {
+        
+        let url = URL(string: "https://covid19indigenous.ca/dashboard/pages/handler")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let jsonData = try! JSONSerialization.data(withJSONObject: jsonResult, options: [])
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+                do {
+                    try FileManager.default.removeItem(atPath: filePath)
+                } catch {
+                    print("Could not delete file " + filePath)
+                }
+                return
+            }
+        }
+
+        task.resume()
+        
+    }
+    
+    func _printQuestionnaireDirectory() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            print("All files in questionnaire folder:")
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            print(contents)
+        } catch {
+            print(error)
+        }
+        
+    }
 
 }

@@ -86,23 +86,8 @@
 		    	};
 	    		console.log(json);
 
-	    		$.ajax({
-	    			url: opts.info.handler,
-	    			type: "POST",
-	    			dataType: 'json',
-	    			contentType: 'application/json',
-	    			data: JSON.stringify(json),
-	    			success: function success(data) {
-	    				if ('undefined' != typeof(data.error)) {
-	    					alert('There was an error attempting to save the questionnaire: '+data.error);
-	    					$('#finishModal').find('button').prop('disabled', false);
-	    					return;
-	    				}
-	    	    		callback();
-	    			}
-	    		}).fail(function(data) {
-	    		    callback();
-	    		});
+                webkit.messageHandlers.buttonAction.postMessage(JSON.stringify(json));
+                callback();
 	    		
 	    	};
 	    	
@@ -152,19 +137,14 @@
 	    				$finishModal.modal('hide');
 	    			});
 	    			$finishModal.find('button:last').off('click').on('click', function() {
-	    				$finishModal.find('button').prop('disabled', true);
-	    				$('#finishModalSpinnerWrapper').html('<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
-	    				testConnection(function() {
-		    				finish(function() {
-		    					$finishModal.find('button').prop('disabled', false);
-		    					$('#finishModalSpinnerWrapper').html('');
-		    					document.location.href = 'completed.html';
-		    				});
-	    				}, function() {
-	    					$('#finishModal').find('button').prop('disabled', false);
-	    					$('#finishModalSpinnerWrapper').html('');
-	    					alert("It appears you aren't connected to the network. Please reconnect and try again.");
-	    				});
+                        $finishModal.find('button').prop('disabled', true);
+                        $('#finishModalSpinnerWrapper').html('<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
+                        setTimeout(function() {
+                            finish(function() {
+                                $finishModal.find('button').prop('disabled', false);
+                                $('#finishModalSpinnerWrapper').html('');
+                            });
+                        }, 1000);
 	    			});
 	    			break;
 	    		case 'save_for_later':
