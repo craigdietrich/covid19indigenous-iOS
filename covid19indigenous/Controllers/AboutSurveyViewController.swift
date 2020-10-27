@@ -77,6 +77,18 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
                 let parentVC = self.parent as! SurveyViewController
                 parentVC.switchSegmentedControl(to: 1)
                 break;
+            case "deleteUserData":
+                let refreshAlert = UIAlertController(title: "Reset Data", message: "This will delete your participant code, any saved questionnaires and answers, and any downloaded media. Are you sure you wish to reset data?", preferredStyle: UIAlertController.Style.alert)
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    self._wipeContentFolder()
+                    self._wipeQuestionnaireFolder()
+                    self._wipeUserDefaults()
+                }))
+                refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                    // Nothing
+                }))
+                present(refreshAlert, animated: true, completion: nil)
+                break;
             default:
                 if let url = URL(string: response) {
                     let config = SFSafariViewController.Configuration()
@@ -85,6 +97,47 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
                     present(vc, animated: true)
                 }
         }
+        
+    }
+    
+    func _wipeContentFolder() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("content")
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                print("Removing " + file.path)
+                try FileManager.default.removeItem(atPath: file.path)
+            }
+            print("Emptied content folder")
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func _wipeQuestionnaireFolder() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            for file in contents {
+                print("Removing " + file.path)
+                try FileManager.default.removeItem(atPath: file.path)
+            }
+            print("Emptied questionnaire folder")
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func _wipeUserDefaults() {
+        
+        UserDefaults.standard.removeObject(forKey: "SurveyHasConsented")
+        print("Wiped user defaults")
         
     }
     

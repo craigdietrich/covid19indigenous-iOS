@@ -140,6 +140,8 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     
     func doLoadQuestionnaire() {
         
+        // TODO: get updated questionnaires is on internet
+        
         if (!checkIfQuestionnairesExist()) {
         
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "EnterCodeVC") as! EnterCodeViewController
@@ -227,6 +229,8 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     }
     
     private func launchQuestionnaire() {
+
+        webView.load(URLRequest(url: URL(string:"about:blank")!))
         
         questionnaireHasLaunched = true
         

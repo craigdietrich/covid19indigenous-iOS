@@ -18,10 +18,6 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _wipeContentFolder()
-        _wipeQuestionnaireFolder()
-        _wipeUserDefaults()
-        
         doLayout()
         
         let notificationCenter = NotificationCenter.default
@@ -113,47 +109,6 @@ class FirstViewController: UIViewController {
             print(error)
         }
         return false
-        
-    }
-    
-    func _wipeContentFolder() {
-        
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("content")
-        do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            for file in contents {
-                print("Removing " + file.path)
-                try FileManager.default.removeItem(atPath: file.path)
-            }
-            print("Emptied content folder")
-        } catch {
-            print(error)
-        }
-        
-    }
-    
-    func _wipeQuestionnaireFolder() {
-        
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
-        do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            for file in contents {
-                print("Removing " + file.path)
-                try FileManager.default.removeItem(atPath: file.path)
-            }
-            print("Emptied questionnaire folder")
-        } catch {
-            print(error)
-        }
-        
-    }
-    
-    func _wipeUserDefaults() {
-        
-        UserDefaults.standard.removeObject(forKey: "SurveyHasConsented")
-        print("Wiped user defaults")
         
     }
 
