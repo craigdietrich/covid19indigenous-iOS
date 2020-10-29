@@ -31,18 +31,29 @@
     	
     	var doSlider = function(data) {
     		
+    		if ('undefined' == typeof(window['slider_count'])) window['slider_count'] = 0;
+    		window['slider_count']++;
+    		
     		var html = '';
-    		html += '<div class="form-group" style="position:relative;margin-bottom:60px;">';
+    		html += '<p class="description more-margin">To move the slider below, click the circle and drag or click anywhere on the bar</p>';
+    		html += '<div class="form-group">';
+    		html += '<div class="row">';
+    		html += '<div class="col-12 col-md-10">';
     		html += '  <input type="range" ';
-    		if ('undefined' != typeof(data.min) && 'undefined' != typeof(data.max)) html += 'min="'+data.min+'" max="'+data.max+'" ';
+    		html += 'min="0" max="6" value="0" ';
     		html += '/>';
+    		/*
     		if ('undefined' != typeof(data.min_title) && 'undefined' != typeof(data.max_title)) {
     			html += '<div class="float-right" style="padding-top:10px;">'+data.max_title+'</div>';
     			html += '<div class="float-left" style="padding-top:10px;">'+data.min_title+'</div>';
     		}
-    		if ('undefined' != typeof(data.mid_title)) {
-    			html += '<div style="padding-top:10px;position:absolute;left:0px;bottom:-34px;width:100%;">'+data.mid_title+'</div>';
-    		}
+    		*/
+    		html += '<div class="selected_value" style="font-weight:bold;padding-top:10px;">No answer</div>';
+    		html += '</div>';
+    		html += '<div class="col-12 col-md-2 pt-4 pt-md-0">';
+    		html += "<label style=\"font-weight:bold;\">Don't know / Not applicable<br />"+'<input type="radio" name="dk-na-'+window['slider_count']+'" value="dk" /></label>';
+    		html += '</div>';
+    		html += '</div>';
     		html += '</div>';
     		return doWrapper(data, html);
     		
@@ -86,6 +97,7 @@
     		window['likert_count']++;
     		
     		var html = '';
+    		html += '<p class="description more-margin">To move the sliders below, click the circles and drag or click anywhere on the bars</p>';
     		html += '<table class="likert-slider-table">';
     		html += '<tbody>';
     		if ('string' == typeof(data.answers)) data.answers = data.answers.split(';');
@@ -102,14 +114,11 @@
         		html += '<div class="row">';
         		html += '<div class="col-12 col-md-10">';
         		html += '<span class="answer">'+data.answers[j]+'</span><br />';
-        		html += '<input type="range" class="range_low" value="'+Math.ceil(prompts.length/2)+'" min="1" max="'+prompts.length+'" name="range_'+window['likert_count']+'_'+j+'" data-prompts="'+prompts.join(';')+'" />';
+        		html += '<input type="range" class="range_low" value="0" min="0" max="'+(prompts.length + 1)+'" name="range_'+window['likert_count']+'_'+j+'" data-prompts="'+prompts.join(';')+'" />';
         		html += '<br /><b></b>';
         		html += '</div>';
-        		html += '<div class="col-6 col-md-1">';
-        		html += "<label>Don't know<br />"+'<input type="radio" name="dk-na-'+window['likert_count']+'-'+j+'" value="dk" /></label>';
-        		html += '</div>';
-        		html += '<div class="col-6 col-md-1">';
-        		html += "<label>Not applicable<br />"+'<input type="radio" name="dk-na-'+window['likert_count']+'-'+j+'" value="na" /></label>';
+        		html += '<div class="col-12 col-md-2 mt-4 mt-md-0">';
+        		html += "<label>Don't know / Not applicable<br />"+'<input type="radio" name="dk-na-'+window['likert_count']+'-'+j+'" value="dk" /></label>';
         		html += '</div>';
         		html += '</div>';
         		html += '</td>';
@@ -124,13 +133,15 @@
     	var doRanked = function(data) {
     		
     		var html = '';
-    		html += '<p class="description">Drag and drop items to rank with the most important item at the top and the least important item at the bottom</p>';
+    		html += '<p class="description">Drag and drop items to rank with the most <i>important item</i> at the <i>top</i> and the <i>least important</i> item at the <i>bottom</i></p>';
+    		html += '<p><b>Most important</b></p>';
     		html += '<ul class="list-group ranked-choice">';
     		if ('string' == typeof(data.answers)) data.answers = data.answers.split(';');
     		for (var j = 0; j < data.answers.length; j++) {
     			html += '<li class="list-group-item" data-index="'+j+'">'+data.answers[j]+'</li>';
     		}
     		html += '</ul>';
+    		html += '<p class="mt-3"><b>Least important</b></p>';
     		return doWrapper(data, html);
     		
     	}

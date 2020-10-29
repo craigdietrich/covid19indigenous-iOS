@@ -18,11 +18,18 @@
 					var value = $range.val();
 					var prompts = $range.data('prompts').split(';');
 					var prompt = prompts[parseInt(value) - 1];
-					$range.removeClass('range-low').removeClass('range-med').removeClass('range-neu');
-					if (value <= prompts.length / 2) {
+					$range.removeClass('range-zero').removeClass('range-low').removeClass('range-med').removeClass('range-neu');
+					if (value == 0) {
+						$range.addClass('range-zero');
+						prompt = 'No answer';
+					} else if (value <= prompts.length / 2) {
 						$range.addClass('range-low');
-					} else if (value == Math.ceil(prompts.length / 2)) {
+					} else if (value == 3) {
 						$range.addClass('range-med');
+					} else if (value == 6) {
+						$range.addClass('range-neu');
+						prompt = "Don't know / Not applicable";
+						$range.closest('tr').find('input[type="radio"]').prop('checked', true);
 					}
 					$range.nextAll('b').text(prompt);
 	    		});
@@ -40,7 +47,7 @@
 	    	});
 	    	$this.find('input[type="radio"]').on('click', function() {
 	    		var $radio = $(this);
-	    		$radio.closest('tr').find('input[type="range"]').val(3);  // TODO: magic number 
+	    		$radio.closest('tr').find('input[type="range"]').val(6); 
 	    	});
 	    	$this.find('input[type="range"]').on('input', doRangeColorsAndLabels); 
 	    	$this.find('input[type="range"]').on('input', broadcastValueChange);

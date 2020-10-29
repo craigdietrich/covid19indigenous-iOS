@@ -36,7 +36,8 @@ aside .title small {font-size:1.5rem; color:#555555;}
 .sub_questions .question {margin-bottom:0px;}
 .question .title {font-size:1.75rem; margin:0px 0px 15px 0px;}
 .sub_questions .title {font-size:1.25rem;}
-.question .description {font-size:1.35rem; color:#888888; margin:0px 0px 15px 0px;}
+.question .description {font-size:1.35rem; color:#897474; margin:0px 0px 15px 0px;}
+.question .description.more-margin {margin-bottom:30px;}
 .input-title {margin-bottom:15px;}
 .options .row:not(:first-of-type) {padding-top:8px;}
 .options .row:not(:last-of-type) {padding-bottom:8px;}
@@ -109,6 +110,8 @@ input[type="range"] {
 }
 input[type="range"]::-webkit-slider-thumb {-webkit-appearance: none; appearance: none; width: 35px; height: 35px; border-radius: 50%; background: #4CAF50; cursor: pointer;}
 input[type="range"]::-moz-range-thumb {width: 35px; height: 35px; border-radius: 50%; background:#4CAF50; cursor: pointer;}
+.range-zero::-webkit-slider-thumb {background: #007bff !important;}
+.range-zero::-moz-range-thumb {background: #007bff !important;}
 .range-low::-webkit-slider-thumb {background: #ad4d4d !important;}
 .range-low::-moz-range-thumb {background: #ad4d4d !important;}
 .range-med::-webkit-slider-thumb {background: #aeab4b !important;}
