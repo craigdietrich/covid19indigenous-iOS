@@ -14,13 +14,17 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var webViewWrapper: UIView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var updatingQuestionnairesLabel: UILabel!
     var webView: WKWebView!
     
+    var hasGrabbedQuestionnaire: Bool = false
     var questionnaireHasLaunched: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updatingQuestionnairesLabel.isHidden = true
+        
         let textAttribNormal = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         let textAttribSelected = [NSAttributedString.Key.foregroundColor: UIColor(red: 45.0/255, green: 162.0/255, blue: 208.0/255, alpha: 1.0)]
         segmentedControl.setTitleTextAttributes(textAttribNormal, for: .normal)
@@ -55,6 +59,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         guard let jsonStr = message.body as? String else { return }
         
         webView.load(URLRequest(url: URL(string:"about:blank")!))
+        hasGrabbedQuestionnaire = false
         questionnaireHasLaunched = false
         
         _saveJsonStr(jsonStr: jsonStr)
@@ -140,17 +145,30 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     
     func doLoadQuestionnaire() {
         
-        // TODO: get updated questionnaires is on internet
+        updatingQuestionnairesLabel.isHidden = true
         
-        if (!checkIfQuestionnairesExist()) {
-        
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "EnterCodeVC") as! EnterCodeViewController
-            vc.callbackClosure = { [weak self] in
-                self?.callMeFromEnterCodeVC()
+        if (!hasGrabbedQuestionnaire) {
+            
+            hasGrabbedQuestionnaire = true
+            
+            if (!checkIfQuestionnairesExist()) {
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "EnterCodeVC") as! EnterCodeViewController
+                vc.callbackClosure = { [weak self] in
+                    self?.callMeFromEnterCodeVC()
+                }
+                self.definesPresentationContext = true
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated: true, completion: nil)
+            
+            } else {
+            
+                updatingQuestionnairesLabel.isHidden = false
+                let code = UserDefaults.standard.string(forKey: "UserEnteredCode")!
+                print("Going out and getting the questionnaires for code: " + code)
+                doCode(code: code)
+                
             }
-            self.definesPresentationContext = true
-            vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true, completion: nil)
             
         } else if (!checkIfConsentHasPassed()) {
             
@@ -250,6 +268,108 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
             jsonString = jsonString.replacingOccurrences(of: "'", with: "\\'")
             jsonString = jsonString.replacingOccurrences(of: "\"", with: #"\""#)
             webView.evaluateJavaScript("getJsonFromSystem('\(jsonString)')", completionHandler: nil)
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func doCode(code: String) {
+        
+        if !Reachability.isConnectedToNetwork() {
+            print("Not on internet, so continuing")
+            doLoadQuestionnaire()
+            return
+        }
+        
+        URLCache.shared.removeAllCachedResponses()
+        let api = "https://covid19indigenous.ca/dashboard/pages/app?key=" + code + "&t=" + String(NSDate().timeIntervalSince1970)
+        if let url = URL(string: api) {
+           let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else {
+                    print("error=\(String(describing: error))")
+                    DispatchQueue.main.async {
+                        self.doLoadQuestionnaire()
+                    }
+                    return
+                }
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    print("response = \(String(describing: response))")
+                    DispatchQueue.main.async {
+                        self.doLoadQuestionnaire()
+                    }
+                }
+                do {
+                    if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
+                        DispatchQueue.main.async {
+                            self.parseJson(json: convertedJsonIntoDict)
+                        }
+                   }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.doLoadQuestionnaire()
+                    }
+                }
+            }
+            task.resume()
+        }
+        
+    }
+    
+    func parseJson(json: NSDictionary) {
+        
+        if let error = json.value(forKey: "error") as? String {
+            print(error)
+            doLoadQuestionnaire()
+            return
+        }
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json, options: [])
+        let jsonString = String(data: jsonData!, encoding: .utf8)
+        saveJsonString(json: jsonString!)
+        
+    }
+    
+    func saveJsonString(json: String) {
+        
+        let jsonFilename = "questionnaires.json"
+        
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let filePath = contentUrl.appendingPathComponent(jsonFilename)
+        
+        do {
+            if !FileManager.default.fileExists(atPath: filePath.path) {
+                try FileManager.default.createDirectory(at: filePath, withIntermediateDirectories: true, attributes: nil)
+            }
+            _deleteQuestionnaires()
+            try json.write(to: filePath, atomically: true, encoding: .utf8)
+            print("Wrote new JSON to file")
+            //let contents = try String(contentsOfFile: filePath.path)
+            //print(contents)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        doLoadQuestionnaire()
+        
+    }
+    
+    func _deleteQuestionnaires() {
+        
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+            let questionnairesFiles = contents.filter{ $0.path.contains("questionnaires") }
+            for file in questionnairesFiles {
+                print("Deleting: ")
+                print(file.path)
+                try FileManager.default.removeItem(atPath: file.path)
+            }
+            print("Removed existing questionnaires file")
         } catch {
             print(error)
         }

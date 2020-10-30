@@ -26,6 +26,15 @@ class SaveAnswersViewController: UIViewController {
         
         uploadingLabel.text = "Checking Internet connection..."
         
+        let seconds = 3.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.go()
+        }
+        
+    }
+    
+    func go() {
+        
         if (Reachability.isConnectedToNetwork()) {
             uploadingLabel.text = "Uploading answers..."
             _doSendAnswers()
@@ -68,8 +77,12 @@ class SaveAnswersViewController: UIViewController {
             print(error)
         }
         
-        dismiss(animated: true, completion: nil)
-        callbackClosure?()
+        
+        let seconds = 3.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.dismiss(animated: true, completion: nil)
+            self.callbackClosure?()
+        }
         
     }
     

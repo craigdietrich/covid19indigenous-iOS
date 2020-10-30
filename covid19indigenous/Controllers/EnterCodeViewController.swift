@@ -18,6 +18,8 @@ class EnterCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        codeBox.autocorrectionType = .no
+        
     }
     
     func closeAndLoadQuestionnaire() {
@@ -85,7 +87,7 @@ class EnterCodeViewController: UIViewController {
                 do {
                     if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
                         DispatchQueue.main.async {
-                            self.parseJson(json: convertedJsonIntoDict)
+                            self.parseJson(json: convertedJsonIntoDict, code: code)
                         }
                    }
                 } catch let error as NSError {
@@ -100,7 +102,7 @@ class EnterCodeViewController: UIViewController {
         
     }
     
-    func parseJson(json: NSDictionary) {
+    func parseJson(json: NSDictionary, code: String) {
         
         codeSubmitButton.isEnabled = true
         
@@ -108,6 +110,8 @@ class EnterCodeViewController: UIViewController {
             doShowExpressedError(error: error)
             return
         }
+        
+        UserDefaults.standard.set(code, forKey: "UserEnteredCode")
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: [])
         let jsonString = String(data: jsonData!, encoding: .utf8)
@@ -181,8 +185,10 @@ class EnterCodeViewController: UIViewController {
         let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
         do {
             let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            let jsonFiles = contents.filter{ $0.pathExtension == "json" }
-            for file in jsonFiles {
+            let questionnairesFiles = contents.filter{ $0.path.contains("questionnaires") }
+            for file in questionnairesFiles {
+                print("Deleting: ")
+                print(file.path)
                 try FileManager.default.removeItem(atPath: file.path)
             }
             print("Removed existing questionnaires file")

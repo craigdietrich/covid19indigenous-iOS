@@ -257,20 +257,32 @@
                                     <segue destination="vfu-JU-XEQ" kind="embed" id="alY-vU-Hrw"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mih-Rh-NH0">
+                                <rect key="frame" x="0.0" y="74" width="414" height="739"/>
+                                <string key="text">Updating questionnaires
+from server...</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.86666666670000003" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6Oq-YD-0mA" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="0eb-tm-7AY"/>
                             <constraint firstItem="SfG-lD-uhh" firstAttribute="top" secondItem="6Oq-YD-0mA" secondAttribute="bottom" id="6O8-Hw-Tub"/>
                             <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="6Oq-YD-0mA" secondAttribute="trailing" id="6eu-pk-QHy"/>
+                            <constraint firstItem="mih-Rh-NH0" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="95F-UI-Rz9"/>
                             <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="SfG-lD-uhh" secondAttribute="trailing" id="A2O-Pl-tf4"/>
                             <constraint firstItem="SfG-lD-uhh" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="ASq-Bj-nlF"/>
                             <constraint firstItem="40K-Hh-Xlv" firstAttribute="top" secondItem="6Oq-YD-0mA" secondAttribute="bottom" id="C8x-ew-4dj"/>
+                            <constraint firstItem="mih-Rh-NH0" firstAttribute="top" secondItem="6Oq-YD-0mA" secondAttribute="bottom" id="Eo4-Ys-MoF"/>
                             <constraint firstItem="x19-4W-FXU" firstAttribute="bottom" secondItem="40K-Hh-Xlv" secondAttribute="bottom" id="FEd-OU-MAj"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="bottom" secondItem="mih-Rh-NH0" secondAttribute="bottom" id="Fat-Dv-bBn"/>
                             <constraint firstItem="40K-Hh-Xlv" firstAttribute="leading" secondItem="x19-4W-FXU" secondAttribute="leading" id="I7U-so-NgY"/>
                             <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="40K-Hh-Xlv" secondAttribute="trailing" id="QIU-kj-Q4p"/>
                             <constraint firstItem="6Oq-YD-0mA" firstAttribute="top" secondItem="x19-4W-FXU" secondAttribute="top" id="Xka-uV-163"/>
                             <constraint firstItem="x19-4W-FXU" firstAttribute="bottom" secondItem="SfG-lD-uhh" secondAttribute="bottom" id="kCl-vv-Hqy"/>
+                            <constraint firstItem="x19-4W-FXU" firstAttribute="trailing" secondItem="mih-Rh-NH0" secondAttribute="trailing" id="um1-wK-8Le"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x19-4W-FXU"/>
                     </view>
@@ -279,6 +291,7 @@
                     <connections>
                         <outlet property="containerView" destination="40K-Hh-Xlv" id="I7j-Nf-5Kj"/>
                         <outlet property="segmentedControl" destination="6Oq-YD-0mA" id="X5Q-hb-Zya"/>
+                        <outlet property="updatingQuestionnairesLabel" destination="mih-Rh-NH0" id="qad-DN-wp9"/>
                         <outlet property="webViewWrapper" destination="SfG-lD-uhh" id="gcf-LF-06r"/>
                     </connections>
                 </viewController>
@@ -330,7 +343,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="bax-pN-fq3"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Slx-72-pCZ">
                                                 <rect key="frame" x="0.0" y="275" width="248" height="20"/>

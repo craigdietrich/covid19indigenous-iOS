@@ -243,7 +243,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
             titleAttrString.addAttribute(.paragraphStyle, value:titleStyle, range:NSMakeRange(0, titleAttrString.length))
             cell.titleLabel.attributedText = titleAttrString;
             let titleNumLines = cell.titleLabel.calculateMaxLines(actualWidth: cellWidth)
-            totalHeight = totalHeight + (CGFloat(titleNumLines) * 33.0)
+            totalHeight = totalHeight + (CGFloat(titleNumLines) * 45.0)
         }
         
         if let description = row["description"] {
@@ -254,7 +254,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
             descAttrString.addAttribute(.paragraphStyle, value:descStyle, range:NSMakeRange(0, descAttrString.length))
             cell.descriptionLabel.attributedText = descAttrString;
             let descNumLines = cell.descriptionLabel.calculateMaxLines(actualWidth: cellWidth)
-            totalHeight = totalHeight + (CGFloat(descNumLines) * 28.0)
+            totalHeight = totalHeight + (CGFloat(descNumLines) * 24.0)
         }
         
         if let publishedDate = row["date"] {
@@ -266,13 +266,13 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
                  let todaysDate = dateFormatter.string(from: date)
                  cell.publishedLabel.text = "Published: " + todaysDate
                  let dateNumLines = cell.publishedLabel.calculateMaxLines(actualWidth: cellWidth)
-                 totalHeight = totalHeight + (CGFloat(dateNumLines) * 32.0)
+                 totalHeight = totalHeight + (CGFloat(dateNumLines) * 45.0)
              }
          }
         
         if let youtube = row["url"] {
             if youtube.count > 0 {
-                 totalHeight = totalHeight + 40.0  // Requires-internet label
+                 totalHeight = totalHeight + 45.0  // Requires-internet label
             }
         }
         
