@@ -149,7 +149,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         
         if (!hasGrabbedQuestionnaire) {
             
-            hasGrabbedQuestionnaire = true
+            hasGrabbedQuestionnaire = true  // TODO: doesn't get reset if the user dumps all data
             
             if (!checkIfQuestionnairesExist()) {
                 
@@ -159,7 +159,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
                 }
                 self.definesPresentationContext = true
                 vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: true, completion: nil)
+                self.present(vc, animated: true, completion: nil)  // VC needs to call back somehow
             
             } else {
             
