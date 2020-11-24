@@ -19,7 +19,7 @@ class EnterCodeViewController: UIViewController {
         super.viewDidLoad()
 
         codeBox.autocorrectionType = .no
-        
+            
     }
     
     func closeAndLoadQuestionnaire() {
