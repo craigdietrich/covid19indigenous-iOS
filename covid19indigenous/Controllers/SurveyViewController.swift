@@ -147,28 +147,26 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         
         updatingQuestionnairesLabel.isHidden = true
         
-        if (!hasGrabbedQuestionnaire) {
+        if (!checkIfQuestionnairesExist()) {
             
             hasGrabbedQuestionnaire = true  // TODO: doesn't get reset if the user dumps all data
             
-            if (!checkIfQuestionnairesExist()) {
-                
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "EnterCodeVC") as! EnterCodeViewController
-                vc.callbackClosure = { [weak self] in
-                    self?.callMeFromEnterCodeVC()
-                }
-                self.definesPresentationContext = true
-                vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: true, completion: nil)  // VC needs to call back somehow
-            
-            } else {
-            
-                updatingQuestionnairesLabel.isHidden = false
-                let code = UserDefaults.standard.string(forKey: "UserEnteredCode")!
-                print("Going out and getting the questionnaires for code: " + code)
-                doCode(code: code)
-                
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "EnterCodeVC") as! EnterCodeViewController
+            vc.callbackClosure = { [weak self] in
+                self?.callMeFromEnterCodeVC()
             }
+            self.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+            
+        } else if (!hasGrabbedQuestionnaire) {
+            
+            hasGrabbedQuestionnaire = true  // TODO: doesn't get reset if the user dumps all data
+            
+            updatingQuestionnairesLabel.isHidden = false
+            let code = UserDefaults.standard.string(forKey: "UserEnteredCode")!
+            print("Going out and getting the questionnaires for code: " + code)
+            doCode(code: code)
             
         } else if (!checkIfConsentHasPassed()) {
             
