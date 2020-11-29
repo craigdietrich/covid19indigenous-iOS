@@ -73,7 +73,7 @@ class EnterCodeViewController: UIViewController {
                 guard let data = data, error == nil else {
                     print("error=\(String(describing: error))")
                     DispatchQueue.main.async {
-                        self.doShowGenericError()
+                        self.doShowGenericError(error: String(describing: error))
                     }
                     return
                 }
@@ -81,7 +81,7 @@ class EnterCodeViewController: UIViewController {
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
                     print("response = \(String(describing: response))")
                     DispatchQueue.main.async {
-                        self.doShowGenericError()
+                        self.doShowGenericError(error: String(describing: response))
                     }
                 }
                 do {
@@ -93,7 +93,7 @@ class EnterCodeViewController: UIViewController {
                 } catch let error as NSError {
                     print(error.localizedDescription)
                     DispatchQueue.main.async {
-                        self.doShowGenericError()
+                        self.doShowGenericError(error: "Could not parse JSON")
                     }
                 }
             }
@@ -153,9 +153,9 @@ class EnterCodeViewController: UIViewController {
         
     }
     
-    func doShowGenericError() {
+    func doShowGenericError(error: String) {
         
-        let alertController = UIAlertController(title: "Error", message: "There was a problem attemting to send the code to the server. Please try again", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: "There was a problem attemting to send the code to the server: " + error + ". Please try again", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
             print("Ok button tapped");
         }
