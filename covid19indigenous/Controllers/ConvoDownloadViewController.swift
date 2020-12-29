@@ -77,7 +77,8 @@ class ConvoDownloadViewController: UIViewController {
         
         print("Downloading manifest...")
         URLCache.shared.removeAllCachedResponses()
-        let url = URL(string: "https://covid19indigenous.ca/feeds/content/manifest.json?t=" + String(NSDate().timeIntervalSince1970))!
+        //let url = URL(string: "https://covid19indigenous.ca/feeds/content/manifest.json?t=" + String(NSDate().timeIntervalSince1970))!
+        let url = URL(string: "https://craigdietrich.com/projects/proxies/covid19indigenous/content/manifest.json?t=" + String(NSDate().timeIntervalSince1970))!
         let downloadTask = URLSession.shared.downloadTask(with: url) {
             urlOrNil, responseOrNil, errorOrNil in
             guard let fileURL = urlOrNil else { return }
@@ -134,7 +135,8 @@ class ConvoDownloadViewController: UIViewController {
         // Get filename from JSON
         let article = articles[row]
         let thumbnailFilename: String = article["thumbnail_filename"]!
-        let urlString:String = "https://covid19indigenous.ca/feeds/content/" + thumbnailFilename
+        //let urlString:String = "https://covid19indigenous.ca/feeds/content/" + thumbnailFilename
+        let urlString:String = "https://craigdietrich.com/projects/proxies/covid19indigenous/content/" + thumbnailFilename
         print("Attempting to download thumbnail: " + urlString)
         
         // Check to see if it esists in the filesystem already
@@ -194,7 +196,8 @@ class ConvoDownloadViewController: UIViewController {
             _downloadImage(articles: articles, row: row)
             return
         }
-        let urlString:String = "https://covid19indigenous.ca/feeds/content/" + videoFilename
+        //let urlString:String = "https://covid19indigenous.ca/feeds/content/" + videoFilename
+        let urlString:String = "https://craigdietrich.com/projects/proxies/covid19indigenous/content/" + videoFilename
         print("Attempting to download video: " + urlString)
         
         // Check to see if it esists in the filesystem already
@@ -255,7 +258,8 @@ class ConvoDownloadViewController: UIViewController {
             _downloadThumbnail(articles: articles, row: row + 1)
             return
         }
-        let urlString:String = "https://covid19indigenous.ca/feeds/content/" + imageFilename
+        //let urlString:String = "https://covid19indigenous.ca/feeds/content/" + imageFilename
+        let urlString:String = "https://craigdietrich.com/projects/proxies/covid19indigenous/content/" + imageFilename
         print("Attempting to download image: " + urlString)
         
         // Check to see if it esists in the filesystem already
