@@ -14,6 +14,7 @@ class ConversationsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var linkLabel: UILabel!
     @IBOutlet weak var publishedLabel: UILabel!
     @IBOutlet weak var requiresInternetLabel: UILabel!
     @IBOutlet weak var requiresInternetHeight: NSLayoutConstraint!

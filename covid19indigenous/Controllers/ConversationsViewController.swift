@@ -276,6 +276,14 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
             }
         }
         
+        if let linkUrl = row["link"] {
+            if linkUrl.count > 0 {
+                cell.linkLabel.text = linkUrl;
+                let linkNumLines = cell.linkLabel.calculateMaxLines(actualWidth: cellWidth)
+                totalHeight = totalHeight + (CGFloat(linkNumLines) * 24.0)
+            }
+        }
+        
         let imageHeight = (cellWidth * 9) / 16
         totalHeight = totalHeight + CGFloat(imageHeight)
         
@@ -466,7 +474,39 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
             cell.requiresInternetBufferHeight.constant = 0
          }
         
+        cell.linkLabel.isHidden = true
+         if let linkUrl = row["link"] {
+            if (linkUrl.count > 0) {
+                cell.linkLabel.isHidden = false
+                cell.linkLabel.text = linkUrl
+                let linkLabelTap = UITapGestureRecognizer(target: self, action: #selector(linkLabelTapped))
+                cell.linkLabel.isUserInteractionEnabled = true
+                cell.linkLabel.addGestureRecognizer(linkLabelTap)
+            }
+         }
+        
          return cell;
+        
+    }
+    
+    @IBAction func linkLabelTapped(sender: UITapGestureRecognizer) {
+        
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
+        let view: UILabel = sender.view as! UILabel
+        
+        let downloadURL = view.text!
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if let url = URL(string: downloadURL) {
+                let config = SFSafariViewController.Configuration()
+                config.entersReaderIfAvailable = true
+                let vc = SFSafariViewController(url: url, configuration: config)
+                self.present(vc, animated: true)
+            }
+        }
+
         
     }
     
