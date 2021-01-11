@@ -507,7 +507,6 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
             }
         }
 
-        
     }
     
     // https://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
