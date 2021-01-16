@@ -21,9 +21,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow to access camera.</string>
+	<string>The app requests access to the camera to allow images and video to serve as answers to some survey questions.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>The app requests access to the microphone to allow video to serve as answers to some survey questions.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow to access photo library.</string>
+	<string>The app requests access to the photo library to allow images and video to serve as answers to some survey questions.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
