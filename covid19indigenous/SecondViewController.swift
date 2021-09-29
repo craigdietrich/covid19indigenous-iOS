@@ -58,7 +58,7 @@ class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigati
                 tabBarController?.selectedIndex = 2
                 break;
             case "goToWebsite":
-                if let url = URL(string: "https://covid19indigenous.ca") {
+                if let url = URL(string: "https://ourdataindigenous.ca") {
                     let config = SFSafariViewController.Configuration()
                     config.entersReaderIfAvailable = true
                     let vc = SFSafariViewController(url: url, configuration: config)
