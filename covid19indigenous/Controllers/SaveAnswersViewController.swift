@@ -88,12 +88,13 @@ class SaveAnswersViewController: UIViewController {
     
     func _doSendAnswer(jsonResult: Any, filePath: String) {
         
-        let url = URL(string: "https://covid19indigenous.ca/dashboard/pages/handler")!
+        let url = URL(string: "https://ourdataindigenous.ca/dashboard/pages/handler")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonResult, options: [])
         request.httpBody = jsonData
 
+        print("Sending request...")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")

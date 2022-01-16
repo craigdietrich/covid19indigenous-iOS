@@ -18,29 +18,30 @@
 <meta property="og:locale:alternate" content="fr_CA" />
 <meta property="og:site_name" content="COVID-19 Indigenous Questionnaire" />
 <link type="text/css" rel="stylesheet" href="common/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" href="common/css/main.css?v=19" />
+<link type="text/css" rel="stylesheet" href="common/css/main.css?v=20" />
 <script type="text/javascript" src="common/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="common/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="common/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="common/js/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src="common/js/jquery.detectmobilebrowser.js"></script>
 <script type="text/javascript" src="common/js/RecordRTC.js"></script>
-<script type="text/javascript" src="common/js/jquery.feedback.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.action.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.validate.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.questionnaire.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.question.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.intermission.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.text-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.sentence-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.range-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.radio-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.check-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.consent-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.open-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.likert-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.likert-slider-selector.js?v=19"></script>
-<script type="text/javascript" src="common/js/jquery.ranked-selector.js?v=19"></script>
+<script type="text/javascript" src="common/js/jquery.feedback.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.action.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.validate.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.questionnaire.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.question.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.intermission.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.text-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.sentence-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.range-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.radio-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.check-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.consent-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.noyes-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.open-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.likert-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.likert-slider-selector.js?v=20"></script>
+<script type="text/javascript" src="common/js/jquery.ranked-selector.js?v=20"></script>
 <script>
 $(document).ready(function() {
 	$('article:first').empty().append('<div class="spinner-wrapper"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
@@ -54,12 +55,16 @@ function getJsonFromSystem(jsonString) {
     } catch(err) {
         $('article:first').empty().append('<div class="spinner-wrapper">'+err+'</div>');
     }
-    if (parseInt(json.has_taken_baseline)) {
-        var questionnaire = json.interval;
-        $('#welcome_interval').modal();
+    if ('undefined' != typeof(json.standalone)) {
+        var questionnaire = json.standalone;
     } else {
-        var questionnaire = json.baseline;
-        $('#welcome_baseline').modal();
+        if (parseInt(json.has_taken_baseline)) {
+            var questionnaire = json.interval;
+            $('#welcome_interval').modal();
+        } else {
+            var questionnaire = json.baseline;
+            $('#welcome_baseline').modal();
+        }
     }
     showQuestionnaire(questionnaire, json.key);
 }
