@@ -24,6 +24,12 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>The app requests access to the camera to allow images and video to serve as answers to some survey questions.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The app requests access to location services in order to activate the auto-fill feature of the latitude-longitude question type.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>The app requests access to location services in order to activate the auto-fill feature of the latitude-longitude question type.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The app requests access to location services in order to activate the auto-fill feature of the latitude-longitude question type.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>The app requests access to the microphone to allow video to serve as answers to some survey questions.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
