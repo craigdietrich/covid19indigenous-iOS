@@ -17,6 +17,7 @@
 		46AAF00225152D1B0065275B /* completed.html in Resources */ = {isa = PBXBuildFile; fileRef = 46AAEFFF25152D1A0065275B /* completed.html */; };
 		46AAF00325152D1B0065275B /* common in Resources */ = {isa = PBXBuildFile; fileRef = 46AAF00025152D1B0065275B /* common */; };
 		46AAF00525157A110065275B /* EnterCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAF00425157A110065275B /* EnterCodeViewController.swift */; };
+		46B4E051288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B4E050288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png */; };
 		46D655A024F8A95500ED419E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D6559F24F8A95500ED419E /* AppDelegate.swift */; };
 		46D655A224F8A95500ED419E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A124F8A95500ED419E /* SceneDelegate.swift */; };
 		46D655A424F8A95500ED419E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655A324F8A95500ED419E /* FirstViewController.swift */; };
@@ -66,6 +67,7 @@
 		46AAEFFF25152D1A0065275B /* completed.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = completed.html; sourceTree = "<group>"; };
 		46AAF00025152D1B0065275B /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		46AAF00425157A110065275B /* EnterCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeViewController.swift; sourceTree = "<group>"; };
+		46B4E050288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OurDataIndigenous Logo w1000.png"; sourceTree = "<group>"; };
 		46D6559C24F8A95500ED419E /* covid19indig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19indig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D6559F24F8A95500ED419E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46D655A124F8A95500ED419E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		46D655B524F99AD200ED419E /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				46B4E050288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png */,
 				46F77C2D252A78E20002F96B /* bubble.png */,
 				46F77C2B252A78E10002F96B /* bubble@2x.png */,
 				46F77C2C252A78E10002F96B /* bubble@3x.png */,
@@ -301,6 +304,7 @@
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
 				46F77C2E252A78E20002F96B /* bubble@2x.png in Resources */,
+				46B4E051288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
 				46F77C24252A76E40002F96B /* question@2x.png in Resources */,
 				46F77C22252A76E40002F96B /* question@3x.png in Resources */,
