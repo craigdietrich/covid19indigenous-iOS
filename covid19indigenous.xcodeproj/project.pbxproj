@@ -36,6 +36,7 @@
 		46D655CD24FDC57700ED419E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655CC24FDC57700ED419E /* Constants.swift */; };
 		46D655CF24FEC4CE00ED419E /* ConvoDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655CE24FEC4CE00ED419E /* ConvoDownloadViewController.swift */; };
 		46D655D124FEEF1D00ED419E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655D024FEEF1D00ED419E /* Reachability.swift */; };
+		46F40CF82891EBA40009E087 /* OurDataIndigenous LogoText w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F40CF72891EBA40009E087 /* OurDataIndigenous LogoText w1000.png */; };
 		46F77C0E252918E30002F96B /* about.css in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C0D252918E20002F96B /* about.css */; };
 		46F77C102529192D0002F96B /* aboutUs.html in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C0F2529192D0002F96B /* aboutUs.html */; };
 		46F77C12252A69990002F96B /* AboutSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F77C11252A69990002F96B /* AboutSurveyViewController.swift */; };
@@ -88,6 +89,7 @@
 		46D655CC24FDC57700ED419E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		46D655CE24FEC4CE00ED419E /* ConvoDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvoDownloadViewController.swift; sourceTree = "<group>"; };
 		46D655D024FEEF1D00ED419E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		46F40CF72891EBA40009E087 /* OurDataIndigenous LogoText w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OurDataIndigenous LogoText w1000.png"; sourceTree = "<group>"; };
 		46F77C0D252918E20002F96B /* about.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = about.css; sourceTree = "<group>"; };
 		46F77C0F2529192D0002F96B /* aboutUs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutUs.html; sourceTree = "<group>"; };
 		46F77C11252A69990002F96B /* AboutSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSurveyViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		46D655B524F99AD200ED419E /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				46F40CF72891EBA40009E087 /* OurDataIndigenous LogoText w1000.png */,
 				46B4E050288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png */,
 				46F77C2D252A78E20002F96B /* bubble.png */,
 				46F77C2B252A78E10002F96B /* bubble@2x.png */,
@@ -307,6 +310,7 @@
 				46B4E051288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
 				46F77C24252A76E40002F96B /* question@2x.png in Resources */,
+				46F40CF82891EBA40009E087 /* OurDataIndigenous LogoText w1000.png in Resources */,
 				46F77C22252A76E40002F96B /* question@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
