@@ -14,9 +14,13 @@
 	
 	    	var broadcastValueChange = function() {
 	    		var name = $(this).attr('name');
-	    		var value = $('input[name="'+name+'"]:checked').val();
-	    		if ('undefined' == typeof(value)) return;
+	    		var value = parseInt($('input[name="'+name+'"]:checked').val());
 	    		$this.trigger( "valueChange", [ value, this, opts ] );
+	    		if (value) {
+	    			$('.below_consent').removeClass('below_consent');
+	    		} else {
+	    			$(this).closest('section').nextAll('section, header').addClass('below_consent');
+	    		}
 	    	}
 	    	
 	    	broadcastValueChange();

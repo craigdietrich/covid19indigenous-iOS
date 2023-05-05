@@ -53,7 +53,6 @@
 	    		var $next_row = $('<div class="row"></div>').appendTo($wrapper);
 	    		var $next_cell = $('<div class="col-12"></div>').appendTo($next_row);
 	    		var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-                var is_webkit = navigator.userAgent.toLowerCase().match(/applewebkit/i) != null;
 	    		switch (type) {
 	    			case 'text':
 	    				$next_cell.append('<textarea class="form-control"></textarea>');
@@ -61,7 +60,7 @@
 	    				break;
 	    			case 'photo':
 	    				$next_cell.append('<input type="hidden" name="base64_string" value="" />');
-	    				$next_cell.append('<input type="file" style="display:none;" accept="image/*" />');  // TODO: image-specific attribute
+	    				$next_cell.append('<input type="file" style="display:none;" />');  // TODO: image-specific attribute
 	    				$next_cell.append('<div style="text-center msg"></div>');
 	    				$next_cell.append('<img src="" style="width:400px;" />');
 	    				$next_cell.find('input[type="file"]').on('change', function() {
@@ -86,10 +85,9 @@
 	    				}).trigger('click');
 	    				break;
 	    			case 'video':
-                        //$next_cell.append('<div>' + navigator.userAgent + '</div>');
-	    				if (jQuery.browser.mobile || is_safari || is_webkit) {
+	    				if (jQuery.browser.mobile || is_safari) {
 		    				$next_cell.append('<input type="hidden" name="base64_string" value="" />');
-		    				$next_cell.append('<input type="file" style="display:none;" accept="video/*" />');  // TODO: video-specific attribute
+		    				$next_cell.append('<input type="file" style="display:none;" />');  // TODO: video-specific attribute
 		    				$next_cell.append('<div style="text-center msg"></div>');
 		    				$next_cell.append('<video class="open-video" controls="" autoplay="" style="width:400px;height:250px;"></video>');
 		    				$next_cell.find('input[type="file"]').on('change', function() {

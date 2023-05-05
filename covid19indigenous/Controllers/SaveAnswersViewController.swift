@@ -91,9 +91,11 @@ class SaveAnswersViewController: UIViewController {
         let url = URL(string: "https://ourdataindigenous.ca/dashboard/pages/handler")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("https://ourdataindigenous.ca/", forHTTPHeaderField: "Referer")
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonResult, options: [])
         request.httpBody = jsonData
-
         print("Sending request...")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {

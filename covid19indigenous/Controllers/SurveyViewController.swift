@@ -77,6 +77,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     
     func _saveJsonStr(jsonStr: String) {
         
+        print("Writing jsonStr...")
         let filename = String(NSDate().timeIntervalSince1970)
         let jsonFilename = "answers_" + filename + ".json"
         
