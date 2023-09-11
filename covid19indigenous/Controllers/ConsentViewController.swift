@@ -34,7 +34,8 @@ class ConsentViewController: UIViewController, WKScriptMessageHandler, WKNavigat
         webView.bottomAnchor.constraint(equalTo: webViewWrapper.bottomAnchor, constant: 0).isActive = true
         webView.isOpaque = false
 
-        let htmlFile = Bundle.main.path(forResource: "consent", ofType: "html")
+        let fileExtension = getHtmlPageExtension()
+        let htmlFile = Bundle.main.path(forResource: "consent" + fileExtension, ofType: "html")
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
         webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
         

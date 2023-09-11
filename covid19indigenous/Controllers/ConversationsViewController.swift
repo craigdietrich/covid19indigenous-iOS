@@ -316,7 +316,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
                     present(vc, animated: true)
                 }
             } else {
-                let alertController = UIAlertController(title: "No Connection", message: "Viewing this content requires an Internet connection. Please establish a connection and try again.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: NSLocalizedString("no_connection", comment: ""), message: NSLocalizedString("no_connection_text", comment: ""), preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                     print("Ok button tapped");
                 }
@@ -330,7 +330,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
             let contentUrl = URL(fileURLWithPath: documentPath + "/content")
             let filePath = contentUrl.appendingPathComponent(mp4)
             if !FileManager.default.fileExists(atPath: filePath.path) {
-                let alertController = UIAlertController(title: "File not found", message: "This content has not been downloaded. Please refresh content and try again.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: NSLocalizedString("file_not_found", comment: ""), message: NSLocalizedString("file_not_found_text", comment: ""), preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                     print("Ok button tapped");
                 }
@@ -352,7 +352,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
             let contentUrl = URL(fileURLWithPath: documentPath + "/content")
             let filePath = contentUrl.appendingPathComponent(image)
             if !FileManager.default.fileExists(atPath: filePath.path) {
-                let alertController = UIAlertController(title: "File not found", message: "This content has not been downloaded. Please refresh content and try again.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: NSLocalizedString("file_not_found", comment: ""), message: NSLocalizedString("file_not_found_text", comment: ""), preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                     print("Ok button tapped");
                 }
@@ -452,7 +452,7 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
                  let dateFormatter = DateFormatter()
                  dateFormatter.dateFormat = "MMM dd, yyyy"
                  let todaysDate = dateFormatter.string(from: date)
-                 cell.publishedLabel.text = "Published: " + todaysDate
+                 cell.publishedLabel.text = NSLocalizedString("published", comment: "") + ": " + todaysDate
              }
          }
         

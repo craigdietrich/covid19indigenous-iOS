@@ -32,7 +32,8 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
         webView.bottomAnchor.constraint(equalTo: webViewWrapper.bottomAnchor, constant: 0).isActive = true
         webView.isOpaque = false
 
-        let htmlFile = Bundle.main.path(forResource: "aboutSurvey", ofType: "html")
+        let fileExtension = getHtmlPageExtension()
+        let htmlFile = Bundle.main.path(forResource: "aboutSurvey" + fileExtension, ofType: "html")
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
         webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
        
@@ -78,13 +79,13 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
                 parentVC.switchSegmentedControl(to: 1)
                 break;
             case "deleteUserData":
-                let refreshAlert = UIAlertController(title: "Reset Data", message: "This will delete your participant code, any saved questionnaires and answers, and any downloaded media. Are you sure you wish to reset data?", preferredStyle: UIAlertController.Style.alert)
+                let refreshAlert = UIAlertController(title: NSLocalizedString("reset_data", comment: ""), message: NSLocalizedString("reset_data_text", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                     self._wipeContentFolder()
                     self._wipeQuestionnaireFolder()
                     self._wipeUserDefaults()
                 }))
-                refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                refreshAlert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
                     // Nothing
                 }))
                 present(refreshAlert, animated: true, completion: nil)

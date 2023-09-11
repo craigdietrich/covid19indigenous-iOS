@@ -55,7 +55,7 @@ class EnterCodeViewController: UIViewController {
     func doCode(code: String) {
         
         if !Reachability.isConnectedToNetwork() {
-            let alertController = UIAlertController(title: "No Connection", message: "Your device does not appear to have an Internet connection. Please establish a connection and try again.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("no_connection", comment: ""), message: NSLocalizedString("no_connection_text", comment: ""), preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                 print("Ok button tapped");
             }
@@ -94,7 +94,7 @@ class EnterCodeViewController: UIViewController {
                 } catch let error as NSError {
                     print(error.localizedDescription)
                     DispatchQueue.main.async {
-                        self.doShowGenericError(error: "Could not parse JSON")
+                        self.doShowGenericError(error: NSLocalizedString("could_not_parse_json", comment: ""))
                     }
                 }
             }
@@ -156,7 +156,7 @@ class EnterCodeViewController: UIViewController {
     
     func doShowGenericError(error: String) {
         
-        let alertController = UIAlertController(title: "Error", message: "There was a problem attemting to send the code to the server: " + error + ". Please try again", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("error", comment: ""), message: NSLocalizedString("error_send_code", comment: "") + " " + error + ". Please try again", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
             print("Ok button tapped");
         }
@@ -169,7 +169,7 @@ class EnterCodeViewController: UIViewController {
     
     func doShowExpressedError(error: String) {
         
-        let alertController = UIAlertController(title: "Error", message: error + ". Please try again.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("error", comment: ""), message: error + ". " + NSLocalizedString("please_try_again", comment: ""), preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
             print("Ok button tapped");
         }

@@ -24,7 +24,7 @@ class SaveAnswersViewController: UIViewController {
         
         _printQuestionnaireDirectory()
         
-        uploadingLabel.text = "Checking Internet connection..."
+        uploadingLabel.text = NSLocalizedString("checking_internet_connection", comment: "")
         
         let seconds = 3.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
@@ -36,10 +36,10 @@ class SaveAnswersViewController: UIViewController {
     func go() {
         
         if (Reachability.isConnectedToNetwork()) {
-            uploadingLabel.text = "Uploading answers..."
+            uploadingLabel.text = NSLocalizedString("uploading_answers", comment: "")
             _doSendAnswers()
         } else {
-            uploadingLabel.text = "No Internet connection"
+            uploadingLabel.text = NSLocalizedString("no_internet_connection", comment: "")
             dismiss(animated: true, completion: nil)
             callbackClosure?()
         }
@@ -56,7 +56,7 @@ class SaveAnswersViewController: UIViewController {
             for file in contents {
                 if (file.path.contains("answers_")) {
                     let filename = file.lastPathComponent.replacingOccurrences(of: "answers_", with: "").replacingOccurrences(of: ".json", with: "  ")
-                    listOfItemsLabel.text = listOfItemsLabel.text! + "Past answers\n" + filename + "\n\n"
+                    listOfItemsLabel.text = listOfItemsLabel.text! + NSLocalizedString("past_answers", comment: "") + "\n" + filename + "\n\n"
                 }
             }
         } catch {

@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4632CE89250C1470005CFE95 /* aboutProject.html in Resources */ = {isa = PBXBuildFile; fileRef = 4632CE88250C1470005CFE95 /* aboutProject.html */; };
 		4632CE8C250C17B2005CFE95 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4632CE8B250C17B2005CFE95 /* WebKit.framework */; };
 		46551A4C253BEB63008E390C /* SaveAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46551A4B253BEB63008E390C /* SaveAnswersViewController.swift */; };
 		4667BD642501723500B711EC /* videoDefaultThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4667BD632501723500B711EC /* videoDefaultThumb.png */; };
+		467AA6A32A93F1B700A2D487 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6A52A93F1B700A2D487 /* Localizable.strings */; };
+		467AA6AB2A940B5A00A2D487 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AA6AA2A940B5A00A2D487 /* Utilities.swift */; };
+		467AA6B22A940E3100A2D487 /* aboutProject_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6B02A940E3000A2D487 /* aboutProject_en.html */; };
+		467AA6B32A940E3100A2D487 /* aboutProject_fr.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6B12A940E3000A2D487 /* aboutProject_fr.html */; };
+		467AA6BA2A940EF300A2D487 /* aboutSurvey_fr.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6B82A940EF300A2D487 /* aboutSurvey_fr.html */; };
+		467AA6BB2A940EF300A2D487 /* aboutSurvey_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6B92A940EF300A2D487 /* aboutSurvey_en.html */; };
+		467AA6BE2A940F5200A2D487 /* aboutUs_fr.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6BC2A940F5200A2D487 /* aboutUs_fr.html */; };
+		467AA6BF2A940F5200A2D487 /* aboutUs_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6BD2A940F5200A2D487 /* aboutUs_en.html */; };
+		467AA6C22A940FFB00A2D487 /* consent_fr.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6C02A940FFB00A2D487 /* consent_fr.html */; };
+		467AA6C32A940FFB00A2D487 /* consent_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6C12A940FFB00A2D487 /* consent_en.html */; };
+		467AA6C62A9416F500A2D487 /* index_fr.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6C42A9416F500A2D487 /* index_fr.html */; };
+		467AA6C72A9416F500A2D487 /* index_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6C52A9416F500A2D487 /* index_en.html */; };
+		467AA6CA2A94172F00A2D487 /* completed_fr.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6C82A94172F00A2D487 /* completed_fr.html */; };
+		467AA6CB2A94172F00A2D487 /* completed_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 467AA6C92A94172F00A2D487 /* completed_en.html */; };
 		46AAEFF9250D82DB0065275B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAEFF8250D82DA0065275B /* Extensions.swift */; };
 		46AAEFFD25152AE90065275B /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAEFFC25152AE90065275B /* SurveyViewController.swift */; };
-		46AAF00125152D1B0065275B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 46AAEFFE25152D1A0065275B /* index.html */; };
-		46AAF00225152D1B0065275B /* completed.html in Resources */ = {isa = PBXBuildFile; fileRef = 46AAEFFF25152D1A0065275B /* completed.html */; };
 		46AAF00325152D1B0065275B /* common in Resources */ = {isa = PBXBuildFile; fileRef = 46AAF00025152D1B0065275B /* common */; };
 		46AAF00525157A110065275B /* EnterCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AAF00425157A110065275B /* EnterCodeViewController.swift */; };
 		46B4E051288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B4E050288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png */; };
@@ -38,9 +49,7 @@
 		46D655D124FEEF1D00ED419E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D655D024FEEF1D00ED419E /* Reachability.swift */; };
 		46F40CF82891EBA40009E087 /* OurDataIndigenous LogoText w1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F40CF72891EBA40009E087 /* OurDataIndigenous LogoText w1000.png */; };
 		46F77C0E252918E30002F96B /* about.css in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C0D252918E20002F96B /* about.css */; };
-		46F77C102529192D0002F96B /* aboutUs.html in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C0F2529192D0002F96B /* aboutUs.html */; };
 		46F77C12252A69990002F96B /* AboutSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F77C11252A69990002F96B /* AboutSurveyViewController.swift */; };
-		46F77C14252A6C310002F96B /* aboutSurvey.html in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C13252A6C310002F96B /* aboutSurvey.html */; };
 		46F77C1C252A75AB0002F96B /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C19252A75AB0002F96B /* person.png */; };
 		46F77C1D252A75AB0002F96B /* person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C1A252A75AB0002F96B /* person@2x.png */; };
 		46F77C1E252A75AB0002F96B /* person@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C1B252A75AB0002F96B /* person@3x.png */; };
@@ -54,18 +63,30 @@
 		46F77C2F252A78E20002F96B /* bubble@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2C252A78E10002F96B /* bubble@3x.png */; };
 		46F77C30252A78E20002F96B /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C2D252A78E20002F96B /* bubble.png */; };
 		46F77C3225324CF80002F96B /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F77C3125324CF80002F96B /* ConsentViewController.swift */; };
-		46F77C3425324F610002F96B /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = 46F77C3325324F610002F96B /* consent.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4632CE88250C1470005CFE95 /* aboutProject.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutProject.html; sourceTree = "<group>"; };
 		4632CE8B250C17B2005CFE95 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		46551A4B253BEB63008E390C /* SaveAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAnswersViewController.swift; sourceTree = "<group>"; };
 		4667BD632501723500B711EC /* videoDefaultThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoDefaultThumb.png; sourceTree = "<group>"; };
+		467AA6A42A93F1B700A2D487 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		467AA6A62A93F26E00A2D487 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		467AA6A72A93F26E00A2D487 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		467AA6AA2A940B5A00A2D487 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		467AA6B02A940E3000A2D487 /* aboutProject_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutProject_en.html; sourceTree = "<group>"; };
+		467AA6B12A940E3000A2D487 /* aboutProject_fr.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutProject_fr.html; sourceTree = "<group>"; };
+		467AA6B82A940EF300A2D487 /* aboutSurvey_fr.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutSurvey_fr.html; sourceTree = "<group>"; };
+		467AA6B92A940EF300A2D487 /* aboutSurvey_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutSurvey_en.html; sourceTree = "<group>"; };
+		467AA6BC2A940F5200A2D487 /* aboutUs_fr.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutUs_fr.html; sourceTree = "<group>"; };
+		467AA6BD2A940F5200A2D487 /* aboutUs_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutUs_en.html; sourceTree = "<group>"; };
+		467AA6C02A940FFB00A2D487 /* consent_fr.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = consent_fr.html; sourceTree = "<group>"; };
+		467AA6C12A940FFB00A2D487 /* consent_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = consent_en.html; sourceTree = "<group>"; };
+		467AA6C42A9416F500A2D487 /* index_fr.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index_fr.html; sourceTree = "<group>"; };
+		467AA6C52A9416F500A2D487 /* index_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index_en.html; sourceTree = "<group>"; };
+		467AA6C82A94172F00A2D487 /* completed_fr.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = completed_fr.html; sourceTree = "<group>"; };
+		467AA6C92A94172F00A2D487 /* completed_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = completed_en.html; sourceTree = "<group>"; };
 		46AAEFF8250D82DA0065275B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		46AAEFFC25152AE90065275B /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
-		46AAEFFE25152D1A0065275B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		46AAEFFF25152D1A0065275B /* completed.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = completed.html; sourceTree = "<group>"; };
 		46AAF00025152D1B0065275B /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		46AAF00425157A110065275B /* EnterCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeViewController.swift; sourceTree = "<group>"; };
 		46B4E050288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OurDataIndigenous Logo w1000.png"; sourceTree = "<group>"; };
@@ -91,9 +112,7 @@
 		46D655D024FEEF1D00ED419E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		46F40CF72891EBA40009E087 /* OurDataIndigenous LogoText w1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OurDataIndigenous LogoText w1000.png"; sourceTree = "<group>"; };
 		46F77C0D252918E20002F96B /* about.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = about.css; sourceTree = "<group>"; };
-		46F77C0F2529192D0002F96B /* aboutUs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutUs.html; sourceTree = "<group>"; };
 		46F77C11252A69990002F96B /* AboutSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSurveyViewController.swift; sourceTree = "<group>"; };
-		46F77C13252A6C310002F96B /* aboutSurvey.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aboutSurvey.html; sourceTree = "<group>"; };
 		46F77C19252A75AB0002F96B /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		46F77C1A252A75AB0002F96B /* person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person@2x.png"; sourceTree = "<group>"; };
 		46F77C1B252A75AB0002F96B /* person@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person@3x.png"; sourceTree = "<group>"; };
@@ -107,7 +126,6 @@
 		46F77C2C252A78E10002F96B /* bubble@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble@3x.png"; sourceTree = "<group>"; };
 		46F77C2D252A78E20002F96B /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
 		46F77C3125324CF80002F96B /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
-		46F77C3325324F610002F96B /* consent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = consent.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +151,7 @@
 		46D6559324F8A95400ED419E = {
 			isa = PBXGroup;
 			children = (
+				467AA6A52A93F1B700A2D487 /* Localizable.strings */,
 				46D6559E24F8A95500ED419E /* covid19indigenous */,
 				46D6559D24F8A95500ED419E /* Products */,
 				4632CE8A250C17B2005CFE95 /* Frameworks */,
@@ -150,14 +169,20 @@
 		46D6559E24F8A95500ED419E /* covid19indigenous */ = {
 			isa = PBXGroup;
 			children = (
-				46F77C3325324F610002F96B /* consent.html */,
-				46F77C13252A6C310002F96B /* aboutSurvey.html */,
-				46F77C0F2529192D0002F96B /* aboutUs.html */,
+				467AA6C92A94172F00A2D487 /* completed_en.html */,
+				467AA6C82A94172F00A2D487 /* completed_fr.html */,
+				467AA6C52A9416F500A2D487 /* index_en.html */,
+				467AA6C42A9416F500A2D487 /* index_fr.html */,
+				467AA6C12A940FFB00A2D487 /* consent_en.html */,
+				467AA6C02A940FFB00A2D487 /* consent_fr.html */,
+				467AA6BD2A940F5200A2D487 /* aboutUs_en.html */,
+				467AA6BC2A940F5200A2D487 /* aboutUs_fr.html */,
+				467AA6B92A940EF300A2D487 /* aboutSurvey_en.html */,
+				467AA6B82A940EF300A2D487 /* aboutSurvey_fr.html */,
+				467AA6B02A940E3000A2D487 /* aboutProject_en.html */,
+				467AA6B12A940E3000A2D487 /* aboutProject_fr.html */,
 				46F77C0D252918E20002F96B /* about.css */,
 				46AAF00025152D1B0065275B /* common */,
-				46AAEFFF25152D1A0065275B /* completed.html */,
-				46AAEFFE25152D1A0065275B /* index.html */,
-				4632CE88250C1470005CFE95 /* aboutProject.html */,
 				4667BD632501723500B711EC /* videoDefaultThumb.png */,
 				46D655C524FDC15600ED419E /* Cells */,
 				46D655BA24FAD66400ED419E /* Controllers */,
@@ -167,6 +192,7 @@
 				46D655A324F8A95500ED419E /* FirstViewController.swift */,
 				46D655A724F8A95500ED419E /* Main.storyboard */,
 				46D655A524F8A95500ED419E /* SecondViewController.swift */,
+				467AA6AA2A940B5A00A2D487 /* Utilities.swift */,
 				46D655AA24F8A96400ED419E /* Assets.xcassets */,
 				46D655AC24F8A96400ED419E /* LaunchScreen.storyboard */,
 				46D655AF24F8A96400ED419E /* Info.plist */,
@@ -268,6 +294,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 46D6559324F8A95400ED419E;
 			productRefGroup = 46D6559D24F8A95500ED419E /* Products */;
@@ -284,13 +311,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467AA6C32A940FFB00A2D487 /* consent_en.html in Resources */,
+				467AA6B32A940E3100A2D487 /* aboutProject_fr.html in Resources */,
+				467AA6BE2A940F5200A2D487 /* aboutUs_fr.html in Resources */,
 				46F77C29252A78020002F96B /* hand@2x.png in Resources */,
-				4632CE89250C1470005CFE95 /* aboutProject.html in Resources */,
+				467AA6C22A940FFB00A2D487 /* consent_fr.html in Resources */,
 				46F77C23252A76E40002F96B /* question.png in Resources */,
-				46F77C3425324F610002F96B /* consent.html in Resources */,
-				46F77C14252A6C310002F96B /* aboutSurvey.html in Resources */,
 				46F77C1E252A75AB0002F96B /* person@3x.png in Resources */,
 				46D655AE24F8A96400ED419E /* LaunchScreen.storyboard in Resources */,
+				467AA6BF2A940F5200A2D487 /* aboutUs_en.html in Resources */,
+				467AA6C62A9416F500A2D487 /* index_fr.html in Resources */,
+				467AA6C72A9416F500A2D487 /* index_en.html in Resources */,
 				46F77C2A252A78020002F96B /* hand@3x.png in Resources */,
 				46D655AB24F8A96400ED419E /* Assets.xcassets in Resources */,
 				46F77C28252A78020002F96B /* hand.png in Resources */,
@@ -298,16 +329,19 @@
 				46F77C0E252918E30002F96B /* about.css in Resources */,
 				46F77C1C252A75AB0002F96B /* person.png in Resources */,
 				46F77C30252A78E20002F96B /* bubble.png in Resources */,
-				46F77C102529192D0002F96B /* aboutUs.html in Resources */,
-				46AAF00125152D1B0065275B /* index.html in Resources */,
+				467AA6BB2A940EF300A2D487 /* aboutSurvey_en.html in Resources */,
+				467AA6BA2A940EF300A2D487 /* aboutSurvey_fr.html in Resources */,
 				46AAF00325152D1B0065275B /* common in Resources */,
 				46F77C2F252A78E20002F96B /* bubble@3x.png in Resources */,
 				46F77C1D252A75AB0002F96B /* person@2x.png in Resources */,
-				46AAF00225152D1B0065275B /* completed.html in Resources */,
 				46D655B724F99ADF00ED419E /* Kitatipithitamak Logo Image w1000.png in Resources */,
+				467AA6B22A940E3100A2D487 /* aboutProject_en.html in Resources */,
 				46D655A924F8A95500ED419E /* Main.storyboard in Resources */,
+				467AA6A32A93F1B700A2D487 /* Localizable.strings in Resources */,
 				46F77C2E252A78E20002F96B /* bubble@2x.png in Resources */,
+				467AA6CA2A94172F00A2D487 /* completed_fr.html in Resources */,
 				46B4E051288A0CD800BFF551 /* OurDataIndigenous Logo w1000.png in Resources */,
+				467AA6CB2A94172F00A2D487 /* completed_en.html in Resources */,
 				46D655CB24FDC1B700ED419E /* ConversationsCollectionViewCell.xib in Resources */,
 				46F77C24252A76E40002F96B /* question@2x.png in Resources */,
 				46F40CF82891EBA40009E087 /* OurDataIndigenous LogoText w1000.png in Resources */,
@@ -340,6 +374,7 @@
 				46AAEFF9250D82DB0065275B /* Extensions.swift in Sources */,
 				46D655C224FD76FD00ED419E /* BeginIPadHorizontalViewController.swift in Sources */,
 				46D655BE24FAF51E00ED419E /* BeginIPhoneHoriztonalViewController.swift in Sources */,
+				467AA6AB2A940B5A00A2D487 /* Utilities.swift in Sources */,
 				46D655D124FEEF1D00ED419E /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,10 +382,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		467AA6A52A93F1B700A2D487 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				467AA6A42A93F1B700A2D487 /* en */,
+				467AA6A72A93F26E00A2D487 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		46D655A724F8A95500ED419E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				46D655A824F8A95500ED419E /* Base */,
+				467AA6A62A93F26E00A2D487 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -370,6 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -430,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -493,7 +540,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.covid19indigenous.covid19indigenous;
 				PRODUCT_NAME = covid19indig;
 				SWIFT_VERSION = 5.0;
@@ -514,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.covid19indigenous.covid19indigenous;
 				PRODUCT_NAME = covid19indig;
 				SWIFT_VERSION = 5.0;

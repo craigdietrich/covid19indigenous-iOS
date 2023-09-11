@@ -251,7 +251,8 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         
         questionnaireHasLaunched = true
         
-        let htmlFile = Bundle.main.path(forResource: "index", ofType: "html")
+        let fileExtension = getHtmlPageExtension()
+        let htmlFile = Bundle.main.path(forResource: "index" + fileExtension, ofType: "html")
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
         webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
         

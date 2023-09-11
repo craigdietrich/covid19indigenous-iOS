@@ -1,0 +1,24 @@
+/*
+  Localizable.strings
+  covid19indigenous
+*/
+"reset_data" = "Réinitialiser les données";
+"reset_data_text" = "Ceci supprimera votre code d’utilisateur, les questionnaires et réponses sauvegardés et tous les médias téléchargés. Êtes-vous sûr de vouloir réinitialiser les données? ";
+"no_connection" = "Aucune connexion";
+"no_connection_text" = "Visualiser le contenu requiert une connexion internet. S’il vous plaît établir une connexion et réessayer.";
+"file_not_found" = "Fichier non trouvé";
+"file_not_found_text" = "Ce contenu n’a pu être téléchargé. S’il vous plait rafraîchir le contenu et essayez à nouveau.";
+"published" = "Publié";
+"downloading_manifest" = "Téléchargement du manifeste";
+"downloading_thumb" = "Téléchargement de l’image";
+"downloading_video" = "Téléchargement du vidéo";
+"downloading_image" = "Téléchargement de l’image";
+"could_not_parse_json" = "N’a pu générer un fichier JSON";
+"error" = "Erreur";
+"error_send_code" = "Un problème est survenu en essayant d’envoyer le code au serveur:";
+"please_try_again" = "S’il vous plaît essayez à nouveau.";
+"cancel" = "Annuler";
+"checking_internet_connection" = "Vérification de la connexion internet";
+"uploading_answers" = "Chargement des réponses";
+"no_internet_connection" = "Aucune connexion internet";
+"past_answers" = "Réponses passées";

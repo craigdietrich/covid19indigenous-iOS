@@ -1,0 +1,153 @@
+
+/* Class = "UILabel"; text = "Begin by selecting an activity below"; ObjectID = "09g-m1-hc3"; */
+"09g-m1-hc3.text" = "Commencer en sélectionnant une activité ci-dessous";
+
+/* Class = "UILabel"; text = "Please enter your participant code below"; ObjectID = "0w1-pK-xqy"; */
+"0w1-pK-xqy.text" = "S’il vous plaît entrez votre code de participant ci-dessous";
+
+/* Class = "UILabel"; text = "An Indigenous-led initiative to support communities and organizations as they create and have full ownership of surveys that can generate data about important topics such as health, language, and food sovereignty."; ObjectID = "2Az-4r-60e"; */
+"2Az-4r-60e.text" = "Une initiative menée par des populations autochtones pour soutenir les communautés et organisations lors de la création de questionnaires dont ils ont la propriété absolue pour générer des données sur des sujets d’importance tels que la santé, la langue et la souveraineté alimentaire.";
+
+/* Class = "UILabel"; text = "Past completed surveys are ready to be uploaded"; ObjectID = "2qb-kJ-aUe"; */
+"2qb-kJ-aUe.text" = "Les questionnaires complétés sont prêts à être téléchargés";
+
+/* Class = "UILabel"; text = "This step requires an Internet connection"; ObjectID = "3Kc-RT-Z5Q"; */
+"3Kc-RT-Z5Q.text" = "Cette étape requiert une connexion internet";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "5Ok-5N-fEB"; */
+"5Ok-5N-fEB.normalTitle" = "Soumettre";
+
+/* Class = "UISegmentedControl"; 6Oq-YD-0mA.segmentTitles[0] = "About Survey"; ObjectID = "6Oq-YD-0mA"; */
+"6Oq-YD-0mA.segmentTitles[0]" = "À propos du questionnaire";
+
+/* Class = "UISegmentedControl"; 6Oq-YD-0mA.segmentTitles[1] = "Take Survey"; ObjectID = "6Oq-YD-0mA"; */
+"6Oq-YD-0mA.segmentTitles[1]" = "Répondre au questionnaire";
+
+/* Class = "UILabel"; text = "An Indigenous-led initiative to support communities and organizations as they create and have full ownership of surveys that can generate data about important topics such as health, language, and food sovereignty."; ObjectID = "8GS-Hi-o72"; */
+"8GS-Hi-o72.text" = "Une initiative menée par des populations autochtones pour soutenir les communautés et organisations lors de la création de questionnaires dont ils ont la propriété absolue pour générer des données sur des sujets d’importance tels que la santé, la langue et la souveraineté alimentaire.";
+
+/* Class = "UILabel"; text = "OUR DATA INDIGENOUS"; ObjectID = "CbK-lJ-DZC"; */
+"CbK-lJ-DZC.text" = "NOS DONNÉES AUTOCHTONES";
+
+/* Class = "UIButton"; normalTitle = "  Take the survey"; ObjectID = "D6o-ZB-AWi"; */
+"D6o-ZB-AWi.normalTitle" = "  Répondre au questionnaire";
+
+/* Class = "UIButton"; normalTitle = "  Take the survey"; ObjectID = "DTR-V1-qU2"; */
+"DTR-V1-qU2.normalTitle" = "  Répondre au questionnaire";
+
+/* Class = "UILabel"; text = "Before continuing please read and consent to the following"; ObjectID = "Dit-iW-pny"; */
+"Dit-iW-pny.text" = "Avant de continuer, s’il vous plaît lire et consentir à ce qui suit";
+
+/* Class = "UILabel"; text = "OUR DATA INDIGENOUS"; ObjectID = "FRm-nA-tP2"; */
+"FRm-nA-tP2.text" = "NOS DONNÉES AUTOCHTONES";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "IQr-QL-nym"; */
+"IQr-QL-nym.normalTitle" = "Annuler";
+
+/* Class = "UIButton"; normalTitle = "  Culture/Resilience"; ObjectID = "IkC-DW-pKJ"; */
+"IkC-DW-pKJ.normalTitle" = "  Culture/Résilience";
+
+/* Class = "UILabel"; text = "OUR DATA INDIGENOUS"; ObjectID = "Kvk-GG-4DX"; */
+"Kvk-GG-4DX.text" = "NOS DONNÉES AUTOCHTONES";
+
+/* Class = "UILabel"; text = "OUR DATA INDIGENOUS"; ObjectID = "MHB-5M-Xuo"; */
+"MHB-5M-Xuo.text" = "NOS DONNÉES AUTOCHTONES";
+
+/* Class = "UIButton"; normalTitle = "  Take the survey"; ObjectID = "NGz-aP-90P"; */
+"NGz-aP-90P.normalTitle" = "  Répondre au questionnaire";
+
+/* Class = "UILabel"; text = "Checking Internet connection..."; ObjectID = "QSj-tO-sSp"; */
+"QSj-tO-sSp.text" = "Vérification de la connexion internet...";
+
+/* Class = "UIButton"; normalTitle = "Consent and continue"; ObjectID = "QxQ-sD-Ye6"; */
+"QxQ-sD-Ye6.normalTitle" = "Consentir et continuer";
+
+/* Class = "UILabel"; text = "The app needs to fetch media content from the server."; ObjectID = "T0O-UT-OT8"; */
+"T0O-UT-OT8.text" = "L’application a besoin de récupérer du contenu media à partir du serveur.";
+
+/* Class = "UIButton"; normalTitle = "Download content"; ObjectID = "TYA-7w-5kH"; */
+"TYA-7w-5kH.normalTitle" = "Télécharger le contenu";
+
+/* Class = "UIButton"; normalTitle = "  About our project"; ObjectID = "Ukj-P7-aAD"; */
+"Ukj-P7-aAD.normalTitle" = "  À propos de notre projet";
+
+/* Class = "UITabBarItem"; title = "Begin"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Commencer";
+
+/* Class = "UILabel"; text = "Begin by selecting an activity below"; ObjectID = "bJw-MX-EQc"; */
+"bJw-MX-EQc.text" = "Commencer en sélectionnant une activité ci-dessous";
+
+/* Class = "UITabBarItem"; title = "Project"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Projet";
+
+/* Class = "UIButton"; normalTitle = "  Take the survey"; ObjectID = "cxQ-9v-vPB"; */
+"cxQ-9v-vPB.normalTitle" = "  Répondre au questionnaire";
+
+/* Class = "UIButton"; normalTitle = "  Culture/Resilience"; ObjectID = "d4V-5y-a29"; */
+"d4V-5y-a29.normalTitle" = "  Culture/Résilience";
+
+/* Class = "UITextField"; placeholder = "participant code"; ObjectID = "hjm-V3-Y38"; */
+"hjm-V3-Y38.placeholder" = "code de participant";
+
+/* Class = "UIButton"; normalTitle = "  About our project"; ObjectID = "ixw-Rm-wPF"; */
+"ixw-Rm-wPF.normalTitle" = "  À propos de notre projet";
+
+/* Class = "UIButton"; normalTitle = "  Culture/Resilience"; ObjectID = "jkM-R5-pOd"; */
+"jkM-R5-pOd.normalTitle" = "  Culture/Résilience";
+
+/* Class = "UIButton"; normalTitle = "  About our project"; ObjectID = "kzd-Ih-Myp"; */
+"kzd-Ih-Myp.normalTitle" = "  À propos de notre projet";
+
+/* Class = "UILabel"; text = "An Indigenous-led initiative to support communities and organizations as they create and have full ownership of surveys that can generate data about important topics such as health, language, and food sovereignty."; ObjectID = "lDz-jF-rQ5"; */
+"lDz-jF-rQ5.text" = "Une initiative menée par des populations autochtones pour soutenir les communautés et organisations lors de la création de questionnaires dont ils ont la propriété absolue pour générer des données sur des sujets d’importance tels que la santé, la langue et la souveraineté alimentaire.";
+
+/* Class = "UISegmentedControl"; lZA-3e-Oge.segmentTitles[0] = "About Project"; ObjectID = "lZA-3e-Oge"; */
+"lZA-3e-Oge.segmentTitles[0]" = "À propos du projet";
+
+/* Class = "UISegmentedControl"; lZA-3e-Oge.segmentTitles[1] = "About Us"; ObjectID = "lZA-3e-Oge"; */
+"lZA-3e-Oge.segmentTitles[1]" = "À propos de nous";
+
+/* Class = "UILabel"; text = "An Indigenous-led initiative to support communities and organizations as they create and have full ownership of surveys that can generate data about important topics such as health, language, and food sovereignty."; ObjectID = "mh6-bC-htx"; */
+"mh6-bC-htx.text" = "Une initiative menée par des populations autochtones pour soutenir les communautés et organisations lors de la création de questionnaires dont ils ont la propriété absolue pour générer des données sur des sujets d’importance tels que la santé, la langue et la souveraineté alimentaire.";
+
+/* Class = "UILabel"; text = "Updating questionnaires\nfrom server..."; ObjectID = "mih-Rh-NH0"; */
+"mih-Rh-NH0.text" = "Mise-à-jour des questionnaires\nà partir du serveur...";
+
+/* Class = "UIButton"; normalTitle = "  About our project"; ObjectID = "mla-d9-gLq"; */
+"mla-d9-gLq.normalTitle" = "  À propos de notre projet";
+
+/* Class = "UISegmentedControl"; pIx-6m-IU0.segmentTitles[0] = "Culture"; ObjectID = "pIx-6m-IU0"; */
+"pIx-6m-IU0.segmentTitles[0]" = "Culture";
+
+/* Class = "UISegmentedControl"; pIx-6m-IU0.segmentTitles[1] = "Resilience"; ObjectID = "pIx-6m-IU0"; */
+"pIx-6m-IU0.segmentTitles[1]" = "Résilience";
+
+/* Class = "UIButton"; normalTitle = "  Culture/Resilience"; ObjectID = "pQY-lq-6Xw"; */
+"pQY-lq-6Xw.normalTitle" = "  Culture/Résilience";
+
+/* Class = "UILabel"; text = "Begin by selecting an activity below"; ObjectID = "rFs-zO-OZA"; */
+"rFs-zO-OZA.text" = "Commencer en sélectionnant une activité ci-dessous";
+
+/* Class = "UILabel"; text = "This step requires an Internet connection"; ObjectID = "sJF-Xa-fbb"; */
+"sJF-Xa-fbb.text" = "Cette étape requiert une connexion internet";
+
+/* Class = "UITabBarItem"; title = "Cul/Res"; ObjectID = "spl-or-L1a"; */
+"spl-or-L1a.title" = "Cul/Rés";
+
+/* Class = "UILabel"; text = "If you don't have a participant code, contact your local health coordinator or member of the COVID-19 Indigenous team"; ObjectID = "tK0-1O-17n"; */
+"tK0-1O-17n.text" = "Si vous n’avez pas de code de participant, contactez votre coordonnateur de santé local ou un membre autochtone de l’équipe COVID-19";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "tuD-nv-xY1"; */
+"tuD-nv-xY1.normalTitle" = "Annuler";
+
+/* Class = "UIButton"; normalTitle = "Fetch new content from the server"; ObjectID = "uas-Pj-tEo"; */
+"uas-Pj-tEo.normalTitle" = "Récupérer le nouveau contenu du serveur";
+
+/* Class = "UITabBarItem"; title = "Survey"; ObjectID = "ufL-yQ-09Y"; */
+"ufL-yQ-09Y.title" = "Questionnaire";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "xBT-bc-hZw"; */
+"xBT-bc-hZw.normalTitle" = "Annuler";
+
+/* Class = "UILabel"; text = "Begin by selecting an activity below"; ObjectID = "xHs-Tq-MV1"; */
+"xHs-Tq-MV1.text" = "Commencer en sélectionnant une activité ci-dessous";

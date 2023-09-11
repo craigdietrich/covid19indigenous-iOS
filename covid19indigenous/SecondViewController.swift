@@ -39,7 +39,8 @@ class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         webView.bottomAnchor.constraint(equalTo: webViewWrapper.bottomAnchor, constant: 0).isActive = true
         webView.isOpaque = false
 
-        let htmlFile = Bundle.main.path(forResource: "aboutProject", ofType: "html")
+        let fileExtension = getHtmlPageExtension()
+        let htmlFile = Bundle.main.path(forResource: "aboutProject" + fileExtension, ofType: "html")
         let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
         webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
         
@@ -119,12 +120,13 @@ class SecondViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     @IBAction func segmentedControllerChanged(_ sender: Any) {
         
         let category = returnCategoryFromSegmentedControl()
+        let fileExtension = getHtmlPageExtension()
         if (category == "about-project") {
-             let htmlFile = Bundle.main.path(forResource: "aboutProject", ofType: "html")
+             let htmlFile = Bundle.main.path(forResource: "aboutProject" + fileExtension, ofType: "html")
              let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
              webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
         } else {
-             let htmlFile = Bundle.main.path(forResource: "aboutUs", ofType: "html")
+             let htmlFile = Bundle.main.path(forResource: "aboutUs" + fileExtension, ofType: "html")
              let html = try? String(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
              webView.loadHTMLString(html!, baseURL: Bundle.main.bundleURL)
         }

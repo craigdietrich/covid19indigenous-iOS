@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  covid19indigenous
+
+  Created by Craig Dietrich on 8/21/23.
+  Copyright © 2023 craigdietrich.com. All rights reserved.
+*/
+"reset_data" = "Reset Data";
+"reset_data_text" = "This will delete your participant code, any saved questionnaires and answers, and any downloaded media. Are you sure you wish to reset data?";
+"no_connection" = "No Connection";
+"no_connection_text" = "Viewing this content requires an Internet connection. Please establish a connection and try again.";
+"file_not_found" = "File not found";
+"file_not_found_text" = "This content has not been downloaded. Please refresh content and try again.";
+"published" = "Published";
+"downloading_manifest" = "Downloading manifest";
+"downloading_thumb" = "Downloading thumb";
+"downloading_video" = "Downloading video";
+"downloading_image" = "Downloading image";
+"could_not_parse_json" = "Could not parse JSON";
+"error" = "Error";
+"error_send_code" = "There was a problem attemting to send the code to the server:";
+"please_try_again" = "Please try again.";
+"cancel" = "Cancel";
+"checking_internet_connection" = "Checking Internet connection";
+"uploading_answers" = "Uploading answers";
+"no_internet_connection" = "No Internet connection";
+"past_answers" = "Past answers";

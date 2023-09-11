@@ -58,7 +58,7 @@ class ConvoDownloadViewController: UIViewController {
         if Reachability.isConnectedToNetwork() {
             _downloadManifest()
         } else {
-            let alertController = UIAlertController(title: "No Connection", message: "Your device does not appear to have an Internet connection. Please establish a connection and try again.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("no_connection", comment: ""), message: NSLocalizedString("no_connection_text", comment: ""), preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                 print("Ok button tapped");
             }
@@ -70,7 +70,7 @@ class ConvoDownloadViewController: UIViewController {
 
     func _downloadManifest() {
         
-        downloadProgressLabel.text = "Downloading manifest"
+        downloadProgressLabel.text = NSLocalizedString("downloading_manifest", comment: "")
         downloadProgressView.setProgress(0.0, animated: false)
         downloadVideoButton.isEnabled = false
         _deleteManifest()
@@ -129,7 +129,7 @@ class ConvoDownloadViewController: UIViewController {
         if (!canContinue) {
             return
         }
-        downloadProgressLabel.text = "Downloading thumb " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressLabel.text = NSLocalizedString("downloading_thumb", comment: "") + " " + String(row + 1) + "/" + String(articles.count)
         downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
         
         // Get filename from JSON
@@ -186,7 +186,7 @@ class ConvoDownloadViewController: UIViewController {
         if (!canContinue) {
             return
         }
-        downloadProgressLabel.text = "Downloading video " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressLabel.text = NSLocalizedString("downloading_video", comment: "") + " " + String(row + 1) + "/" + String(articles.count)
         downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
         
         // Get filename from JSON
@@ -248,7 +248,7 @@ class ConvoDownloadViewController: UIViewController {
         if (!canContinue) {
             return
         }
-        downloadProgressLabel.text = "Downloading image " + String(row + 1) + "/" + String(articles.count)
+        downloadProgressLabel.text = NSLocalizedString("downloading_image", comment: "") + " " + String(row + 1) + "/" + String(articles.count)
         downloadProgressView.setProgress((Float(row) + 1.0) / Float(articles.count), animated: false)
         
         // Get filename from JSON
