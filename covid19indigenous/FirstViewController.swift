@@ -28,26 +28,26 @@ class FirstViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        if (_answersExist() && Reachability.isConnectedToNetwork()) {
+        let isSendResults = UserDefaults.standard.bool(forKey: "resultToServer")
+        if (_answersExist() && Reachability.isConnectedToNetwork() && !isSendResults) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SaveAnswersVC") as! SaveAnswersViewController
             self.definesPresentationContext = true
             vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true, completion: nil)
         }
-        
     }
 
     @objc func rotated() {
-        
         doLayout()
-        
     }
     
-    public func switchTabBar(to: Int) {
-        
+    public func switchTabBar(to: Int , navigationConversation : Bool = false) {
         self.tabBarController!.selectedIndex = to
-        
+        if (navigationConversation){
+            let moreVC = self.tabBarController?.viewControllers![to] as! UINavigationController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConversationsViewController") as! ConversationsViewController
+            moreVC.pushViewController(vc, animated: true)
+        }
     }
     
     func doLayout() {
@@ -95,21 +95,26 @@ class FirstViewController: UIViewController {
     }
     
     func _answersExist() -> Bool {
-        
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("survey")
         do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            for file in contents {
-                if file.path.contains("answers_") {
-                    return true
+            if FileManager.default.fileExists(atPath: contentFolderUrl.path) {
+                let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+                for file in contents {
+                    if(file.hasDirectoryPath) {
+                        let answers = try FileManager.default.contentsOfDirectory(at: contentFolderUrl.appendingPathComponent("submissions"),includingPropertiesForKeys:nil)
+                        for answer in answers {
+                            if answer.path.contains("answers_") {
+                                return true
+                            }
+                        }
+                    }
                 }
             }
         } catch {
             print(error)
         }
         return false
-        
     }
 
 }

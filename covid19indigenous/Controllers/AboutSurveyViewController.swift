@@ -40,32 +40,36 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        if (_answersExist() && Reachability.isConnectedToNetwork()) {
+        let isSendResults = UserDefaults.standard.bool(forKey: "resultToServer")
+        if (_answersExist() && Reachability.isConnectedToNetwork() && !isSendResults) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SaveAnswersVC") as! SaveAnswersViewController
             self.definesPresentationContext = true
             vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true, completion: nil)
         }
-        
     }
     
     func _answersExist() -> Bool {
-        
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("survey")
         do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            for file in contents {
-                if file.path.contains("answers_") {
-                    return true
+            if FileManager.default.fileExists(atPath: contentFolderUrl.path) {
+                let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+                for file in contents {
+                    if(file.hasDirectoryPath) {
+                        let answers = try FileManager.default.contentsOfDirectory(at: contentFolderUrl.appendingPathComponent("submissions"),includingPropertiesForKeys:nil)
+                        for answer in answers {
+                            if answer.path.contains("answers_") {
+                                return true
+                            }
+                        }
+                    }
                 }
             }
         } catch {
             print(error)
         }
         return false
-        
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -102,16 +106,19 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
     }
     
     func _wipeContentFolder() {
-        
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let contentFolderUrl = documentsUrl.appendingPathComponent("content")
         do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            for file in contents {
-                print("Removing " + file.path)
-                try FileManager.default.removeItem(atPath: file.path)
+            if FileManager.default.fileExists(atPath: contentFolderUrl.path) {
+                let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+                for file in contents {
+                    print("Removing " + file.path)
+                    try FileManager.default.removeItem(atPath: file.path)
+                }
+                print("Emptied content folder")
+            } else {
+                print("content folder does not exists yet")
             }
-            print("Emptied content folder")
         } catch {
             print(error)
         }
@@ -119,27 +126,26 @@ class AboutSurveyViewController: UIViewController, WKScriptMessageHandler, WKNav
     }
     
     func _wipeQuestionnaireFolder() {
-        
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("survey")
         do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            for file in contents {
-                print("Removing " + file.path)
-                try FileManager.default.removeItem(atPath: file.path)
+            if FileManager.default.fileExists(atPath: contentFolderUrl.path) {
+                let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+                for file in contents {
+                    print("Removing " + file.path)
+                    try FileManager.default.removeItem(atPath: file.path)
+                }
+                print("Emptied questionnaire folder")
+            } else {
+                print("survey folder does not exists yet")
             }
-            print("Emptied questionnaire folder")
         } catch {
             print(error)
         }
-        
     }
     
     func _wipeUserDefaults() {
-        
         UserDefaults.standard.removeObject(forKey: "SurveyHasConsented")
         print("Wiped user defaults")
-        
     }
-    
 }
