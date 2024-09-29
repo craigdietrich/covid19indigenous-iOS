@@ -121,21 +121,20 @@ class EnterCodeViewController: UIViewController {
     }
     
     func saveJsonString(json: String) {
-        
         let jsonFilename = "questionnaires.json"
         
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let contentUrl = URL(fileURLWithPath: documentPath + "/survey")
         let filePath = contentUrl.appendingPathComponent(jsonFilename)
         
         do {
-            if !FileManager.default.fileExists(atPath: filePath.path) {
-                try FileManager.default.createDirectory(at: filePath, withIntermediateDirectories: true, attributes: nil)
+            if !FileManager.default.fileExists(atPath: contentUrl.path) {
+                try FileManager.default.createDirectory(at: contentUrl, withIntermediateDirectories: true, attributes: nil)
             }
+            
             _deleteQuestionnaires()
+            
             try json.write(to: filePath, atomically: true, encoding: .utf8)
-            //let contents = try String(contentsOfFile: filePath.path)
-            //print(contents)
         } catch {
             print(error.localizedDescription)
         }
@@ -181,28 +180,27 @@ class EnterCodeViewController: UIViewController {
     }
     
     func _deleteQuestionnaires() {
-        
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("survey")
         do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            let questionnairesFiles = contents.filter{ $0.path.contains("questionnaires") }
-            for file in questionnairesFiles {
-                print("Deleting: ")
-                print(file.path)
-                try FileManager.default.removeItem(atPath: file.path)
+            if FileManager.default.fileExists(atPath: contentFolderUrl.path) {
+                let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+                for file in contents {
+                    print("Removing " + file.path)
+                    try FileManager.default.removeItem(atPath: file.path)
+                }
+                print("Emptied questionnaire folder")
+            } else {
+                print("survey folder does not exists yet")
             }
-            print("Removed existing questionnaires file")
         } catch {
             print(error)
         }
-        
     }
     
     func _printQuestionnaireDirectory() {
-        
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
+        let contentFolderUrl = documentsUrl.appendingPathComponent("survey")
         do {
             print("All files in questionnaire folder:")
             let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
@@ -210,7 +208,5 @@ class EnterCodeViewController: UIViewController {
         } catch {
             print(error)
         }
-        
     }
-    
 }

@@ -62,30 +62,45 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         hasGrabbedQuestionnaire = false
         questionnaireHasLaunched = false
         
-        _saveJsonStr(jsonStr: jsonStr)
+        let isSendResults = UserDefaults.standard.bool(forKey: "resultToServer")
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SaveAnswersVC") as! SaveAnswersViewController
-        vc.callbackClosure = { [weak self] in
-            self?.callMeFromSaveAnswersVC()
+        _saveJsonStr(jsonStr: jsonStr, isSendResults: isSendResults)
+        
+        if(!isSendResults) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SaveAnswersVC") as! SaveAnswersViewController
+            vc.callbackClosure = { [weak self] in
+                self?.callMeFromSaveAnswersVC()
+            }
+            self.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            self.callMeFromSaveAnswersVC()
         }
-        self.definesPresentationContext = true
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true, completion: nil)
-        
-        
     }
     
-    func _saveJsonStr(jsonStr: String) {
+    func _saveJsonStr(jsonStr: String, isSendResults: Bool) {
         
         print("Writing jsonStr...")
         let filename = String(NSDate().timeIntervalSince1970)
-        let jsonFilename = "answers_" + filename + ".json"
+        
+        let jsonFilename: String
+        if(isSendResults) {
+            jsonFilename = "local_" + filename + ".json"
+        } else {
+            jsonFilename = "answers_" + filename + ".json"
+        }
         
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let contentUrl = URL(fileURLWithPath: documentPath + "/survey/submissions")
+        
         let filePath = contentUrl.appendingPathComponent(jsonFilename)
         
         do {
+            if !FileManager.default.fileExists(atPath: contentUrl.path) {
+                try FileManager.default.createDirectory(at: contentUrl, withIntermediateDirectories: true, attributes: nil)
+            }
+            
             try jsonStr.write(to: filePath, atomically: true, encoding: .utf8)
         } catch {
             print(error.localizedDescription)
@@ -110,7 +125,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         }
         
         if (_isIPhone && !_isVertical) {
-            webViewWrapper.superview?.backgroundColor = #colorLiteral(red: 0.3182867765, green: 0.3557572365, blue: 0.4283527732, alpha: 1)
+            webViewWrapper.superview?.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         } else {
             webViewWrapper.superview?.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         }
@@ -190,7 +205,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     func checkIfQuestionnairesExist() -> Bool {
         
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let contentUrl = URL(fileURLWithPath: documentPath + "/survey")
         let filePath = contentUrl.appendingPathComponent("questionnaires.json")
         
         if FileManager.default.fileExists(atPath: filePath.path) {
@@ -261,7 +276,7 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let contentUrl = URL(fileURLWithPath: documentPath + "/survey")
         let filePath = contentUrl.appendingPathComponent("questionnaires.json")
         do {
             var jsonString = try String(contentsOfFile: filePath.path)
@@ -337,18 +352,15 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         let jsonFilename = "questionnaires.json"
         
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let contentUrl = URL(fileURLWithPath: documentPath + "/questionnaire")
+        let contentUrl = URL(fileURLWithPath: documentPath + "/survey")
         let filePath = contentUrl.appendingPathComponent(jsonFilename)
         
         do {
             if !FileManager.default.fileExists(atPath: filePath.path) {
                 try FileManager.default.createDirectory(at: filePath, withIntermediateDirectories: true, attributes: nil)
             }
-            _deleteQuestionnaires()
             try json.write(to: filePath, atomically: true, encoding: .utf8)
             print("Wrote new JSON to file")
-            //let contents = try String(contentsOfFile: filePath.path)
-            //print(contents)
         } catch {
             print(error.localizedDescription)
         }
@@ -356,24 +368,4 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         doLoadQuestionnaire()
         
     }
-    
-    func _deleteQuestionnaires() {
-        
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let contentFolderUrl = documentsUrl.appendingPathComponent("questionnaire")
-        do {
-            let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-            let questionnairesFiles = contents.filter{ $0.path.contains("questionnaires") }
-            for file in questionnairesFiles {
-                print("Deleting: ")
-                print(file.path)
-                try FileManager.default.removeItem(atPath: file.path)
-            }
-            print("Removed existing questionnaires file")
-        } catch {
-            print(error)
-        }
-        
-    }
-
 }

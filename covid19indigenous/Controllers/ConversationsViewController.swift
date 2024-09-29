@@ -23,6 +23,9 @@ class ConversationsViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "Conversations"
+        navigationController?.isNavigationBarHidden = false
 
         let textAttribNormal = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         let textAttribSelected = [NSAttributedString.Key.foregroundColor: UIColor(red: 45.0/255, green: 162.0/255, blue: 208.0/255, alpha: 1.0)]
