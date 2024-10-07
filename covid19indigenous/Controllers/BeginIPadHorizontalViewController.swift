@@ -49,7 +49,7 @@ class BeginIPadHorizontalViewController: UIViewController {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         let parentVC = self.parent as! FirstViewController
-        parentVC.switchTabBar(to: 3 , navigationConversation: true)
+        parentVC.switchTabBar(to: 3)
         
     }
     

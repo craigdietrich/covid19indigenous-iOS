@@ -22,6 +22,9 @@ class AnswerViewController: UIViewController, WKNavigationDelegate {
        
         self.navigationItem.title = date
         
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.tabBarController?.tabBar.isTranslucent = false
+        
         let image = UIImage(systemName: "arrowshape.turn.up.forward")?.withRenderingMode(.alwaysOriginal)
         let shareButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(shareBtnTapped(_:)))
         self.navigationItem.rightBarButtonItem = shareButton

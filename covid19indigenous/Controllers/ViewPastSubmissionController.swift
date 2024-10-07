@@ -106,43 +106,42 @@ class ViewPastSubmissionController: UIViewController {
     }
 
     func _formatDate(_ date: Date) -> String {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                return dateFormatter.string(from: date)
-
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: date)
     }
 
     @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-           let location = gestureRecognizer.location(in: listTblView)
-           if let indexPath = listTblView.indexPathForRow(at: location) {
-               if gestureRecognizer.state == .began {
-                   longPressed = true
-                   toggleCellSelection(at: indexPath)
-                   updateNavigationBarBtn()
-               }
-           }
-       }
-
-       func toggleCellSelection(at indexPath: IndexPath) {
-           if selectedRows.contains(indexPath) {
-               selectedRows.remove(indexPath)
-               listTblView.cellForRow(at: indexPath)?.contentView.backgroundColor = UIColor(named: "lightBlue")
-           } else {
-               selectedRows.insert(indexPath)
-               listTblView.cellForRow(at: indexPath)?.contentView.backgroundColor = UIColor(named: "themeGray")
-           }
-           
-           if selectedRows.isEmpty {
-               longPressed = false
-               self.navigationItem.rightBarButtonItem = nil // Hide delete button
-               self.navigationItem.rightBarButtonItem = nil
-              
-           } else {
+       let location = gestureRecognizer.location(in: listTblView)
+       if let indexPath = listTblView.indexPathForRow(at: location) {
+           if gestureRecognizer.state == .began {
+               longPressed = true
+               toggleCellSelection(at: indexPath)
                updateNavigationBarBtn()
            }
        }
+   }
 
-       // Show delete button in navigation bar
+   func toggleCellSelection(at indexPath: IndexPath) {
+       if selectedRows.contains(indexPath) {
+           selectedRows.remove(indexPath)
+           listTblView.cellForRow(at: indexPath)?.contentView.backgroundColor = UIColor(named: "lightBlue")
+       } else {
+           selectedRows.insert(indexPath)
+           listTblView.cellForRow(at: indexPath)?.contentView.backgroundColor = UIColor(named: "themeGray")
+       }
+       
+       if selectedRows.isEmpty {
+           longPressed = false
+           self.navigationItem.rightBarButtonItem = nil // Hide delete button
+           self.navigationItem.rightBarButtonItem = nil
+          
+       } else {
+           updateNavigationBarBtn()
+       }
+   }
+
+   // Show delete button in navigation bar
     func updateNavigationBarBtn() {
         let image = UIImage(systemName: "arrowshape.turn.up.forward")?.withRenderingMode(.alwaysOriginal)
         let shareButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(shareBtn(_:)))

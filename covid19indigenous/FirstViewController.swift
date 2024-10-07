@@ -41,15 +41,8 @@ class FirstViewController: UIViewController {
         doLayout()
     }
     
-    public func switchTabBar(to: Int , navigationConversation : Bool = false) {
+    public func switchTabBar(to: Int) {
         self.tabBarController!.selectedIndex = to
-        /*
-        if (navigationConversation){
-            let moreVC = self.tabBarController?.viewControllers![to] as! UINavigationController
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConversationsViewController") as! ConversationsViewController
-            moreVC.pushViewController(vc, animated: true)
-        }
-        */
     }
     
     func doLayout() {

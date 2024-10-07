@@ -17,7 +17,6 @@ class SaveAnswersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,7 +33,6 @@ class SaveAnswersViewController: UIViewController {
     }
     
     func go() {
-        
         if (Reachability.isConnectedToNetwork()) {
             uploadingLabel.text = NSLocalizedString("uploading_answers", comment: "")
             _doSendAnswers()
@@ -43,7 +41,6 @@ class SaveAnswersViewController: UIViewController {
             dismiss(animated: true, completion: nil)
             callbackClosure?()
         }
-        
     }
     
     func _doSendAnswers() {
@@ -67,27 +64,27 @@ class SaveAnswersViewController: UIViewController {
             print(error)
         }
        
-            do {
-                if FileManager.default.fileExists(atPath: contentFolderUrl.path) {
-                    let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
-                    if(contents.contains { $0.hasDirectoryPath }) {
-                        let answers = try FileManager.default.contentsOfDirectory(at: contentFolderUrl.appendingPathComponent("submissions"), includingPropertiesForKeys: nil)
-                        for file in answers {
-                            if (file.path.contains("answers_")) {
-                                let data = try Data(contentsOf: URL(fileURLWithPath: file.path), options: .mappedIfSafe)
-                                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                                
-                                _doSendAnswer(jsonResult: jsonResult, filePath: file.path)
-                                
-                                uploadingLabel.text = NSLocalizedString("uploading_answers", comment: "")
-                            }
+        do {
+            if FileManager.default.fileExists(atPath: contentFolderUrl.path) {
+                let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
+                if(contents.contains { $0.hasDirectoryPath }) {
+                    let answers = try FileManager.default.contentsOfDirectory(at: contentFolderUrl.appendingPathComponent("submissions"), includingPropertiesForKeys: nil)
+                    for file in answers {
+                        if (file.path.contains("answers_")) {
+                            let data = try Data(contentsOf: URL(fileURLWithPath: file.path), options: .mappedIfSafe)
+                            let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                        
+                            _doSendAnswer(jsonResult: jsonResult, file: file)
+                            
+                            uploadingLabel.text = NSLocalizedString("uploading_answers", comment: "")
                         }
                     }
                 }
-            } catch {
-                print("Error:")
-                print(error)
             }
+        } catch {
+            print("Error:")
+            print(error)
+        }
 
         let seconds = 3.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
@@ -97,8 +94,7 @@ class SaveAnswersViewController: UIViewController {
         
     }
     
-    func _doSendAnswer(jsonResult: Any, filePath: String) {
-        
+    func _doSendAnswer(jsonResult: Any, file: URL) {
         let url = URL(string: "https://ourdataindigenous.ca/dashboard/pages/handler")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -117,23 +113,27 @@ class SaveAnswersViewController: UIViewController {
             if let responseJSON = responseJSON as? [String: Any] {
                 print(responseJSON)
                 do {
-                    try FileManager.default.removeItem(atPath: filePath)
+                    let documentDir = URL(fileURLWithPath: file.deletingLastPathComponent().path)
+                    let oldName = file.lastPathComponent
+                    let oldDestination = documentDir.appendingPathComponent(oldName)
+                    let newName = file.lastPathComponent.replacingOccurrences(of: "answers_", with: "local_")
+                    let newDestination = documentDir.appendingPathComponent(newName)
+                    
+                    try FileManager.default.moveItem(at: oldDestination, to: newDestination)
                 } catch {
-                    print("Could not delete file " + filePath)
+                    print("Could not move file " + file.path)
                 }
                 return
             }
         }
 
         task.resume()
-        
     }
     
     func _printQuestionnaireDirectory() {
         
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let contentFolderUrl = documentsUrl.appendingPathComponent("survey")
-//        questionnaire
         do {
             print("All files in questionnaire folder:")
             let contents = try FileManager.default.contentsOfDirectory(at: contentFolderUrl, includingPropertiesForKeys: nil)
@@ -141,7 +141,5 @@ class SaveAnswersViewController: UIViewController {
         } catch {
             print(error)
         }
-        
     }
-
 }

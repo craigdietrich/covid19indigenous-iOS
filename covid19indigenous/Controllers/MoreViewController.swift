@@ -51,11 +51,6 @@ class MoreViewController: UIViewController {
     
     
     @IBAction func conversationBtn(_ sender: Any) {
-        _navigateToConversationRoute()
-        
-    }
-    
-    func _navigateToConversationRoute() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConversationsViewController") as! ConversationsViewController
         self.definesPresentationContext = true
         vc.modalPresentationStyle = .currentContext
@@ -94,7 +89,7 @@ class MoreViewController: UIViewController {
         
         let alertController = UIAlertController(title: "Reset Data", message: "This will delete participant code,any saved questionnaires and past submissions.Are you sure you wish to reset data?", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let contentFolderUrl = documentsUrl.appendingPathComponent("survey")
             do {

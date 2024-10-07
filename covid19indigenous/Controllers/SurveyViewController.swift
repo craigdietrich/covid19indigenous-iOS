@@ -105,7 +105,6 @@ class SurveyViewController: UIViewController, WKScriptMessageHandler, WKNavigati
         } catch {
             print(error.localizedDescription)
         }
-        
     }
     
     @objc func rotated() {
